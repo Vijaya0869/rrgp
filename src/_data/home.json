@@ -4,15 +4,27 @@
     "image_alt": "A completed R&R home at golden hour",
     "title": "We buy, build and operate the housing Ohio needs most.",
     "featured_label": "Featured project",
-    "featured_project": "[Project name] · [City], Ohio",
+    "featured_project": "[Project name] · [Columbus], Ohio",
     "intro": "R&R Grandeur Properties is a Columbus-based real estate investment and development firm. We source directly, underwrite conservatively and execute through our own construction company — so the value we underwrite at acquisition is value we control through delivery.",
     "primary_button": "Submit an opportunity",
     "secondary_button": "See our approach",
     "highlights": [
-      { "title": "Direct", "caption": "Seller-first sourcing across Ohio" },
-      { "title": "In-house", "caption": "Construction and renovation" },
-      { "title": "Self-managed", "caption": "Leasing, maintenance and collections" },
-      { "title": "Founder-led", "caption": "Principals on every deal" }
+      {
+        "title": "Direct",
+        "caption": "Seller-first sourcing across Ohio"
+      },
+      {
+        "title": "In-house",
+        "caption": "Construction and renovation"
+      },
+      {
+        "title": "Self-managed",
+        "caption": "Leasing, maintenance and collections"
+      },
+      {
+        "title": "Founder-led",
+        "caption": "Principals on every deal"
+      }
     ]
   },
   "platform": {
@@ -52,15 +64,33 @@
     "lede": "We invest only where we can renovate, lease and manage the asset ourselves, in Ohio markets where we already operate. Discipline on what we buy is what makes our execution repeatable.",
     "invest_label": "What we invest in",
     "invest": [
-      { "title": "Single-family rental portfolios", "body": "Scattered-site homes in the Columbus MSA, acquired and aggregated, then stabilized under one management standard." },
-      { "title": "Value-add multifamily", "body": "Ohio communities of 20 units and up, bought on stabilized value less capex, where in-house construction drives the return." },
-      { "title": "Build-to-rent and townhomes", "body": "Ground-up rental communities and townhome sites, taken through entitlement and delivered by our own builder." },
-      { "title": "Entitlement and infill", "body": "Variances, site plans and multi-dwelling conversions — the unglamorous work that creates a lasting basis advantage." }
+      {
+        "title": "Single-family rental portfolios",
+        "body": "Scattered-site homes in the Columbus MSA, acquired and aggregated, then stabilized under one management standard."
+      },
+      {
+        "title": "Value-add multifamily",
+        "body": "Ohio communities of 20 units and up, bought on stabilized value less capex, where in-house construction drives the return."
+      },
+      {
+        "title": "Build-to-rent and townhomes",
+        "body": "Ground-up rental communities and townhome sites, taken through entitlement and delivered by our own builder."
+      },
+      {
+        "title": "Entitlement and infill",
+        "body": "Variances, site plans and multi-dwelling conversions — the unglamorous work that creates a lasting basis advantage."
+      }
     ],
     "deliver_label": "What we deliver for partners",
     "deliver": [
-      { "title": "Renovation delivery", "body": "Fixed scope, fixed schedule, and weekly draw and progress reporting on every unit we touch." },
-      { "title": "Partner operations", "body": "Leasing and asset management for capital partners, on the same procedures we run our own portfolio on." }
+      {
+        "title": "Renovation delivery",
+        "body": "Fixed scope, fixed schedule, and weekly draw and progress reporting on every unit we touch."
+      },
+      {
+        "title": "Partner operations",
+        "body": "Leasing and asset management for capital partners, on the same procedures we run our own portfolio on."
+      }
     ],
     "pass_label": "What we pass on",
     "pass": [
@@ -76,11 +106,41 @@
     "table_label": "Portfolio at a glance",
     "table_note": "Central Ohio and beyond",
     "rows": [
-      { "strategy": "Single-family rentals", "market": "Columbus MSA", "focus": "Long-term hold", "status": "Owned", "highlight": false },
-      { "strategy": "Renovation program", "market": "Columbus & Central Ohio", "focus": "Value-add, ongoing", "status": "In progress", "highlight": false },
-      { "strategy": "Ground-up townhomes", "market": "Delaware County", "focus": "For-sale and for-rent", "status": "In pursuit", "highlight": true },
-      { "strategy": "Build-to-rent community", "market": "Central Ohio", "focus": "Purpose-built rentals", "status": "Entitlement", "highlight": true },
-      { "strategy": "Value-add multifamily", "market": "Ohio", "focus": "Communities of 20+ units", "status": "In negotiation", "highlight": true }
+      {
+        "strategy": "Single-family rentals",
+        "market": "Columbus MSA",
+        "focus": "Long-term hold",
+        "status": "Owned",
+        "highlight": false
+      },
+      {
+        "strategy": "Renovation program",
+        "market": "Columbus & Central Ohio",
+        "focus": "Value-add, ongoing",
+        "status": "In progress",
+        "highlight": false
+      },
+      {
+        "strategy": "Ground-up townhomes",
+        "market": "Delaware County",
+        "focus": "For-sale and for-rent",
+        "status": "In pursuit",
+        "highlight": true
+      },
+      {
+        "strategy": "Build-to-rent community",
+        "market": "Central Ohio",
+        "focus": "Purpose-built rentals",
+        "status": "Entitlement",
+        "highlight": true
+      },
+      {
+        "strategy": "Value-add multifamily",
+        "market": "Ohio",
+        "focus": "Communities of 20+ units",
+        "status": "In negotiation",
+        "highlight": true
+      }
     ],
     "markets": [
       "Columbus",
@@ -101,9 +161,24 @@
     "heading": "Homes we have renovated and built, in one place.",
     "lede": "Our upcoming marketplace will feature move-in-ready homes for sale, quality rentals and rent-to-own opportunities, each renovated or built by our own team and backed by the same standard we hold for our portfolio.",
     "cards": [
-      { "kicker": "For sale", "title": "Move-in-ready homes", "body": "Fully renovated single-family homes across Central Ohio.", "status": "Listings coming soon" },
-      { "kicker": "For rent", "title": "Quality rentals", "body": "Professionally managed homes and apartments, maintained by our in-house team.", "status": "Listings coming soon" },
-      { "kicker": "Rent-to-own", "title": "Paths to ownership", "body": "Rent-to-own programs that help families move from renting to owning.", "status": "Listings coming soon" }
+      {
+        "kicker": "For sale",
+        "title": "Move-in-ready homes",
+        "body": "Fully renovated single-family homes across Central Ohio.",
+        "status": "Listings coming soon"
+      },
+      {
+        "kicker": "For rent",
+        "title": "Quality rentals",
+        "body": "Professionally managed homes and apartments, maintained by our in-house team.",
+        "status": "Listings coming soon"
+      },
+      {
+        "kicker": "Rent-to-own",
+        "title": "Paths to ownership",
+        "body": "Rent-to-own programs that help families move from renting to owning.",
+        "status": "Listings coming soon"
+      }
     ],
     "notify_heading": "Be the first to see new listings.",
     "notify_body": "We will email you when the marketplace opens. No spam."
@@ -113,11 +188,26 @@
     "heading": "The same five steps, on every asset.",
     "lede": "Repeatability is the product. Our partners are not backing a single deal — they are backing a disciplined process that produces them.",
     "steps": [
-      { "title": "Source", "body": "Direct-to-seller, broker and wholesale channels in markets where we already operate." },
-      { "title": "Underwrite", "body": "Stabilized value less capex sets the offer. Deals that depend on aggressive rent growth do not clear." },
-      { "title": "Build", "body": "Our construction company executes to a fixed scope and schedule, with weekly draw and progress reporting." },
-      { "title": "Operate", "body": "In-house lease-up and management on documented procedures, through stabilized occupancy." },
-      { "title": "Recapitalize", "body": "Refinance to return capital, or sell into strength. The exit is underwritten before we buy." }
+      {
+        "title": "Source",
+        "body": "Direct-to-seller, broker and wholesale channels in markets where we already operate."
+      },
+      {
+        "title": "Underwrite",
+        "body": "Stabilized value less capex sets the offer. Deals that depend on aggressive rent growth do not clear."
+      },
+      {
+        "title": "Build",
+        "body": "Our construction company executes to a fixed scope and schedule, with weekly draw and progress reporting."
+      },
+      {
+        "title": "Operate",
+        "body": "In-house lease-up and management on documented procedures, through stabilized occupancy."
+      },
+      {
+        "title": "Recapitalize",
+        "body": "Refinance to return capital, or sell into strength. The exit is underwritten before we buy."
+      }
     ]
   },
   "quote": "Owning the builder is the difference between an underwriting assumption and a controlled cost.",
@@ -129,13 +219,11 @@
       {
         "name": "Jhansi Gumma",
         "role": "Co-founder · Chief Executive Officer",
-        "photo": "",
         "bio": "Leads the firm, setting company direction and overseeing operations, construction and asset management. Owns the operating procedures that keep leasing, renovation delivery and collections consistent across the portfolio. [One line of prior professional background.]"
       },
       {
         "name": "Raj Gumma",
         "role": "Co-founder · Chief Investment Officer",
-        "photo": "",
         "bio": "Leads acquisitions, underwriting, capital markets and development strategy. Sets the underwriting standard every deal is measured against and manages lender and capital-partner relationships. [One line of prior professional background.]"
       }
     ],
@@ -153,8 +241,19 @@
   "contact": {
     "heading": "Bring us a deal, a site or capital.",
     "body": "We review Ohio single-family portfolios, value-add multifamily from 20 units and residential development sites. If an opportunity fits our mandate, you will receive a clear answer and a real number — not a maybe.",
-    "roles": ["Property owner", "Broker or wholesaler", "Capital partner", "Lender", "Other"],
-    "property_types": ["Single-family", "Multifamily (20+ units)", "Portfolio", "Land / development site"],
+    "roles": [
+      "Property owner",
+      "Broker or wholesaler",
+      "Capital partner",
+      "Lender",
+      "Other"
+    ],
+    "property_types": [
+      "Single-family",
+      "Multifamily (20+ units)",
+      "Portfolio",
+      "Land / development site"
+    ],
     "submit_label": "Submit opportunity",
     "success_message": "Thank you — your submission has reached us. We review every submission against the same underwriting standard, and will be in touch if it fits.",
     "aside_label": "Get in touch"
