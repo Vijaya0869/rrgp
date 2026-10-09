@@ -1,0 +1,25 @@
+{
+  "items": [
+    {
+      "name": "[Project] · Full renovation",
+      "city": "[City], Ohio",
+      "category": "Single-family",
+      "image": "",
+      "show": true
+    },
+    {
+      "name": "[Project] · Ground-up build",
+      "city": "[City], Ohio",
+      "category": "New construction",
+      "image": "",
+      "show": true
+    },
+    {
+      "name": "[Project] · Development site",
+      "city": "[City], Ohio",
+      "category": "Build-to-rent",
+      "image": "",
+      "show": true
+    }
+  ]
+}

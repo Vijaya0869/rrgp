@@ -1,0 +1,162 @@
+{
+  "hero": {
+    "image": "/images/hero.jpg",
+    "image_alt": "A completed R&R home at golden hour",
+    "title": "We buy, build and operate the housing Ohio needs most.",
+    "featured_label": "Featured project",
+    "featured_project": "[Project name] · [City], Ohio",
+    "intro": "R&R Grandeur Properties is a Columbus-based real estate investment and development firm. We source directly, underwrite conservatively and execute through our own construction company — so the value we underwrite at acquisition is value we control through delivery.",
+    "primary_button": "Submit an opportunity",
+    "secondary_button": "See our approach",
+    "highlights": [
+      { "title": "Direct", "caption": "Seller-first sourcing across Ohio" },
+      { "title": "In-house", "caption": "Construction and renovation" },
+      { "title": "Self-managed", "caption": "Leasing, maintenance and collections" },
+      { "title": "Founder-led", "caption": "Principals on every deal" }
+    ]
+  },
+  "platform": {
+    "label": "Platform",
+    "heading": "Four businesses. One underwriting standard.",
+    "lede": "Most sponsors outsource the hardest parts of the business plan. We own them. Acquisitions builds the pipeline, construction protects the basis, operations protect net operating income and development creates long-term equity.",
+    "businesses": [
+      {
+        "verb": "Source",
+        "title": "Acquisitions",
+        "image": "/images/plat-1.jpg",
+        "body": "Direct-to-seller sourcing, wholesale relationships and broker coverage across Ohio. Every opportunity is valued at stabilization using market cap rates, less the capital required to get there — that is our offer."
+      },
+      {
+        "verb": "Build",
+        "title": "Construction",
+        "image": "/images/plat-2.jpg",
+        "body": "Our in-house construction company, [JR Grand Homes], delivers renovations and ground-up builds. Owning scope, schedule and trade relationships keeps a renovation budget from becoming a renovation surprise."
+      },
+      {
+        "verb": "Operate",
+        "title": "Property operations",
+        "image": "/images/plat-3.jpg",
+        "body": "We manage what we own. Leasing, maintenance, renewals and collections run on documented operating procedures — the same standard we apply when we operate on behalf of capital partners."
+      },
+      {
+        "verb": "Create",
+        "title": "Development",
+        "image": "/images/plat-4.jpg",
+        "body": "Build-to-rent communities, townhome sites and infill multifamily. We take land through entitlement, variances and site plan approval ourselves, then hand it to our own builder."
+      }
+    ]
+  },
+  "mandate": {
+    "label": "Mandate",
+    "heading": "A focused mandate, executed repeatedly.",
+    "lede": "We invest only where we can renovate, lease and manage the asset ourselves, in Ohio markets where we already operate. Discipline on what we buy is what makes our execution repeatable.",
+    "invest_label": "What we invest in",
+    "invest": [
+      { "title": "Single-family rental portfolios", "body": "Scattered-site homes in the Columbus MSA, acquired and aggregated, then stabilized under one management standard." },
+      { "title": "Value-add multifamily", "body": "Ohio communities of 20 units and up, bought on stabilized value less capex, where in-house construction drives the return." },
+      { "title": "Build-to-rent and townhomes", "body": "Ground-up rental communities and townhome sites, taken through entitlement and delivered by our own builder." },
+      { "title": "Entitlement and infill", "body": "Variances, site plans and multi-dwelling conversions — the unglamorous work that creates a lasting basis advantage." }
+    ],
+    "deliver_label": "What we deliver for partners",
+    "deliver": [
+      { "title": "Renovation delivery", "body": "Fixed scope, fixed schedule, and weekly draw and progress reporting on every unit we touch." },
+      { "title": "Partner operations", "body": "Leasing and asset management for capital partners, on the same procedures we run our own portfolio on." }
+    ],
+    "pass_label": "What we pass on",
+    "pass": [
+      "Office, retail and hospitality assets",
+      "Markets where we have no operating presence",
+      "Deals that only work with aggressive rent growth"
+    ]
+  },
+  "portfolio": {
+    "label": "Portfolio",
+    "heading": "A stable base and a growing pipeline.",
+    "lede": "A stabilized single-family portfolio funds the platform. Renovation, development and multifamily are where long-term enterprise value is built.",
+    "table_label": "Portfolio at a glance",
+    "table_note": "Central Ohio and beyond",
+    "rows": [
+      { "strategy": "Single-family rentals", "market": "Columbus MSA", "focus": "Long-term hold", "status": "Owned", "highlight": false },
+      { "strategy": "Renovation program", "market": "Columbus & Central Ohio", "focus": "Value-add, ongoing", "status": "In progress", "highlight": false },
+      { "strategy": "Ground-up townhomes", "market": "Delaware County", "focus": "For-sale and for-rent", "status": "In pursuit", "highlight": true },
+      { "strategy": "Build-to-rent community", "market": "Central Ohio", "focus": "Purpose-built rentals", "status": "Entitlement", "highlight": true },
+      { "strategy": "Value-add multifamily", "market": "Ohio", "focus": "Communities of 20+ units", "status": "In negotiation", "highlight": true }
+    ],
+    "markets": [
+      "Columbus",
+      "Gahanna",
+      "Worthington",
+      "Delaware",
+      "Marysville / Union County",
+      "Dayton",
+      "Cincinnati",
+      "Northeast Ohio"
+    ],
+    "footnote": "Asset-level detail — addresses, unit counts and business plans — is shared with capital partners and lenders during diligence."
+  },
+  "marketplace": {
+    "show": true,
+    "label": "R&R Marketplace",
+    "badge": "Coming soon",
+    "heading": "Homes we have renovated and built, in one place.",
+    "lede": "Our upcoming marketplace will feature move-in-ready homes for sale, quality rentals and rent-to-own opportunities, each renovated or built by our own team and backed by the same standard we hold for our portfolio.",
+    "cards": [
+      { "kicker": "For sale", "title": "Move-in-ready homes", "body": "Fully renovated single-family homes across Central Ohio.", "status": "Listings coming soon" },
+      { "kicker": "For rent", "title": "Quality rentals", "body": "Professionally managed homes and apartments, maintained by our in-house team.", "status": "Listings coming soon" },
+      { "kicker": "Rent-to-own", "title": "Paths to ownership", "body": "Rent-to-own programs that help families move from renting to owning.", "status": "Listings coming soon" }
+    ],
+    "notify_heading": "Be the first to see new listings.",
+    "notify_body": "We will email you when the marketplace opens. No spam."
+  },
+  "approach": {
+    "label": "Approach",
+    "heading": "The same five steps, on every asset.",
+    "lede": "Repeatability is the product. Our partners are not backing a single deal — they are backing a disciplined process that produces them.",
+    "steps": [
+      { "title": "Source", "body": "Direct-to-seller, broker and wholesale channels in markets where we already operate." },
+      { "title": "Underwrite", "body": "Stabilized value less capex sets the offer. Deals that depend on aggressive rent growth do not clear." },
+      { "title": "Build", "body": "Our construction company executes to a fixed scope and schedule, with weekly draw and progress reporting." },
+      { "title": "Operate", "body": "In-house lease-up and management on documented procedures, through stabilized occupancy." },
+      { "title": "Recapitalize", "body": "Refinance to return capital, or sell into strength. The exit is underwritten before we buy." }
+    ]
+  },
+  "quote": "Owning the builder is the difference between an underwriting assumption and a controlled cost.",
+  "leadership": {
+    "label": "Leadership",
+    "heading": "Founder-operated, not founder-branded.",
+    "lede": "The firm is led day to day by the principals who sign for every asset, supported by a dedicated operations team.",
+    "people": [
+      {
+        "name": "Jhansi Gumma",
+        "role": "Co-founder · Chief Executive Officer",
+        "photo": "",
+        "bio": "Leads the firm, setting company direction and overseeing operations, construction and asset management. Owns the operating procedures that keep leasing, renovation delivery and collections consistent across the portfolio. [One line of prior professional background.]"
+      },
+      {
+        "name": "Raj Gumma",
+        "role": "Co-founder · Chief Investment Officer",
+        "photo": "",
+        "bio": "Leads acquisitions, underwriting, capital markets and development strategy. Sets the underwriting standard every deal is measured against and manages lender and capital-partner relationships. [One line of prior professional background.]"
+      }
+    ],
+    "team_label": "Operations team",
+    "team": "[Name], [Title] · [Name], [Title] · [Name], [Title]"
+  },
+  "partners": {
+    "show": true,
+    "label": "For capital partners and lenders",
+    "heading": "Transparent underwriting. Institutional reporting.",
+    "body": "During diligence we share full asset-level underwriting, construction budgets and operating history, followed by consistent reporting after close. Investment opportunities are presented separately through JR Capital, our capital arm.",
+    "primary_button": "Start a conversation",
+    "secondary_button": "Visit JR Capital"
+  },
+  "contact": {
+    "heading": "Bring us a deal, a site or capital.",
+    "body": "We review Ohio single-family portfolios, value-add multifamily from 20 units and residential development sites. If an opportunity fits our mandate, you will receive a clear answer and a real number — not a maybe.",
+    "roles": ["Property owner", "Broker or wholesaler", "Capital partner", "Lender", "Other"],
+    "property_types": ["Single-family", "Multifamily (20+ units)", "Portfolio", "Land / development site"],
+    "submit_label": "Submit opportunity",
+    "success_message": "Thank you — your submission has reached us. We review every submission against the same underwriting standard, and will be in touch if it fits.",
+    "aside_label": "Get in touch"
+  }
+}

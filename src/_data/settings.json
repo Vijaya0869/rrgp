@@ -1,0 +1,26 @@
+{
+  "company": "R&R Grandeur Properties",
+  "location": "Columbus, Ohio",
+  "tagline": "Investment · Development · Construction · Property management",
+  "seo_title": "R&R Grandeur Properties — Real estate investment and development, Columbus, Ohio",
+  "seo_description": "Columbus-based real estate investment and development firm. We source directly, underwrite conservatively and execute through our own construction company.",
+  "share_image": "/images/hero.jpg",
+  "site_url": "https://rrgp.io",
+  "email": "deals@rrgp.io",
+  "phone": "(614) 000-0000",
+  "address": "2945 Donnylane Blvd, Columbus, OH 43235",
+  "focus": "Single-family · Build-to-rent · Multifamily",
+  "jr_capital_url": "",
+  "direct_email": "raj.gumma@rrgp.io",
+  "response_time": "2 business days",
+  "form_endpoint": "",
+  "waitlist_endpoint": "",
+  "disclaimer": "This website is for informational purposes only and does not constitute an offer to sell, or a solicitation of an offer to buy, any security. Any offering will be made only through definitive offering documents, to qualified investors, in compliance with applicable securities laws.",
+  "copyright": "R&R Grandeur Properties. All rights reserved.",
+  "look": {
+    "page_tone": "paper",
+    "hero_size": "balanced",
+    "accent_use": "signal",
+    "section_style": "banded"
+  }
+}

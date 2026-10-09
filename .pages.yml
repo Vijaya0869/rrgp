@@ -1,0 +1,246 @@
+# Pages CMS configuration — https://pagescms.org
+# Every entry below becomes a screen in the editor at app.pagescms.org.
+# Saving in the editor commits to GitHub; Cloudflare Pages rebuilds the site
+# automatically about a minute later.
+
+media:
+  input: src/images
+  output: /images
+  categories: [image]
+
+content:
+  # ───────────────────────── Home page ─────────────────────────
+  - name: home
+    label: Home page
+    type: file
+    path: src/_data/home.json
+    format: json
+    fields:
+      - name: hero
+        label: Hero (top of page)
+        type: object
+        fields:
+          - { name: image, label: Background photo, type: image, description: "Wide landscape photo, at least 2000px wide." }
+          - { name: image_alt, label: Photo description (for screen readers), type: string }
+          - { name: title, label: Headline, type: text, required: true }
+          - { name: featured_label, label: Featured project label, type: string }
+          - { name: featured_project, label: Featured project name, type: string, description: "Leave empty to hide." }
+          - { name: intro, label: Intro paragraph, type: text }
+          - { name: primary_button, label: Gold button text, type: string }
+          - { name: secondary_button, label: Outline button text, type: string }
+          - name: highlights
+            label: Highlights (4 short facts)
+            type: object
+            list: true
+            fields:
+              - { name: title, label: Word, type: string }
+              - { name: caption, label: Caption, type: string }
+
+      - name: platform
+        label: 01 · Platform
+        type: object
+        fields:
+          - { name: label, label: Section label (also used in menu), type: string }
+          - { name: heading, label: Heading, type: text }
+          - { name: lede, label: Intro paragraph, type: text }
+          - name: businesses
+            label: Businesses (photo tile + description row)
+            type: object
+            list: true
+            fields:
+              - { name: verb, label: Short verb (e.g. Source), type: string }
+              - { name: title, label: Title, type: string }
+              - { name: image, label: Tile photo (square), type: image }
+              - { name: body, label: Description, type: text }
+
+      - name: mandate
+        label: 02 · Mandate
+        type: object
+        fields:
+          - { name: label, label: Section label (also used in menu), type: string }
+          - { name: heading, label: Heading, type: text }
+          - { name: lede, label: Intro paragraph, type: text }
+          - { name: invest_label, label: "\"What we invest in\" label", type: string }
+          - name: invest
+            label: What we invest in
+            type: object
+            list: true
+            fields:
+              - { name: title, label: Title, type: string }
+              - { name: body, label: Description, type: text }
+          - { name: deliver_label, label: "\"What we deliver\" label", type: string }
+          - name: deliver
+            label: What we deliver for partners
+            type: object
+            list: true
+            fields:
+              - { name: title, label: Title, type: string }
+              - { name: body, label: Description, type: text }
+          - { name: pass_label, label: "\"What we pass on\" label", type: string }
+          - { name: pass, label: What we pass on, type: string, list: true }
+
+      - name: portfolio
+        label: 03 · Portfolio (text and table — project cards are under "Projects")
+        type: object
+        fields:
+          - { name: label, label: Section label (also used in menu), type: string }
+          - { name: heading, label: Heading, type: text }
+          - { name: lede, label: Intro paragraph, type: text }
+          - { name: table_label, label: Table title, type: string }
+          - { name: table_note, label: Table note (right side), type: string }
+          - name: rows
+            label: Portfolio table rows
+            type: object
+            list: true
+            fields:
+              - { name: strategy, label: Strategy, type: string }
+              - { name: market, label: Market, type: string }
+              - { name: focus, label: Focus, type: string }
+              - { name: status, label: Status, type: string }
+              - { name: highlight, label: Show status in gold, type: boolean }
+          - { name: markets, label: Markets served, type: string, list: true }
+          - { name: footnote, label: Footnote, type: text }
+
+      - name: marketplace
+        label: Marketplace (coming soon)
+        type: object
+        fields:
+          - { name: show, label: Show this section, type: boolean }
+          - { name: label, label: Section label, type: string }
+          - { name: badge, label: Badge text, type: string }
+          - { name: heading, label: Heading, type: text }
+          - { name: lede, label: Intro paragraph, type: text }
+          - name: cards
+            label: Cards
+            type: object
+            list: true
+            fields:
+              - { name: kicker, label: Small label, type: string }
+              - { name: title, label: Title, type: string }
+              - { name: body, label: Description, type: text }
+              - { name: status, label: Status line, type: string }
+          - { name: notify_heading, label: Sign-up heading, type: string }
+          - { name: notify_body, label: Sign-up text, type: text }
+
+      - name: approach
+        label: 04 · Approach
+        type: object
+        fields:
+          - { name: label, label: Section label (also used in menu), type: string }
+          - { name: heading, label: Heading, type: text }
+          - { name: lede, label: Intro paragraph, type: text }
+          - name: steps
+            label: Steps
+            type: object
+            list: true
+            fields:
+              - { name: title, label: Step name, type: string }
+              - { name: body, label: Description, type: text }
+
+      - { name: quote, label: Navy quote band, type: text, description: "Leave empty to hide the band." }
+
+      - name: leadership
+        label: 05 · Leadership
+        type: object
+        fields:
+          - { name: label, label: Section label (also used in menu), type: string }
+          - { name: heading, label: Heading, type: text }
+          - { name: lede, label: Intro paragraph, type: text }
+          - name: people
+            label: People
+            type: object
+            list: true
+            fields:
+              - { name: name, label: Name, type: string }
+              - { name: role, label: Title, type: string }
+              - { name: photo, label: Headshot (portrait), type: image }
+              - { name: bio, label: Bio, type: text }
+          - { name: team_label, label: Team label, type: string }
+          - { name: team, label: Operations team line, type: text, description: "e.g. Jane Doe, Leasing · John Roe, Construction. Leave empty to hide." }
+
+      - name: partners
+        label: Capital partners band
+        type: object
+        fields:
+          - { name: show, label: Show this section, type: boolean }
+          - { name: label, label: Small label, type: string }
+          - { name: heading, label: Heading, type: text }
+          - { name: body, label: Paragraph, type: text }
+          - { name: primary_button, label: Gold button text, type: string }
+          - { name: secondary_button, label: JR Capital button text (shown once the link is set in Site settings), type: string }
+
+      - name: contact
+        label: 06 · Contact
+        type: object
+        fields:
+          - { name: heading, label: Heading, type: text }
+          - { name: body, label: Paragraph, type: text }
+          - { name: roles, label: "\"I am a\" options", type: string, list: true }
+          - { name: property_types, label: Property type options, type: string, list: true }
+          - { name: submit_label, label: Submit button text, type: string }
+          - { name: success_message, label: Thank-you message, type: text }
+          - { name: aside_label, label: Contact details label, type: string }
+
+  # ───────────────────────── Projects ─────────────────────────
+  - name: projects
+    label: Projects
+    type: file
+    path: src/_data/projects.json
+    format: json
+    fields:
+      - name: items
+        label: Project cards (drag to reorder)
+        type: object
+        list: true
+        fields:
+          - { name: name, label: Project name, type: string, required: true }
+          - { name: city, label: City, type: string }
+          - { name: category, label: Type, type: string, description: "e.g. Single-family, New construction, Build-to-rent" }
+          - { name: image, label: Photo (landscape), type: image }
+          - { name: show, label: Show on site, type: boolean, default: true }
+
+  # ───────────────────────── Settings ─────────────────────────
+  - name: settings
+    label: Site settings
+    type: file
+    path: src/_data/settings.json
+    format: json
+    fields:
+      - { name: company, label: Company name, type: string, required: true }
+      - { name: location, label: Location (under logo), type: string }
+      - { name: tagline, label: Tagline, type: string }
+      - { name: email, label: Public email, type: string }
+      - { name: phone, label: Phone, type: string, description: "Leave empty to hide." }
+      - { name: address, label: Office address, type: string }
+      - { name: focus, label: Focus line, type: string }
+      - { name: jr_capital_url, label: JR Capital website, type: string, description: "Full URL starting with https://. Leave empty to hide JR Capital links." }
+      - { name: direct_email, label: "\"Prefer email?\" address", type: string }
+      - { name: response_time, label: Response time, type: string, description: "e.g. 2 business days" }
+      - { name: form_endpoint, label: Opportunity form endpoint, type: string, description: "Formspree URL, e.g. https://formspree.io/f/abcd1234. Empty = form shows a 'not connected' message." }
+      - { name: waitlist_endpoint, label: Marketplace sign-up endpoint, type: string, description: "Optional second Formspree URL. Empty = uses the opportunity form endpoint." }
+      - { name: seo_title, label: Browser / Google title, type: string }
+      - { name: seo_description, label: Google description, type: text }
+      - { name: share_image, label: Social share image (1200×630), type: image }
+      - { name: site_url, label: Site address, type: string, description: "e.g. https://rrgp.io (no trailing slash)" }
+      - { name: disclaimer, label: Footer disclaimer, type: text }
+      - { name: copyright, label: Copyright line (year is added automatically), type: string }
+      - name: look
+        label: Look and feel
+        type: object
+        fields:
+          - name: page_tone
+            label: Page tone
+            type: select
+            options: { values: [paper, cool, sand] }
+          - name: hero_size
+            label: Hero size
+            type: select
+            options: { values: [compact, balanced, poster] }
+          - name: accent_use
+            label: Gold accent use
+            type: select
+            options: { values: [signal, restrained, ink] }
+          - name: section_style
+            label: Section style
+            type: select
+            options: { values: [banded, airy, rules, quiet] }
