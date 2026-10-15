@@ -55,6 +55,9 @@
       <a class="navlink" href="{{ base }}#partners">Capital partners</a>
       {%- endif %}
       <a class="navlink" href="{{ base }}#who">{{ h.leadership.label }}</a>
+      {%- if s.jr_capital_url %}
+      <a class="navlink" href="{{ s.jr_capital_url }}" target="_blank" rel="noopener">JR Capital <span class="ext" aria-hidden="true">↗</span><span class="sr">(opens in a new tab)</span></a>
+      {%- endif %}
     </nav>
     <a class="head-cta" href="{{ base }}#capital">Contact<span class="hide-s"> us</span></a>
   </div>
