@@ -1,196 +1,147 @@
 ---
 permalink: /index.html
+layout: base.njk
 ---
 {%- set s = settings -%}
 {%- set h = home -%}
-{%- macro img(src, alt) -%}
-{%- if src -%}<img class="fill" src="{{ src }}" alt="{{ alt }}" loading="lazy" decoding="async">{%- else -%}<div class="ph" role="img" aria-label="{{ alt }}"></div>{%- endif -%}
-{%- endmacro -%}
 {%- macro sechead(num, label) -%}
-<div data-reveal><div class="sechead"><span class="secnum">{{ num }}</span></div><div class="k">{{ label }}</div></div>
+<div class="sechead" data-reveal>{% if num %}<span class="secnum">{{ num }}</span>{% endif %}<span class="seclabel">{{ label }}</span></div>
 {%- endmacro -%}
-<!DOCTYPE html>
-<html lang="en" data-tone="{{ s.look.page_tone }}" data-impact="{{ s.look.hero_size }}" data-accent="{{ s.look.accent_use }}" data-sections="{{ s.look.section_style }}">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{{ s.seo_title }}</title>
-<meta name="description" content="{{ s.seo_description }}">
-<link rel="canonical" href="{{ s.site_url }}/">
-<meta property="og:type" content="website">
-<meta property="og:title" content="{{ s.seo_title }}">
-<meta property="og:description" content="{{ s.seo_description }}">
-<meta property="og:url" content="{{ s.site_url }}/">
-{%- if s.share_image %}
-<meta property="og:image" content="{{ s.site_url }}{{ s.share_image }}">
-<meta name="twitter:card" content="summary_large_image">
-{%- endif %}
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v={{ build.version }}">
-<script type="application/ld+json">{{ {
-  "@context": "https://schema.org",
-  "@type": "RealEstateAgent",
-  "name": s.company,
-  "url": s.site_url,
-  "email": s.email,
-  "telephone": s.phone,
-  "address": s.address
-} | dump | safe }}</script>
-</head>
-<body>
-<a class="skip" href="#main">Skip to content</a>
-<div style="font-family: var(--font-body); color: var(--color-text); background: var(--page)">
 
-  <header style="position: sticky; top: 0; z-index: 20; background: var(--page)">
-    <div style="display: flex; align-items: baseline; gap: 32px; padding: 26px clamp(24px, 4vw, 72px) 22px">
-      <div style="max-width: 1440px; margin: 0 auto; width: 100%; display: flex; align-items: baseline; gap: 28px">
-      <a class="wordmark" href="#top" style="margin-right: auto; display: flex; flex-direction: column; gap: 6px">{{ s.company }}<span class="k" style="font-size: 10.5px; letter-spacing: 0.2em">{{ s.location }}</span></a>
-      <nav class="navlinks" aria-label="Sections" style="display: flex; gap: 22px; align-items: baseline">
-        <a class="k navlink" href="#what">{{ h.platform.label }}</a>
-        <a class="k navlink" href="#focus">{{ h.mandate.label }}</a>
-        <a class="k navlink" href="#record">{{ h.portfolio.label }}</a>
-        {%- if h.marketplace.show %}
-        <a class="k navlink" href="#market">Marketplace <span class="soon">Soon</span></a>
-        {%- endif %}
-        <a class="k navlink" href="#process">{{ h.approach.label }}</a>
-        <a class="k navlink" href="#who">{{ h.leadership.label }}</a>
-        {%- if h.partners.show %}
-        <a class="k navlink" href="#partners">Capital partners</a>
-        {%- endif %}
-      </nav>
-      <a class="k" href="#capital" style="text-decoration: none; color: var(--color-accent-700)">Contact us →</a>
+  <section id="top" class="hero">
+    {%- if h.hero.image %}
+    {% heroImage h.hero.image, h.hero.image_alt %}
+    {%- endif %}
+    <div class="hero-scrim" aria-hidden="true"></div>
+    <div class="hero-in">
+      <div class="hero-k" data-in>{{ s.tagline }}</div>
+      <h1 class="hero-title" data-in>{{ h.hero.title }}</h1>
+      <div class="hero-ctas" data-in>
+        <a class="btn btn-primary" href="#capital">{{ h.hero.primary_button }}</a>
+        <a class="btn btn-ghost" href="#process">{{ h.hero.secondary_button }}</a>
       </div>
-    </div>
-  </header>
-
-  <main id="main">
-  <section id="top">
-    <div class="hero-frame">
-      {%- if h.hero.image %}
-      <img class="fill" src="{{ h.hero.image }}" alt="{{ h.hero.image_alt }}" fetchpriority="high">
+      {%- if h.hero.show_featured and h.hero.featured_project %}
+      <div class="hero-feat" data-in>
+        <span class="hero-feat-k">{{ h.hero.featured_label }}</span>
+        <span>{{ h.hero.featured_project }}</span>
+      </div>
       {%- endif %}
-      <div class="hero-scrim"></div>
-      <div style="position: absolute; inset: auto 0 0 0; pointer-events: none; padding-bottom: clamp(40px, 6vh, 72px)">
-        <div class="w">
-          <div class="k" data-hero="1" style="color: rgba(255,255,255,0.9); letter-spacing: 0.2em; margin-bottom: 26px; padding-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,0.28); display: inline-block">{{ s.tagline }}</div>
-          <h1 class="d hero-title" data-hero="2" style="line-height: 1.04; color: #ffffff; max-width: 24ch; text-wrap: balance; text-shadow: 0 2px 30px rgba(0,0,0,0.28)">{{ h.hero.title }}</h1>
-          {%- if h.hero.featured_project %}
-          <div data-hero="3" style="margin-top: 26px">
-            <div class="k" style="color: rgba(255,255,255,0.75)">{{ h.hero.featured_label }}</div>
-            <div style="color: #fff; font-size: 15px; margin-top: 6px">{{ h.hero.featured_project }}</div>
-          </div>
-          {%- endif %}
-        </div>
-      </div>
     </div>
+  </section>
 
-    <div class="w" style="padding-top: 64px; padding-bottom: 104px">
-      <div class="two" style="display: grid; grid-template-columns: 1fr 1fr; gap: 56px">
-        <p class="body" data-hero="4" style="margin: 0; max-width: 46ch">{{ h.hero.intro }}</p>
-        <div data-hero="5">
-          <div style="display: flex; gap: 16px; flex-wrap: wrap">
-            <a class="btn btn-primary" href="#capital">{{ h.hero.primary_button }}</a>
-            <a class="btn btn-secondary" href="#process">{{ h.hero.secondary_button }}</a>
-          </div>
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 46px">
-            {%- for x in h.hero.highlights %}
-            <div><div class="d" style="font-size: 30px">{{ x.title }}</div><div class="k" style="margin-top: 8px">{{ x.caption }}</div></div>
-            {%- endfor %}
-          </div>
-        </div>
+  <section class="intro tone-light">
+    <div class="sec intro-in">
+      <p class="intro-lede" data-reveal>{{ h.hero.intro }}</p>
+      <div class="facts" data-reveal-group>
+        {%- for x in h.hero.highlights %}
+        <div class="fact"><div class="fact-t">{{ x.title }}</div><div class="fact-c">{{ x.caption }}</div></div>
+        {%- endfor %}
       </div>
     </div>
   </section>
 
-  <section id="what" class="band" data-band="on">
+  <section id="what" class="tone-navy">
     <div class="sec">
-      <div class="two" style="display: grid; grid-template-columns: 240px 1fr; gap: 56px; margin-bottom: 20px">
+      <div class="head-row">
         {{ sechead("01", h.platform.label) }}
         <div>
-          <h2 class="d" data-reveal style="font-size: clamp(26px, 3vw, 40px); max-width: 22ch; margin-bottom: 20px">{{ h.platform.heading }}</h2>
-          <p class="body" data-reveal style="margin: 0; max-width: 60ch">{{ h.platform.lede }}</p>
+          <h2 class="h2" data-reveal>{{ h.platform.heading }}</h2>
+          <p class="lede" data-reveal>{{ h.platform.lede }}</p>
         </div>
       </div>
-      <div class="tiles" data-reveal>
-        {%- for b in h.platform.businesses %}
-        <div class="tile">
-          <span class="tile-img">{{ img(b.image, b.title) }}</span>
-          <span class="tile-shade" aria-hidden="true"></span>
-          <span class="tile-num">{{ loop.index | pad }}</span>
-          <span class="tile-title">{{ b.title }}</span>
+      <div class="biz" data-reveal-group>
+        {%- asyncEach b in h.platform.businesses %}
+        <article class="biz-card">
+          <div class="biz-img">{% picture b.image, b.title, "(max-width: 720px) 100vw, (max-width: 1100px) 50vw, 25vw" %}</div>
+          <div class="biz-k">{{ loop.index | pad }} · {{ b.verb }}</div>
+          <h3 class="biz-t">{{ b.title }}</h3>
+          <p class="biz-b">{{ b.body }}</p>
+        </article>
+        {%- endeach %}
+      </div>
+
+      <div id="process" class="process">
+        <div class="head-row head-row-tight">
+          <div class="seclabel" data-reveal>{{ h.approach.label }}</div>
+          <div>
+            <h3 class="h3" data-reveal>{{ h.approach.heading }}</h3>
+            <p class="lede" data-reveal>{{ h.approach.lede }}</p>
+          </div>
         </div>
-        {%- endfor %}
+        <ol class="tl" data-tl>
+          {%- for st in h.approach.steps %}
+          <li class="tl-step" style="--i: {{ loop.index0 }}">
+            <span class="tl-node" aria-hidden="true">{{ loop.index | pad }}</span>
+            <span class="tl-t">{{ st.title }}</span>
+            <span class="tl-b">{{ st.body }}</span>
+          </li>
+          {%- endfor %}
+        </ol>
       </div>
-      <div data-reveal-group>
-        {%- for b in h.platform.businesses %}
-        <div class="row"><div><div class="k" style="color: var(--color-accent-700)">{{ loop.index | pad }} · {{ b.verb }}</div><div class="d" style="font-size: 19px; margin-top: 8px">{{ b.title }}</div></div><p class="body" style="margin: 0; max-width: 66ch">{{ b.body }}</p></div>
-        {%- endfor %}
-      </div>
+
+      {%- if h.quote %}
+      <blockquote class="pull" data-reveal><p>{{ h.quote }}</p></blockquote>
+      {%- endif %}
     </div>
   </section>
 
-  <section id="focus" class="band">
+  <section id="focus" class="tone-light">
     <div class="sec">
-      <div class="two" style="display: grid; grid-template-columns: 240px 1fr; gap: 56px; margin-bottom: 48px">
+      <div class="head-row">
         {{ sechead("02", h.mandate.label) }}
         <div>
-          <h2 class="d" data-reveal style="font-size: clamp(26px, 3vw, 40px); max-width: 22ch; margin-bottom: 20px">{{ h.mandate.heading }}</h2>
-          <p class="body" data-reveal style="margin: 0; max-width: 60ch">{{ h.mandate.lede }}</p>
+          <h2 class="h2" data-reveal>{{ h.mandate.heading }}</h2>
+          <p class="lede" data-reveal>{{ h.mandate.lede }}</p>
         </div>
       </div>
-      <div class="k" data-reveal style="margin-bottom: 22px">{{ h.mandate.invest_label }}</div>
+      <div class="k" data-reveal>{{ h.mandate.invest_label }}</div>
       <div class="four" data-reveal-group>
         {%- for x in h.mandate.invest %}
-        <div><div class="k" style="color: var(--color-accent-700)">{{ loop.index | pad }}</div><h4 class="d" style="font-size: 19px; margin: 12px 0 10px">{{ x.title }}</h4><p class="body" style="font-size: 15px; margin: 0">{{ x.body }}</p></div>
+        <div class="cell"><div class="cell-n">{{ loop.index | pad }}</div><h4 class="cell-t">{{ x.title }}</h4><p class="cell-b">{{ x.body }}</p></div>
         {%- endfor %}
       </div>
-      <div class="two" style="display: grid; grid-template-columns: 2fr 1fr; gap: 56px; margin-top: 64px">
+      <div class="split">
         <div>
-          <div class="k" data-reveal style="margin-bottom: 22px">{{ h.mandate.deliver_label }}</div>
-          <div class="two" data-reveal-group style="display: grid; grid-template-columns: 1fr 1fr; gap: 44px">
+          <div class="k" data-reveal>{{ h.mandate.deliver_label }}</div>
+          <div class="two-cells" data-reveal-group>
             {%- for x in h.mandate.deliver %}
-            <div><h4 class="d" style="font-size: 19px; margin: 12px 0 10px">{{ x.title }}</h4><p class="body" style="font-size: 15px; margin: 0">{{ x.body }}</p></div>
+            <div class="cell"><h4 class="cell-t">{{ x.title }}</h4><p class="cell-b">{{ x.body }}</p></div>
             {%- endfor %}
           </div>
         </div>
         <div data-reveal>
-          <div class="k" style="margin-bottom: 22px">{{ h.mandate.pass_label }}</div>
+          <div class="k">{{ h.mandate.pass_label }}</div>
           <ul class="pass">
-            {%- for x in h.mandate.pass %}
-            <li>{{ x }}</li>
-            {%- endfor %}
+            {%- for x in h.mandate.pass %}<li>{{ x }}</li>{%- endfor %}
           </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="record" class="band" data-band="on">
+  <section id="record" class="tone-white">
     <div class="sec">
-      <div class="two" style="display: grid; grid-template-columns: 240px 1fr; gap: 56px; margin-bottom: 44px">
+      <div class="head-row">
         {{ sechead("03", h.portfolio.label) }}
         <div>
-          <h2 class="d" data-reveal style="font-size: clamp(26px, 3vw, 40px); max-width: 22ch; margin-bottom: 20px">{{ h.portfolio.heading }}</h2>
-          <p class="body" data-reveal style="margin: 0; max-width: 60ch">{{ h.portfolio.lede }}</p>
+          <h2 class="h2" data-reveal>{{ h.portfolio.heading }}</h2>
+          <p class="lede" data-reveal>{{ h.portfolio.lede }}</p>
         </div>
       </div>
       {%- set shown = projects.items | visible %}
       {%- if shown.length %}
-      <div class="three" data-reveal-group style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-bottom: 64px">
-        {%- for p in shown %}
-        <div>
-          <div class="media">{{ img(p.image, p.name) }}</div>
-          <div class="d" style="font-size: 19px">{{ p.name }}</div>
-          <div class="k" style="margin-top: 8px">{{ p.city }}{% if p.category %} · {{ p.category }}{% endif %}</div>
-        </div>
-        {%- endfor %}
+      <div class="proj" data-reveal-group>
+        {%- asyncEach p in shown %}
+        <article class="proj-card">
+          <div class="proj-img">{% picture p.image, p.name, "(max-width: 940px) 100vw, 33vw" %}</div>
+          <h3 class="proj-t">{{ p.name }}</h3>
+          <div class="proj-k">{{ p.city }}{% if p.category %} · {{ p.category }}{% endif %}</div>
+        </article>
+        {%- endeach %}
       </div>
       {%- endif %}
-      <div data-reveal style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 8px">
-        <span class="k" style="color: var(--color-text)">{{ h.portfolio.table_label }}</span>
+      <div class="tbl-head" data-reveal>
+        <span class="k k-strong">{{ h.portfolio.table_label }}</span>
         <span class="k">{{ h.portfolio.table_note }}</span>
       </div>
       <div class="arow arow-head" data-reveal>
@@ -199,130 +150,89 @@ permalink: /index.html
       <div data-reveal-group>
         {%- for r in h.portfolio.rows %}
         <div class="arow">
-          <span class="d" style="font-size: 18px">{{ r.strategy }}</span>
-          <span class="body" style="font-size: 15px">{{ r.market }}</span>
-          <span class="body" style="font-size: 15px">{{ r.focus }}</span>
-          <span class="k" style="color: {{ 'var(--color-accent-700)' if r.highlight else 'var(--color-text)' }}">{{ r.status }}</span>
+          <span class="arow-s">{{ r.strategy }}</span>
+          <span>{{ r.market }}</span>
+          <span>{{ r.focus }}</span>
+          <span class="k {{ 'k-gold' if r.highlight else 'k-strong' }}">{{ r.status }}</span>
         </div>
         {%- endfor %}
       </div>
-      <div class="markets" data-reveal>
-        {%- for m in h.portfolio.markets %}<span>{{ m }}</span>{%- endfor %}
+
+      {%- if h.portfolio.markets and h.portfolio.markets.length %}
+      <div class="mkts" data-reveal>
+        <svg class="ohio" viewBox="-12 -12 {{ ohio.width + 24 }} {{ ohio.height + 24 }}" role="img" aria-labelledby="ohio-t">
+          <title id="ohio-t">Map of Ohio marking the markets we serve: {{ h.portfolio.markets | join(", ") }}</title>
+          <path class="ohio-land" d="{{ ohio.path }}"/>
+          {%- for m in h.portfolio.markets %}
+          {%- set p = ohio.dot(m) %}
+          {%- if p %}<circle class="ohio-halo" cx="{{ p[0] }}" cy="{{ p[1] }}" r="11"/><circle class="ohio-dot" cx="{{ p[0] }}" cy="{{ p[1] }}" r="5"/>{% endif %}
+          {%- endfor %}
+        </svg>
+        <div>
+          <div class="k">Markets we serve</div>
+          <ul class="mkt-list">
+            {%- for m in h.portfolio.markets %}<li>{{ m }}</li>{%- endfor %}
+          </ul>
+          <p class="note">{{ h.portfolio.footnote }}</p>
+        </div>
       </div>
-      <p class="body" style="font-size: 13.5px; margin: 22px 0 0; max-width: 76ch; color: var(--color-neutral-700)">{{ h.portfolio.footnote }}</p>
+      {%- endif %}
     </div>
   </section>
 
   {%- if h.marketplace.show %}
-  <section id="market" class="band">
+  <section id="market" class="tone-light">
     <div class="sec">
-      <div class="two" style="display: grid; grid-template-columns: 240px 1fr; gap: 56px; margin-bottom: 44px">
-        <div data-reveal><div class="k" style="color: var(--color-text)">{{ h.marketplace.label }}</div>{% if h.marketplace.badge %}<span class="soon" style="margin-top: 12px; display: inline-block">{{ h.marketplace.badge }}</span>{% endif %}</div>
+      <div class="head-row">
+        <div class="sechead" data-reveal><span class="seclabel">{{ h.marketplace.label }}</span>{% if h.marketplace.badge %}<span class="soon soon-lg">{{ h.marketplace.badge }}</span>{% endif %}</div>
         <div>
-          <h2 class="d" data-reveal style="font-size: clamp(26px, 3vw, 40px); max-width: 22ch; margin-bottom: 20px">{{ h.marketplace.heading }}</h2>
-          <p class="body" data-reveal style="margin: 0; max-width: 60ch">{{ h.marketplace.lede }}</p>
+          <h2 class="h2" data-reveal>{{ h.marketplace.heading }}</h2>
+          <p class="lede" data-reveal>{{ h.marketplace.lede }}</p>
         </div>
       </div>
-      <div class="three" data-reveal-group style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px">
-        {%- for c in h.marketplace.cards %}
-        <div class="mk">
-          <div class="k" style="color: var(--color-accent-700)">{{ c.kicker }}</div>
-          <h4 class="d" style="font-size: 22px; margin: 12px 0 10px">{{ c.title }}</h4>
-          <p class="body" style="font-size: 15px; margin: 0 0 22px">{{ c.body }}</p>
-          <span class="k">{{ c.status }}</span>
-        </div>
-        {%- endfor %}
+      <div class="mk-grid" data-reveal-group>
+        {%- asyncEach c in h.marketplace.cards %}
+        <article class="mk{% if c.image %} mk-has-img{% endif %}">
+          {%- if c.image %}<div class="mk-img">{% picture c.image, c.title, "(max-width: 940px) 100vw, 33vw" %}</div>{% endif %}
+          <div class="mk-body">
+            <div class="k k-gold">{{ c.kicker }}</div>
+            <h3 class="mk-t">{{ c.title }}</h3>
+            <p class="mk-b">{{ c.body }}</p>
+            <span class="k">{{ c.status }}</span>
+          </div>
+        </article>
+        {%- endeach %}
       </div>
-      <div class="two notify" data-reveal style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 56px; align-items: end">
+      <div class="notify" data-reveal>
         <div>
-          <h3 class="d" style="font-size: 22px; margin: 0 0 8px">{{ h.marketplace.notify_heading }}</h3>
-          <p class="body" style="font-size: 15px; margin: 0">{{ h.marketplace.notify_body }}</p>
+          <h3 class="h4">{{ h.marketplace.notify_heading }}</h3>
+          <p class="cell-b">{{ h.marketplace.notify_body }}</p>
         </div>
-        <form data-notify-form data-endpoint="{{ s.waitlist_endpoint or s.form_endpoint }}" data-fallback="{{ s.direct_email }}" novalidate>
-          <div style="display: flex; gap: 16px; align-items: flex-end; flex-wrap: wrap">
-            <div class="dfield" style="flex: 1 1 220px"><label for="mk-email">Email address</label><input id="mk-email" name="email" type="email" autocomplete="email" required></div>
+        <form data-notify-form data-endpoint="{{ s.waitlist_endpoint or s.form_endpoint }}" data-fallback="{{ s.email }}" novalidate>
+          <div class="notify-row">
+            <div class="dfield"><label for="mk-email">Email address</label><input id="mk-email" name="email" type="email" autocomplete="email" required></div>
             <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
             <button class="dsubmit" type="submit">Notify me</button>
           </div>
-          <p class="dstatus" data-notify-status role="status" aria-live="polite" style="margin-top: 12px"></p>
+          <p class="dstatus" data-notify-status role="status" aria-live="polite"></p>
         </form>
       </div>
     </div>
   </section>
   {%- endif %}
 
-  <section id="process" class="band" data-band="on">
-    <div class="sec">
-      <div class="two" style="display: grid; grid-template-columns: 240px 1fr; gap: 56px; margin-bottom: 12px">
-        {{ sechead("04", h.approach.label) }}
-        <div>
-          <h2 class="d" data-reveal style="font-size: clamp(26px, 3vw, 40px); max-width: 22ch; margin-bottom: 20px">{{ h.approach.heading }}</h2>
-          <p class="body" data-reveal style="margin: 0; max-width: 60ch">{{ h.approach.lede }}</p>
-        </div>
-      </div>
-      <div class="tl" data-tl>
-        <div class="tl-rail" aria-hidden="true"><span class="tl-track"></span><span class="tl-fill" data-tl-fill></span></div>
-        <div class="tl-grid">
-          {%- for st in h.approach.steps %}
-          <button class="tl-step" type="button" data-tl-step>
-            <span class="tl-node"><span class="tl-dot" aria-hidden="true"></span><span class="tl-ring" aria-hidden="true"></span><span class="tl-n">{{ loop.index | pad }}</span></span>
-            <span class="tl-t">{{ st.title }}</span>
-            <span class="tl-b">{{ st.body }}</span>
-          </button>
-          {%- endfor %}
-        </div>
-      </div>
-    </div>
-  </section>
-
-  {%- if h.quote %}
-  <section class="poster">
-    <div class="poster-in">
-      <p class="d" data-reveal style="font-size: clamp(26px, 3.8vw, 58px); line-height: 1.06; max-width: 30ch; margin: 0; color: #fff">{{ h.quote }}</p>
-    </div>
-  </section>
-  {%- endif %}
-
-  <section id="who" class="band">
-    <div class="sec">
-      <div class="two" style="display: grid; grid-template-columns: 240px 1fr; gap: 56px; margin-bottom: 48px">
-        {{ sechead("05", h.leadership.label) }}
-        <div>
-          <h2 class="d" data-reveal style="font-size: clamp(26px, 3vw, 40px); max-width: 22ch; margin-bottom: 20px">{{ h.leadership.heading }}</h2>
-          <p class="body" data-reveal style="margin: 0; max-width: 60ch">{{ h.leadership.lede }}</p>
-        </div>
-      </div>
-      <div class="two" data-reveal-group style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px">
-        {%- for p in h.leadership.people %}
-        <div>
-          <div class="portrait">{{ img(p.photo, "Headshot — " + p.name) }}</div>
-          <h3 class="d" style="font-size: 22px; margin: 0 0 8px">{{ p.name }}</h3>
-          <div class="k" style="margin-bottom: 14px">{{ p.role }}</div>
-          <p class="body" style="font-size: 15px; margin: 0">{{ p.bio }}</p>
-        </div>
-        {%- endfor %}
-      </div>
-      {%- if h.leadership.team %}
-      <div data-reveal style="display: flex; gap: 24px; flex-wrap: wrap; align-items: baseline; margin-top: 44px">
-        <span class="k">{{ h.leadership.team_label }}</span>
-        <span class="body" style="font-size: 15px">{{ h.leadership.team }}</span>
-      </div>
-      {%- endif %}
-    </div>
-  </section>
-
   {%- if h.partners.show %}
-  <section id="partners" class="partners">
+  <section id="partners" class="tone-navy">
     <div class="sec">
-      <div class="two" data-reveal style="display: grid; grid-template-columns: 240px 1fr; gap: 56px">
-        <div><div class="k" style="color: var(--gold)">{{ h.partners.label }}</div></div>
-        <div>
-          <h2 class="d" style="font-size: clamp(26px, 3vw, 40px); max-width: 22ch; margin-bottom: 20px; color: #fff">{{ h.partners.heading }}</h2>
-          <p class="body" style="margin: 0 0 34px; max-width: 60ch; color: rgba(255,255,255,0.86)">{{ h.partners.body }}</p>
-          <div style="display: flex; gap: 16px; flex-wrap: wrap">
+      <div class="head-row">
+        <div class="sechead" data-reveal><span class="seclabel">{{ h.partners.label }}</span></div>
+        <div data-reveal>
+          <h2 class="h2">{{ h.partners.heading }}</h2>
+          <p class="lede">{{ h.partners.body }}</p>
+          <div class="btns">
             <a class="btn btn-primary" href="#capital">{{ h.partners.primary_button }}</a>
             {%- if s.jr_capital_url %}
-            <a class="btn btn-onnavy" href="{{ s.jr_capital_url }}" target="_blank" rel="noopener">{{ h.partners.secondary_button }}</a>
+            <a class="btn btn-ghost" href="{{ s.jr_capital_url }}" target="_blank" rel="noopener">{{ h.partners.secondary_button }}</a>
             {%- endif %}
           </div>
         </div>
@@ -331,15 +241,43 @@ permalink: /index.html
   </section>
   {%- endif %}
 
-  <section id="capital" class="band" data-band="on">
-    <div class="sec" style="padding-bottom: 96px">
-      <div class="contact-panel" data-reveal>
-        <div class="contact-copy">
-          <div class="k" style="color: var(--color-accent-700); margin-bottom: 18px">06 — Contact</div>
-          <h2 class="d" style="font-size: clamp(30px, 4vw, 56px); max-width: 18ch; margin-bottom: 22px">{{ h.contact.heading }}</h2>
-          <p class="body" style="margin: 0 0 34px; max-width: 52ch">{{ h.contact.body }}</p>
+  <section id="who" class="tone-light">
+    <div class="sec">
+      <div class="head-row">
+        {{ sechead("04", h.leadership.label) }}
+        <div>
+          <h2 class="h2" data-reveal>{{ h.leadership.heading }}</h2>
+          <p class="lede" data-reveal>{{ h.leadership.lede }}</p>
+        </div>
+      </div>
+      <div class="people" data-reveal-group>
+        {%- for p in h.leadership.people %}
+        <article class="person">
+          <h3 class="person-n">{{ p.name }}</h3>
+          <div class="k k-gold">{{ p.role }}</div>
+          <p class="cell-b">{{ p.bio }}</p>
+          {%- if p.background %}<p class="person-bg">{{ p.background }}</p>{% endif %}
+        </article>
+        {%- endfor %}
+      </div>
+      {%- if h.leadership.team %}
+      <div class="team" data-reveal>
+        <span class="k">{{ h.leadership.team_label }}</span>
+        <span class="cell-b">{{ h.leadership.team }}</span>
+      </div>
+      {%- endif %}
+    </div>
+  </section>
 
-          <form class="dform" data-deal-form data-endpoint="{{ s.form_endpoint }}" data-fallback="{{ s.direct_email }}" data-success="{{ h.contact.success_message }}">
+  <section id="capital" class="tone-white contact">
+    <div class="sec">
+      <div class="contact-panel">
+        <div>
+          {{ sechead("05", "Contact") }}
+          <h2 class="h2 h2-lg" data-reveal>{{ h.contact.heading }}</h2>
+          <p class="lede" data-reveal>{{ h.contact.body }}</p>
+
+          <form class="dform" data-deal-form data-endpoint="{{ s.form_endpoint }}" data-fallback="{{ s.email }}" data-reveal>
             <div class="dfield dfield-wide">
               <label for="cf-role">I am a</label>
               <select id="cf-role" name="role">
@@ -357,78 +295,39 @@ permalink: /index.html
                 {%- for o in h.contact.property_types %}<option>{{ o }}</option>{%- endfor %}
               </select>
             </div>
-            <div class="dfield"><label for="cf-price">Asking price</label><input id="cf-price" name="price" type="text"></div>
+            <div class="dfield"><label for="cf-price">Asking price</label><input id="cf-price" name="price" type="text" inputmode="numeric" placeholder="$" data-currency></div>
             <div class="dfield dfield-wide"><label for="cf-note">Tell us about the opportunity</label><textarea id="cf-note" name="note" rows="4"></textarea></div>
             <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
             <div class="dform-foot">
               <span class="dnote">Fields marked <span class="req">*</span> are required.{% if s.response_time %} We respond to every submission within {{ s.response_time }}.{% endif %}</span>
               <button class="dsubmit" type="submit" data-submit>{{ h.contact.submit_label }} <span class="dsubmit-arrow" aria-hidden="true">→</span></button>
               <p class="dstatus" data-status role="status" aria-live="polite"></p>
-              {%- if s.direct_email %}
-              <a class="dmail" href="mailto:{{ s.direct_email }}?subject={{ ('Deal submission — ' + s.company) | urlencode }}">Prefer email? {{ s.direct_email }} →</a>
+              {%- if s.email %}
+              <a class="dmail" href="mailto:{{ s.email }}?subject={{ ('Deal submission — ' + s.company) | urlencode }}">Prefer email? {{ s.email }} →</a>
               {%- endif %}
             </div>
           </form>
+          <div class="dsent" data-sent tabindex="-1" hidden>
+            <span class="dsent-mark" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22"><path fill="none" stroke="currentColor" stroke-width="2.4" d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>
+            <h3 class="h4">Submission received</h3>
+            <p class="cell-b">{{ h.contact.success_message }}</p>
+          </div>
         </div>
 
-        <aside class="contact-aside">
-          <div class="k" style="color: var(--color-accent); margin-bottom: 18px">{{ h.contact.aside_label }}</div>
+        <aside class="contact-aside" data-reveal>
+          <div class="k k-gold">{{ h.contact.aside_label }}</div>
           {%- if s.email %}
-          <div class="crow">
-            <span class="k">Email</span>
-            <a href="mailto:{{ s.email }}" style="font-size: 16px; font-weight: 500">{{ s.email }}</a>
-          </div>
+          <div class="crow"><span class="k">Email</span><a href="mailto:{{ s.email }}">{{ s.email }}</a></div>
           {%- endif %}
           {%- if s.phone %}
-          <div class="crow">
-            <span class="k">Phone</span>
-            <a href="tel:{{ s.phone | tel }}" style="font-size: 16px; font-weight: 500">{{ s.phone }}</a>
-          </div>
+          <div class="crow"><span class="k">Phone</span><a href="tel:{{ s.phone | tel }}">{{ s.phone }}</a></div>
           {%- endif %}
-          <div class="crow">
-            <span class="k">Office</span>
-            <span style="font-size: 16px; text-align: right">{{ s.address }}</span>
-          </div>
-          <div class="crow"{% if not s.jr_capital_url %} style="border-bottom: 0"{% endif %}>
-            <span class="k">Focus</span>
-            <span style="font-size: 16px">{{ s.focus }}</span>
-          </div>
+          <div class="crow"><span class="k">Office</span><span>{{ s.address }}</span></div>
+          <div class="crow"><span class="k">Focus</span><span>{{ s.focus }}</span></div>
           {%- if s.jr_capital_url %}
-          <div class="crow" style="border-bottom: 0">
-            <span class="k">Capital arm</span>
-            <a href="{{ s.jr_capital_url }}" target="_blank" rel="noopener" style="font-size: 16px; font-weight: 500">JR Capital →</a>
-          </div>
+          <div class="crow"><span class="k">Capital arm</span><a href="{{ s.jr_capital_url }}" target="_blank" rel="noopener">JR Capital →</a></div>
           {%- endif %}
         </aside>
       </div>
     </div>
   </section>
-  </main>
-
-  <footer style="background: var(--navy); border-top: 3px solid var(--gold)">
-    <div style="max-width: 1440px; margin: 0 auto; padding: 40px clamp(24px, 4vw, 72px) 20px">
-      <div class="foot-top">
-        <div>
-          <div style="font-family: var(--font-heading); font-weight: 700; font-size: clamp(18px, 2vw, 26px); letter-spacing: 0.02em; text-transform: uppercase; color: #fff; line-height: 1; margin-bottom: 12px">{{ s.company }}</div>
-          <div class="k" style="color: var(--gold)">{{ s.tagline }}</div>
-        </div>
-        <nav aria-label="Footer" style="display: flex; flex-wrap: wrap; gap: 22px">
-          <a class="k foot-link" href="#what">{{ h.platform.label }}</a>
-          <a class="k foot-link" href="#record">{{ h.portfolio.label }}</a>
-          {%- if h.marketplace.show %}<a class="k foot-link" href="#market">Marketplace</a>{% endif %}
-          <a class="k foot-link" href="#who">{{ h.leadership.label }}</a>
-          <a class="k foot-link" href="#capital">Contact</a>
-        </nav>
-      </div>
-      <p style="margin: 30px 0 0; max-width: 92ch; font-size: 12.5px; line-height: 1.64; color: var(--color-neutral-400)">{{ s.disclaimer }}</p>
-      <div style="margin-top: 34px; padding-top: 18px; border-top: 1px solid var(--navy-base); display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between">
-        <span class="k" style="color: var(--color-neutral-400)">© {{ build.year }} {{ s.copyright }}</span>
-        <span class="k" style="color: var(--color-neutral-400)">{{ s.address }}</span>
-      </div>
-    </div>
-  </footer>
-
-</div>
-<script src="/assets/site.js?v={{ build.version }}" defer></script>
-</body>
-</html>

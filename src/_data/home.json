@@ -1,8 +1,9 @@
 {
   "hero": {
     "image": "/images/hero.jpg",
-    "image_alt": "A completed R&R home at golden hour",
+    "image_alt": "New-construction single-family homes at golden hour",
     "title": "We buy, build and operate the housing Ohio needs most.",
+    "show_featured": false,
     "featured_label": "Featured project",
     "featured_project": "[Project name] · [Columbus], Ohio",
     "intro": "R&R Grandeur Properties is a Columbus-based real estate investment and development firm. We source directly, underwrite conservatively and execute through our own construction company — so the value we underwrite at acquisition is value we control through delivery.",
@@ -42,7 +43,7 @@
         "verb": "Build",
         "title": "Construction",
         "image": "/images/plat-2.jpg",
-        "body": "Our in-house construction company, [JR Grand Homes], delivers renovations and ground-up builds. Owning scope, schedule and trade relationships keeps a renovation budget from becoming a renovation surprise."
+        "body": "Our in-house construction company, JR Grand Homes, delivers renovations and ground-up builds. Owning scope, schedule and trade relationships keeps a renovation budget from becoming a renovation surprise."
       },
       {
         "verb": "Operate",
@@ -165,26 +166,29 @@
         "kicker": "For sale",
         "title": "Move-in-ready homes",
         "body": "Fully renovated single-family homes across Central Ohio.",
-        "status": "Listings coming soon"
+        "status": "Listings coming soon",
+        "image": ""
       },
       {
         "kicker": "For rent",
         "title": "Quality rentals",
         "body": "Professionally managed homes and apartments, maintained by our in-house team.",
-        "status": "Listings coming soon"
+        "status": "Listings coming soon",
+        "image": ""
       },
       {
         "kicker": "Rent-to-own",
         "title": "Paths to ownership",
         "body": "Rent-to-own programs that help families move from renting to owning.",
-        "status": "Listings coming soon"
+        "status": "Listings coming soon",
+        "image": ""
       }
     ],
     "notify_heading": "Be the first to see new listings.",
     "notify_body": "We will email you when the marketplace opens. No spam."
   },
   "approach": {
-    "label": "Approach",
+    "label": "How every deal runs",
     "heading": "The same five steps, on every asset.",
     "lede": "Repeatability is the product. Our partners are not backing a single deal — they are backing a disciplined process that produces them.",
     "steps": [
@@ -219,16 +223,18 @@
       {
         "name": "Jhansi Gumma",
         "role": "Co-founder · Chief Executive Officer",
-        "bio": "Leads the firm, setting company direction and overseeing operations, construction and asset management. Owns the operating procedures that keep leasing, renovation delivery and collections consistent across the portfolio. [One line of prior professional background.]"
+        "bio": "Leads the firm, setting company direction and overseeing operations, construction and asset management. Owns the operating procedures that keep leasing, renovation delivery and collections consistent across the portfolio.",
+        "background": ""
       },
       {
         "name": "Raj Gumma",
         "role": "Co-founder · Chief Investment Officer",
-        "bio": "Leads acquisitions, underwriting, capital markets and development strategy. Sets the underwriting standard every deal is measured against and manages lender and capital-partner relationships. [One line of prior professional background.]"
+        "bio": "Leads acquisitions, underwriting, capital markets and development strategy. Sets the underwriting standard every deal is measured against and manages lender and capital-partner relationships.",
+        "background": ""
       }
     ],
     "team_label": "Operations team",
-    "team": "[Name], [Title] · [Name], [Title] · [Name], [Title]"
+    "team": ""
   },
   "partners": {
     "show": true,

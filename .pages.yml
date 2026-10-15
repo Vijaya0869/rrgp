@@ -20,12 +20,13 @@ content:
         label: Hero (top of page)
         type: object
         fields:
-          - { name: image, label: Background photo, type: image, description: "Wide landscape photo, at least 2000px wide." }
+          - { name: image, label: Background photo, type: image, description: "Wide landscape photo, at least 2400px wide. Keep the lower-left calm: the headline sits there." }
           - { name: image_alt, label: Photo description (for screen readers), type: string }
           - { name: title, label: Headline, type: text, required: true }
+          - { name: show_featured, label: Show featured project line, type: boolean, description: "Turn on once the featured project name below is final." }
           - { name: featured_label, label: Featured project label, type: string }
-          - { name: featured_project, label: Featured project name, type: string, description: "Leave empty to hide." }
-          - { name: intro, label: Intro paragraph, type: text }
+          - { name: featured_project, label: Featured project name, type: string }
+          - { name: intro, label: Intro paragraph (shown just below the photo), type: text }
           - { name: primary_button, label: Gold button text, type: string }
           - { name: secondary_button, label: Outline button text, type: string }
           - name: highlights
@@ -119,14 +120,15 @@ content:
               - { name: title, label: Title, type: string }
               - { name: body, label: Description, type: text }
               - { name: status, label: Status line, type: string }
+              - { name: image, label: Photo (optional, landscape), type: image }
           - { name: notify_heading, label: Sign-up heading, type: string }
           - { name: notify_body, label: Sign-up text, type: text }
 
       - name: approach
-        label: 04 · Approach
+        label: 01 · Platform — five-step timeline
         type: object
         fields:
-          - { name: label, label: Section label (also used in menu), type: string }
+          - { name: label, label: Small label, type: string }
           - { name: heading, label: Heading, type: text }
           - { name: lede, label: Intro paragraph, type: text }
           - name: steps
@@ -137,10 +139,10 @@ content:
               - { name: title, label: Step name, type: string }
               - { name: body, label: Description, type: text }
 
-      - { name: quote, label: Navy quote band, type: text, description: "Leave empty to hide the band." }
+      - { name: quote, label: Quote (end of the Platform section), type: text, description: "Leave empty to hide." }
 
       - name: leadership
-        label: 05 · Leadership
+        label: 04 · Leadership
         type: object
         fields:
           - { name: label, label: Section label (also used in menu), type: string }
@@ -153,8 +155,8 @@ content:
             fields:
               - { name: name, label: Name, type: string }
               - { name: role, label: Title, type: string }
-              - { name: photo, label: Headshot (portrait), type: image }
               - { name: bio, label: Bio, type: text }
+              - { name: background, label: Prior background (one line), type: text, description: "Leave empty to hide." }
           - { name: team_label, label: Team label, type: string }
           - { name: team, label: Operations team line, type: text, description: "e.g. Jane Doe, Leasing · John Roe, Construction. Leave empty to hide." }
 
@@ -170,7 +172,7 @@ content:
           - { name: secondary_button, label: JR Capital button text (shown once the link is set in Site settings), type: string }
 
       - name: contact
-        label: 06 · Contact
+        label: 05 · Contact
         type: object
         fields:
           - { name: heading, label: Heading, type: text }
@@ -199,6 +201,28 @@ content:
           - { name: image, label: Photo (landscape), type: image }
           - { name: show, label: Show on site, type: boolean, default: true }
 
+  # ───────────────────────── Legal pages ─────────────────────────
+  - name: privacy
+    label: Privacy notice
+    type: file
+    path: src/legal/privacy.md
+    format: yaml-frontmatter
+    fields:
+      - { name: title, label: Title, type: string }
+      - { name: updated, label: Last updated, type: string, description: "e.g. October 2026" }
+      - { name: description, label: Google description, type: string }
+      - { name: body, label: Text, type: rich-text }
+  - name: terms
+    label: Terms of use
+    type: file
+    path: src/legal/terms.md
+    format: yaml-frontmatter
+    fields:
+      - { name: title, label: Title, type: string }
+      - { name: updated, label: Last updated, type: string, description: "e.g. October 2026" }
+      - { name: description, label: Google description, type: string }
+      - { name: body, label: Text, type: rich-text }
+
   # ───────────────────────── Settings ─────────────────────────
   - name: settings
     label: Site settings
@@ -209,21 +233,30 @@ content:
       - { name: company, label: Company name, type: string, required: true }
       - { name: location, label: Location (under logo), type: string }
       - { name: tagline, label: Tagline, type: string }
-      - { name: email, label: Public email, type: string }
+      - { name: email, label: Public email, type: string, description: "Used everywhere: contact block, footer, and the form's 'Prefer email?' link and fallback." }
       - { name: phone, label: Phone, type: string, description: "Leave empty to hide." }
       - { name: address, label: Office address, type: string }
+      - { name: linkedin_url, label: LinkedIn page, type: string, description: "Full URL. Leave empty to hide the LinkedIn link in the footer." }
       - { name: focus, label: Focus line, type: string }
       - { name: jr_capital_url, label: JR Capital website, type: string, description: "Full URL starting with https://. Leave empty to hide JR Capital links." }
-      - { name: direct_email, label: "\"Prefer email?\" address", type: string }
       - { name: response_time, label: Response time, type: string, description: "e.g. 2 business days" }
       - { name: form_endpoint, label: Opportunity form endpoint, type: string, description: "Formspree URL, e.g. https://formspree.io/f/abcd1234. Empty = form shows a 'not connected' message." }
       - { name: waitlist_endpoint, label: Marketplace sign-up endpoint, type: string, description: "Optional second Formspree URL. Empty = uses the opportunity form endpoint." }
       - { name: seo_title, label: Browser / Google title, type: string }
       - { name: seo_description, label: Google description, type: text }
       - { name: share_image, label: Social share image (1200×630), type: image }
-      - { name: site_url, label: Site address, type: string, description: "e.g. https://rrgp.io (no trailing slash)" }
+      - { name: site_url, label: Site address, type: string, description: "https://www.rrgp.io (no trailing slash)" }
       - { name: disclaimer, label: Footer disclaimer, type: text }
       - { name: copyright, label: Copyright line (year is added automatically), type: string }
+      - name: companies
+        label: Footer — our companies
+        type: object
+        list: true
+        fields:
+          - { name: name, label: Company name, type: string }
+          - { name: note, label: What it does, type: string }
+          - { name: url, label: Website (optional), type: string }
+      - { name: show_equal_housing, label: Show Equal Housing Opportunity logo in footer, type: boolean, description: "Turn on once Marketplace or rentals launch." }
       - name: look
         label: Look and feel
         type: object
@@ -233,7 +266,7 @@ content:
             type: select
             options: { values: [paper, cool, sand] }
           - name: hero_size
-            label: Hero size
+            label: Hero size (balanced and poster both fill the screen)
             type: select
             options: { values: [compact, balanced, poster] }
           - name: accent_use

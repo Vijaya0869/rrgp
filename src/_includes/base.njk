@@ -1,0 +1,129 @@
+{%- set s = settings -%}
+{%- set h = home -%}
+{%- set base = "" if page.url == "/" else "/" -%}
+{%- set pageTitle = (title + " — " + s.company) if title else s.seo_title -%}
+<!DOCTYPE html>
+<html lang="en" data-tone="{{ s.look.page_tone }}" data-impact="{{ s.look.hero_size }}" data-accent="{{ s.look.accent_use }}" data-sections="{{ s.look.section_style }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ pageTitle }}</title>
+<meta name="description" content="{{ description or s.seo_description }}">
+<link rel="canonical" href="{{ s.site_url }}{{ page.url }}">
+<meta name="theme-color" content="#0E2340">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{ pageTitle }}">
+<meta property="og:description" content="{{ description or s.seo_description }}">
+<meta property="og:url" content="{{ s.site_url }}{{ page.url }}">
+{%- if s.share_image %}
+<meta property="og:image" content="{{ s.site_url }}{{ s.share_image }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{{ s.company }} — {{ s.location }}">
+<meta name="twitter:card" content="summary_large_image">
+{%- endif %}
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v={{ build.version }}">
+<script type="application/ld+json">{{ s | jsonld | safe }}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-head{% if base %} is-solid is-fixed-solid{% endif %}" data-head>
+  <div class="head-in">
+    <a class="brand" href="{{ base }}#top" aria-label="{{ s.company }}, home">
+      <span class="mono" aria-hidden="true">R&amp;R</span>
+      <span class="brand-name">{{ s.company }}</span>
+    </a>
+    <nav class="navlinks" aria-label="Sections">
+      <a class="navlink" href="{{ base }}#what">{{ h.platform.label }}</a>
+      <a class="navlink" href="{{ base }}#focus">{{ h.mandate.label }}</a>
+      <a class="navlink" href="{{ base }}#record">{{ h.portfolio.label }}</a>
+      {%- if h.marketplace.show %}
+      <a class="navlink" href="{{ base }}#market">Marketplace <span class="soon">Soon</span></a>
+      {%- endif %}
+      {%- if h.partners.show %}
+      <a class="navlink" href="{{ base }}#partners">Capital partners</a>
+      {%- endif %}
+      <a class="navlink" href="{{ base }}#who">{{ h.leadership.label }}</a>
+    </nav>
+    <a class="head-cta" href="{{ base }}#capital">Contact<span class="hide-s"> us</span></a>
+  </div>
+</header>
+
+<main id="main">
+{{ content | safe }}
+</main>
+
+<footer class="site-foot">
+  <div class="foot-in">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="{{ base }}#top" aria-label="{{ s.company }}, home">
+          <span class="mono" aria-hidden="true">R&amp;R</span>
+          <span class="brand-name">{{ s.company }}</span>
+        </a>
+        <p class="foot-tag">{{ s.tagline }}</p>
+        <p class="foot-addr">{{ s.address }}</p>
+        {%- if s.linkedin_url %}
+        <a class="foot-link foot-li" href="{{ s.linkedin_url }}" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1-.02-5ZM3 9.75h4V21H3V9.75Zm7 0h3.8v1.54h.06c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.77 2.65 4.77 6.1V21h-4v-5.02c0-1.2-.02-2.74-1.67-2.74-1.67 0-1.93 1.3-1.93 2.65V21h-4V9.75Z"/></svg>
+          LinkedIn
+        </a>
+        {%- endif %}
+      </div>
+      {%- if s.companies and s.companies.length %}
+      <div>
+        <div class="foot-k">Our companies</div>
+        <ul class="foot-list">
+          {%- for c in s.companies %}
+          <li>
+            {%- if c.url %}<a class="foot-link" href="{{ c.url }}" target="_blank" rel="noopener">{{ c.name }}</a>{% else %}<span class="foot-name">{{ c.name }}</span>{% endif %}
+            {%- if c.note %}<span class="foot-note">{{ c.note }}</span>{% endif %}
+          </li>
+          {%- endfor %}
+        </ul>
+      </div>
+      {%- endif %}
+      <div>
+        <div class="foot-k">Explore</div>
+        <ul class="foot-list">
+          <li><a class="foot-link" href="{{ base }}#what">{{ h.platform.label }}</a></li>
+          <li><a class="foot-link" href="{{ base }}#record">{{ h.portfolio.label }}</a></li>
+          {%- if h.partners.show %}<li><a class="foot-link" href="{{ base }}#partners">Capital partners</a></li>{% endif %}
+          <li><a class="foot-link" href="{{ base }}#who">{{ h.leadership.label }}</a></li>
+          <li><a class="foot-link" href="{{ base }}#capital">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="foot-k">Contact</div>
+        <ul class="foot-list">
+          {%- if s.email %}<li><a class="foot-link" href="mailto:{{ s.email }}">{{ s.email }}</a></li>{% endif %}
+          {%- if s.phone %}<li><a class="foot-link" href="tel:{{ s.phone | tel }}">{{ s.phone }}</a></li>{% endif %}
+          {%- if s.jr_capital_url %}<li><a class="foot-link" href="{{ s.jr_capital_url }}" target="_blank" rel="noopener">JR Capital</a></li>{% endif %}
+        </ul>
+      </div>
+    </div>
+    <p class="foot-disc">{{ s.disclaimer }}</p>
+    <div class="foot-base">
+      <span>© {{ build.year }} {{ s.copyright }}</span>
+      <span class="foot-legal">
+        <a class="foot-link" href="/privacy/">Privacy</a>
+        <a class="foot-link" href="/terms/">Terms</a>
+        {%- if s.show_equal_housing %}
+        <span class="eho">
+          <svg viewBox="0 0 32 32" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="M3 15 16 4l13 11M7 12v16h18V12"/><path fill="currentColor" d="M11 16h10v2.4H11zM11 21h10v2.4H11z"/></svg>
+          Equal Housing Opportunity
+        </span>
+        {%- endif %}
+      </span>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v={{ build.version }}" defer></script>
+</body>
+</html>

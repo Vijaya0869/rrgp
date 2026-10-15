@@ -5,21 +5,21 @@
       "city": "[City], Ohio",
       "category": "Single-family",
       "image": "",
-      "show": true
+      "show": false
     },
     {
       "name": "[Project] · Ground-up build",
       "city": "[City], Ohio",
       "category": "New construction",
       "image": "",
-      "show": true
+      "show": false
     },
     {
       "name": "[Project] · Development site",
       "city": "[City], Ohio",
       "category": "Build-to-rent",
       "image": "",
-      "show": true
+      "show": false
     }
   ]
 }

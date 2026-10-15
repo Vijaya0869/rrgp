@@ -1,6 +1,6 @@
 # R&R Grandeur Properties — website
 
-The v5 design, built as a static site with an editor (CMS). There is no server:
+The v5 design, refined after the October 2026 review, built as a static site with an editor (CMS). There is no server:
 
 - **GitHub** stores the site and its content (free).
 - **Cloudflare Pages** builds and hosts it on your domain (free).
@@ -10,11 +10,14 @@ The v5 design, built as a static site with an editor (CMS). There is no server:
 ```
 src/_data/home.json      All home-page text, in section order
 src/_data/projects.json  Portfolio project cards
-src/_data/settings.json  Contact details, form endpoints, SEO, look and feel
-src/images/              Photos (CMS uploads land here)
-src/index.njk            Page template, the v5 markup
-src/assets/site.css      Styles
-src/assets/site.js       Animations and form handling
+src/_data/settings.json  Contact details, footer companies, form endpoints, SEO, look and feel
+src/_data/ohio.js        Ohio outline and market dot positions for the Portfolio map
+src/images/              Photos (CMS uploads land here; the build makes AVIF/WebP sizes)
+src/index.njk            Home page template
+src/_includes/base.njk   Shared head, header and footer
+src/legal/               Privacy and Terms pages (editable in the CMS)
+src/assets/site.css      Styles (colour and type rules are explained at the top)
+src/assets/site.js       Header, scroll reveals and form handling; no third-party scripts
 .pages.yml               Defines the CMS screens and fields
 ```
 
@@ -53,7 +56,7 @@ npm start          # http://localhost:8080, reloads on save
 ### 3. Turn on the editor (Pages CMS)
 1. Go to <https://app.pagescms.org> and **Sign in with GitHub**.
 2. Install the Pages CMS GitHub app when prompted, and give it access to the `rrgp-site` repository.
-3. Open the repository. You will see **Home page**, **Projects** and **Site settings** in the sidebar.
+3. Open the repository. You will see **Home page**, **Projects**, **Privacy notice**, **Terms of use** and **Site settings** in the sidebar.
 
 ### 4. Add other editors
 Editors do **not** need a GitHub account.
@@ -70,19 +73,20 @@ To give someone full technical access, add them as a collaborator on the GitHub 
 3. In Pages CMS, paste it into **Site settings → Opportunity form endpoint** and save.
 4. Optional: create a second Formspree form for marketplace sign-ups and paste its endpoint into **Marketplace sign-up endpoint**. If you leave that field empty, sign-ups go to the same inbox as deals.
 
-Until an endpoint is set, both forms say "not connected yet" and point visitors to the direct email address. They never silently drop a submission. Submissions are also listed in the Formspree dashboard.
+Until an endpoint is set, both forms say "not connected yet" and point visitors to the public email address (Site settings → Public email). They never silently drop a submission. Submissions are also listed in the Formspree dashboard.
 
 ## Everyday editing
 - **Text:** Home page → open a section → edit → **Save**.
-- **Photos:** click an image field and upload. Landscape photos about 2000px wide work best for the hero; square photos about 1000px for the platform tiles.
+- **Photos:** click an image field and upload. The hero needs a landscape photo at least 2400px wide with a calm lower-left (the headline sits there); platform photos work best at about 1200px wide, 4:3. The build resizes every photo automatically, so upload the largest version you have.
 - **Projects:** Projects → **Add an entry**, drag to reorder, untick *Show on site* to hide one without deleting it.
 - **Hide a section:** Marketplace and Capital partners each have a *Show this section* switch.
+- **Hide unfinished content:** the hero's featured project line has a *Show* switch; project cards have *Show on site*; the founders' background line, operations team, phone, LinkedIn and JR Capital link disappear when left empty; the footer's Equal Housing logo has its own switch.
 - **Look and feel:** Site settings → Look and feel uses the same Feel options as the design file (page tone, hero size, accent use, section style).
 
 The site updates about 1 minute after you save. Watch progress in Cloudflare under **Deployments**.
 
 ## Before launch
-Search the content for `[` to find the placeholders still in square brackets: project names and cities, the operations team, founder background lines, phone number, and the JR Capital link. Also:
+Placeholder content is hidden rather than shown in brackets. To bring each piece back, fill it in and turn it on: the featured project (Home page → Hero), project cards with photos (Projects), founder background lines and the operations team (Home page → Leadership), phone, LinkedIn and JR Capital (Site settings).
 
-- The hero photo is a 547px image taken from the design file. Upload a high-resolution photo in **Home page → Hero → Background photo** before launch.
-- Have securities counsel review the footer disclaimer and the Capital partners section.
+- The current hero is an illustrative photo, not an R&R project. Replace it with a real JR project when one is available.
+- Have securities counsel review the footer disclaimer, the Capital partners section, and the Privacy and Terms pages.
