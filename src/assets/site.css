@@ -122,11 +122,12 @@ html[data-sections="rules"] .sec { border-top: 1px solid var(--rule); }
 .site-head.is-solid { background: var(--navy); box-shadow: 0 1px 0 rgba(201,162,39,0.35), 0 8px 24px rgba(6,14,28,0.18); }
 .head-in { max-width: 1440px; margin: 0 auto; height: var(--head-h); padding: 0 var(--gutter);
   display: flex; align-items: center; gap: 28px; transition: height 320ms var(--ease); }
-.site-head.is-solid .head-in { height: 64px; }
-.brand { display: inline-flex; align-items: center; gap: 14px; text-decoration: none; color: #fff; margin-right: auto; min-width: 0; }
-.mono { flex: none; display: grid; place-items: center; width: 42px; height: 42px; border: 1.5px solid var(--gold);
-  font-family: var(--serif); font-weight: 700; font-size: 17px; letter-spacing: 0.02em; color: var(--gold); background: var(--navy); }
-.brand-name { font-size: 14px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+/* Logo: "R" in white and "&R" in gold (DM Serif Display), over the
+   condensed "GRANDEUR PROPERTIES", left-aligned. */
+.brand { display: inline-flex; flex-direction: column; align-items: flex-start; gap: 5px; text-decoration: none; color: #fff; margin-right: auto; min-width: 0; line-height: 1; }
+.logo-rr { font-family: 'DM Serif Display', var(--serif); font-weight: 400; font-size: 40px; line-height: 0.82; color: #fff; white-space: nowrap; }
+.logo-amp { color: var(--gold); }
+.logo-sub { font-family: 'Barlow Condensed', 'Arial Narrow', var(--sans); font-weight: 500; font-size: 11.5px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); white-space: nowrap; }
 .navlinks { display: flex; align-items: center; gap: 26px; }
 .navlink { position: relative; font-size: 12.5px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
   color: rgba(255,255,255,0.86); text-decoration: none; padding: 6px 0; white-space: nowrap; transition: color 240ms ease; }
@@ -140,9 +141,8 @@ html[data-sections="rules"] .sec { border-top: 1px solid var(--rule); }
 @media (max-width: 1239px) { .navlinks { display: none; } }
 @media (max-width: 520px) {
   :root { --head-h: 64px; }
-  .mono { width: 36px; height: 36px; font-size: 15px; }
-  .brand { gap: 10px; }
-  .brand-name { font-size: 11px; letter-spacing: 0.06em; }
+  .logo-rr { font-size: 32px; }
+  .logo-sub { font-size: 9.5px; letter-spacing: 0.16em; }
   .head-cta { padding: 9px 12px; font-size: 11.5px; letter-spacing: 0.08em; }
   .hide-s { display: none; }
   .head-in { gap: 12px; }
@@ -359,7 +359,9 @@ html[data-impact="compact"] .hero { height: 76svh; min-height: 560px; }
 .site-foot { background: var(--navy-deep); color: rgba(255,255,255,0.78); border-top: 3px solid var(--gold); }
 .foot-in { max-width: 1440px; margin: 0 auto; padding: 64px var(--gutter) 28px; }
 .foot-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) repeat(3, minmax(0, 1fr)); gap: 40px; padding-bottom: 44px; border-bottom: 1px solid var(--navy-line); }
-.foot-brand .brand { margin: 0 0 20px; }
+.foot-brand .brand { margin: 0 0 24px; }
+.foot-brand .logo-rr { font-size: 54px; }
+.foot-brand .logo-sub { font-size: 14px; }
 .foot-tag { font-size: 14px; line-height: 1.6; color: rgba(255,255,255,0.78); max-width: 36ch; margin-bottom: 14px; }
 .foot-addr { font-size: 14px; color: rgba(255,255,255,0.78); margin-bottom: 16px; }
 .foot-k { font-size: 11.5px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }

@@ -35,7 +35,9 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({
     "src/assets": "assets",
     "src/images": "images",
-    "src/favicon.svg": "favicon.svg",
+    "src/favicon-32.png": "favicon-32.png",
+    "src/favicon-192.png": "favicon-192.png",
+    "src/apple-touch-icon.png": "apple-touch-icon.png",
     "src/_headers": "_headers",
     "src/robots.txt": "robots.txt",
   });
