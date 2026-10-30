@@ -5,7 +5,8 @@ const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<
 // Any CMS image → AVIF/WebP/JPEG at the widths given, so each screen downloads
 // only what it shows. Widths above the original are skipped automatically.
 // An empty or missing image becomes a quiet placeholder instead of a broken build.
-async function picture(src, alt, { widths = [480, 800, 1280], sizes = "100vw", cls = "fill", eager = false } = {}) {
+// `crisp` (the hero) trades file size for detail: higher quality, full colour.
+async function picture(src, alt, { widths = [480, 800, 1280], sizes = "100vw", cls = "fill", eager = false, crisp = false } = {}) {
   if (!src) return `<div class="ph" role="img" aria-label="${esc(alt)}"></div>`;
   try {
     const meta = await Image("src" + src, {
@@ -13,9 +14,9 @@ async function picture(src, alt, { widths = [480, 800, 1280], sizes = "100vw", c
       formats: ["avif", "webp", "jpeg"],
       outputDir: "_site/images/r/",
       urlPath: "/images/r/",
-      sharpAvifOptions: { quality: 55 },
-      sharpWebpOptions: { quality: 72 },
-      sharpJpegOptions: { quality: 78, mozjpeg: true },
+      sharpAvifOptions: crisp ? { quality: 72, chromaSubsampling: "4:4:4" } : { quality: 55 },
+      sharpWebpOptions: crisp ? { quality: 86, smartSubsample: true } : { quality: 72 },
+      sharpJpegOptions: crisp ? { quality: 88, mozjpeg: true, chromaSubsampling: "4:4:4" } : { quality: 78, mozjpeg: true },
     });
     return Image.generateHTML(meta, {
       alt,
@@ -43,7 +44,7 @@ export default function (eleventyConfig) {
   });
 
   eleventyConfig.addAsyncShortcode("heroImage", (src, alt) =>
-    picture(src, alt, { widths: [800, 1280, 1920, 2560, 3344], cls: "fill hero-img", eager: true }));
+    picture(src, alt, { widths: [800, 1280, 1920, 2560, 3344], cls: "fill hero-img", eager: true, crisp: true }));
   eleventyConfig.addAsyncShortcode("picture", (src, alt, sizes) =>
     picture(src, alt, { sizes: sizes || "(max-width: 720px) 50vw, 25vw" }));
 
