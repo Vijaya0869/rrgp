@@ -160,8 +160,8 @@ html[data-impact="compact"] .hero { height: 76svh; min-height: 560px; }
 .hero .ph { position: absolute; inset: 0; }
 .hero-scrim { position: absolute; inset: 0; pointer-events: none;
   background:
-    linear-gradient(to top, rgba(8, 14, 24, 0.9) 0%, rgba(8, 14, 24, 0.55) 38%, rgba(8, 14, 24, 0.08) 72%),
-    linear-gradient(to right, rgba(8, 14, 24, 0.62) 0%, rgba(8, 14, 24, 0.12) 58%, rgba(8, 14, 24, 0) 80%); }
+    linear-gradient(to top, rgba(8, 14, 24, 0.72) 0%, rgba(8, 14, 24, 0.34) 32%, rgba(8, 14, 24, 0) 58%),
+    linear-gradient(to right, rgba(8, 14, 24, 0.5) 0%, rgba(8, 14, 24, 0.12) 45%, rgba(8, 14, 24, 0) 65%); }
 .hero-in { position: absolute; left: 0; right: 0; bottom: 0; max-width: 1440px; margin: 0 auto;
   padding: 0 var(--gutter) clamp(48px, 8vh, 96px); }
 .hero-k { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;
