@@ -155,6 +155,124 @@
     ],
     "footnote": "Asset-level detail — addresses, unit counts and business plans — is shared with capital partners and lenders during diligence."
   },
+  "cases": {
+    "show": true,
+    "label": "Case studies",
+    "heading": "Before and after.",
+    "lede": "Homes our in-house construction team has taken from distressed to move-in ready, from the foundation to the finishes.",
+    "items": [
+      {
+        "title": "Basement rebuild and full renovation",
+        "city": "",
+        "type": "Single-family",
+        "weeks": "",
+        "scope": [],
+        "show": true,
+        "pairs": [
+          {
+            "label": "Exterior",
+            "before": "/images/cases/case-1-exterior-before.jpg",
+            "after": "/images/cases/case-1-exterior-after.jpg"
+          },
+          {
+            "label": "Kitchen",
+            "before": "/images/cases/case-1-kitchen-before.jpg",
+            "after": "/images/cases/case-1-kitchen-after.jpg"
+          },
+          {
+            "label": "Basement wall",
+            "before": "/images/cases/case-1-basement-wall-before.jpg",
+            "after": "/images/cases/case-1-basement-wall-after.jpg"
+          },
+          {
+            "label": "Basement",
+            "before": "/images/cases/case-1-basement-before.jpg",
+            "after": "/images/cases/case-1-basement-after.jpg"
+          }
+        ]
+      },
+      {
+        "title": "Whole-house renovation",
+        "city": "",
+        "type": "Single-family",
+        "weeks": "",
+        "scope": [],
+        "show": true,
+        "pairs": [
+          {
+            "label": "Exterior",
+            "before": "/images/cases/case-2-exterior-before.jpg",
+            "after": "/images/cases/case-2-exterior-after.jpg"
+          },
+          {
+            "label": "Kitchen",
+            "before": "/images/cases/case-2-kitchen-before.jpg",
+            "after": "/images/cases/case-2-kitchen-after.jpg"
+          },
+          {
+            "label": "Bathroom",
+            "before": "/images/cases/case-2-bathroom-before.jpg",
+            "after": "/images/cases/case-2-bathroom-after.jpg"
+          },
+          {
+            "label": "Basement",
+            "before": "/images/cases/case-2-basement-before.jpg",
+            "after": "/images/cases/case-2-basement-after.jpg"
+          }
+        ]
+      },
+      {
+        "title": "Brick two-story renovation",
+        "city": "",
+        "type": "Single-family",
+        "weeks": "",
+        "scope": [],
+        "show": true,
+        "pairs": [
+          {
+            "label": "Exterior",
+            "before": "/images/cases/case-3-exterior-before.jpg",
+            "after": "/images/cases/case-3-exterior-after.jpg"
+          },
+          {
+            "label": "Kitchen",
+            "before": "/images/cases/case-3-kitchen-before.jpg",
+            "after": "/images/cases/case-3-kitchen-after.jpg"
+          },
+          {
+            "label": "Bathroom",
+            "before": "/images/cases/case-3-bathroom-before.jpg",
+            "after": "/images/cases/case-3-bathroom-after.jpg"
+          },
+          {
+            "label": "Basement",
+            "before": "/images/cases/case-3-basement-before.jpg",
+            "after": "/images/cases/case-3-basement-after.jpg"
+          }
+        ]
+      },
+      {
+        "title": "Gutted upper floor, rebuilt",
+        "city": "",
+        "type": "Single-family",
+        "weeks": "",
+        "scope": [],
+        "show": true,
+        "pairs": [
+          {
+            "label": "Stairs",
+            "before": "/images/cases/case-4-stairs-before.jpg",
+            "after": "/images/cases/case-4-stairs-after.jpg"
+          },
+          {
+            "label": "Upper floor",
+            "before": "/images/cases/case-4-upper-floor-before.jpg",
+            "after": "/images/cases/case-4-upper-floor-after.jpg"
+          }
+        ]
+      }
+    ]
+  },
   "marketplace": {
     "show": true,
     "label": "R&R Marketplace",

@@ -102,6 +102,34 @@ content:
           - { name: markets, label: Markets served, type: string, list: true }
           - { name: footnote, label: Footnote, type: text }
 
+      - name: cases
+        label: Case studies (before and after)
+        type: object
+        fields:
+          - { name: show, label: Show this section, type: boolean }
+          - { name: label, label: Section label, type: string }
+          - { name: heading, label: Heading, type: text }
+          - { name: lede, label: Intro paragraph, type: text }
+          - name: items
+            label: Case studies (drag to reorder)
+            type: object
+            list: true
+            fields:
+              - { name: title, label: Title, type: string, description: "Also the tab label. No street addresses." }
+              - { name: city, label: City, type: string, description: "e.g. Columbus, Ohio. Leave empty to hide." }
+              - { name: type, label: Type, type: string, description: "e.g. Single-family" }
+              - { name: weeks, label: Timeline in weeks, type: string, description: "Number only, e.g. 14. Leave empty to hide." }
+              - { name: scope, label: Scope of work, type: string, list: true, description: "One line each, e.g. Foundation repair. Leave empty to hide." }
+              - { name: show, label: Show on site, type: boolean, default: true }
+              - name: pairs
+                label: Before and after photos
+                type: object
+                list: true
+                fields:
+                  - { name: label, label: Room or area, type: string, description: "e.g. Kitchen" }
+                  - { name: before, label: Before photo (portrait), type: image }
+                  - { name: after, label: After photo (portrait), type: image }
+
       - name: marketplace
         label: Marketplace (coming soon)
         type: object

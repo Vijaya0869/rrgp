@@ -180,6 +180,61 @@ layout: base.njk
     </div>
   </section>
 
+  {%- set cs = h.cases.items | visible if h.cases.show else [] %}
+  {%- if cs.length %}
+  <section id="cases" class="tone-navy">
+    <div class="sec">
+      <div class="head-row">
+        {{ sechead("", h.cases.label) }}
+        <div>
+          <h2 class="h2" data-reveal>{{ h.cases.heading }}</h2>
+          <p class="lede" data-reveal>{{ h.cases.lede }}</p>
+        </div>
+      </div>
+      <div data-reveal>
+        {%- if cs.length > 1 %}
+        <div class="case-tabs" aria-label="{{ h.cases.label }}" data-case-tabs hidden>
+          {%- for c in cs %}
+          <button class="case-tab" type="button" id="case-tab-{{ loop.index }}" aria-controls="case-{{ loop.index }}" data-case-tab>
+            <span class="case-tab-n">{{ loop.index | pad }}</span>{{ c.title }}
+          </button>
+          {%- endfor %}
+        </div>
+        {%- endif %}
+        {%- asyncEach c in cs %}
+        {%- set n = loop.index %}
+        <article class="case" id="case-{{ n }}">
+          <div class="case-meta">
+            <div class="k k-gold">Case study {{ n | pad }}</div>
+            <h3 class="case-t">{{ c.title }}</h3>
+            {%- if c.city or c.type %}<div class="k">{{ c.city }}{% if c.city and c.type %} · {% endif %}{{ c.type }}</div>{% endif %}
+            {%- if c.weeks %}
+            <div class="case-stat"><span class="case-num">{{ c.weeks }}</span><span class="k">weeks, start to finish</span></div>
+            {%- endif %}
+            {%- if c.scope and c.scope.length %}
+            <ul class="case-scope">
+              {%- for x in c.scope %}<li>{{ x }}</li>{%- endfor %}
+            </ul>
+            {%- endif %}
+          </div>
+          <div class="case-pairs">
+            {%- asyncEach p in c.pairs %}
+            <figure class="ba">
+              <div class="ba-imgs">
+                <div class="ba-img">{% picture p.before, p.label + ", before renovation", "(max-width: 640px) 50vw, (max-width: 1100px) 25vw, 260px" %}<span class="ba-chip">Before</span></div>
+                <div class="ba-img">{% picture p.after, p.label + ", after renovation", "(max-width: 640px) 50vw, (max-width: 1100px) 25vw, 260px" %}<span class="ba-chip ba-chip-after">After</span></div>
+              </div>
+              <figcaption class="k">{{ p.label }}</figcaption>
+            </figure>
+            {%- endeach %}
+          </div>
+        </article>
+        {%- endeach %}
+      </div>
+    </div>
+  </section>
+  {%- endif %}
+
   {%- if h.marketplace.show %}
   <section id="market" class="tone-light">
     <div class="sec">

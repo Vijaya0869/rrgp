@@ -95,6 +95,45 @@
     el.classList.toggle('is-bad', !ok);
   };
 
+  /* Case studies: tabs show one case at a time. Without script every case
+     stays visible, stacked. */
+  function cases() {
+    const tabs = Array.from(document.querySelectorAll('[data-case-tab]'));
+    if (tabs.length < 2) return;
+    const panels = tabs.map((t) => document.getElementById(t.getAttribute('aria-controls')));
+    const list = tabs[0].parentElement;
+    list.setAttribute('role', 'tablist');
+    list.hidden = false;
+    const show = (i, focus) => {
+      tabs.forEach((t, j) => {
+        const on = i === j;
+        t.setAttribute('aria-selected', String(on));
+        t.tabIndex = on ? 0 : -1;
+        panels[j].hidden = !on;
+      });
+      if (focus) {
+        tabs[i].focus();
+        tabs[i].scrollIntoView({ block: 'nearest', inline: 'nearest' });
+      }
+    };
+    tabs.forEach((t, i) => {
+      t.setAttribute('role', 'tab');
+      panels[i].setAttribute('role', 'tabpanel');
+      panels[i].setAttribute('aria-labelledby', t.id);
+      panels[i].tabIndex = 0;
+      t.addEventListener('click', () => show(i));
+      t.addEventListener('keydown', (e) => {
+        const n = tabs.length;
+        const to = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: n - 1 }[e.key];
+        if (to === undefined) return;
+        e.preventDefault();
+        show((to + n) % n, true);
+      });
+    });
+    show(0);
+    list.parentElement.setAttribute('data-cases-ready', '');
+  }
+
   function notifyForm() {
     const form = document.querySelector('[data-notify-form]');
     if (!form) return;
@@ -178,6 +217,7 @@
   navHighlight();
   reveals();
   timeline();
+  cases();
   notifyForm();
   dealForm();
 })();
