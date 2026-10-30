@@ -174,7 +174,7 @@
   position: relative; isolation: isolate;
   background:
     linear-gradient(180deg, rgba(10, 26, 49, 0.88), rgba(10, 26, 49, 0.72)),
-    var(--contact-photo, url("/images/r/Cvj4FFc5fZ-1920.avif")) center / cover no-repeat;
+    var(--contact-photo, url("/images/hero.jpg")) center / cover no-repeat;
   background-attachment: scroll, fixed;
 }
 .contact-panel {
