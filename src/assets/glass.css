@@ -23,25 +23,26 @@
 }
 
 /* ── Official logo (house mark | R&R / GRANDEUR PROPERTIES) ────────── */
-/* ON HOLD until /assets/logo-white.svg is added to src/assets/. Without the
-   file these rules would hide the coded wordmark and show nothing.
-   To switch on: add the SVG, then remove the comment markers around this block.
-
+/* Replaces the typeset wordmark with /assets/logo-white.svg (traced from the
+   official artwork). The link keeps its aria-label, so screen readers and
+   search still read "R&R Grandeur Properties". Sized up from 132px so the
+   GRANDEUR PROPERTIES line stays readable. */
 .brand {
   display: block; flex: none;
-  width: 132px; height: 47px;
+  width: 172px; height: 61px;               /* logo ratio 2.81 : 1 */
   background: url("/assets/logo-white.svg") left center / contain no-repeat;
+  transition: width 320ms var(--ease), height 320ms var(--ease);
 }
 .brand > * {
   position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px;
   overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
 }
-.site-head.is-solid .brand { width: 118px; height: 42px; }
-.foot-brand .brand { width: 210px; height: 75px; }
+.site-head.is-solid .brand { width: 152px; height: 54px; }
+.foot-brand .brand { width: 280px; height: 100px; }
 @media (max-width: 560px) {
-  .brand { width: 112px; height: 40px; }
+  .brand, .site-head.is-solid .brand { width: 140px; height: 50px; }
+  .foot-brand .brand { width: 240px; height: 85px; }
 }
-*/
 
 /* ── Header: frosted navy once scrolled ────────────────────────────── */
 .site-head.is-solid {
