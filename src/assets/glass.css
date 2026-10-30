@@ -52,25 +52,7 @@
 }
 .head-cta { border-radius: 999px; }
 
-/* ── Hero: headline on a glass card, glass ghost button ────────────── */
-.hero-in { padding-bottom: clamp(40px, 7vh, 88px); }
-.hero-in > * { position: relative; }
-.hero-in::before {
-  content: ""; position: absolute; z-index: 0;
-  left: calc(var(--gutter) - 32px); bottom: calc(clamp(40px, 7vh, 88px) - 32px);
-  width: min(760px, calc(100% - 2 * var(--gutter) + 64px)); height: calc(100% - clamp(40px, 7vh, 88px) + 64px);
-  max-height: 520px;
-  background: linear-gradient(135deg, rgba(10, 26, 49, 0.55), rgba(10, 26, 49, 0.30));
-  -webkit-backdrop-filter: blur(14px) saturate(140%);
-  backdrop-filter: blur(14px) saturate(140%);
-  border: 1px solid var(--glass-edge-white);
-  border-top-color: var(--glass-edge-gold);
-  border-radius: 24px;
-  box-shadow: var(--glass-shadow);
-  pointer-events: none;
-}
-.hero-k, .hero-title, .hero-ctas { z-index: 1; }
-
+/* ── Hero: headline straight on the photo, glass ghost button ──────── */
 .btn { border-radius: 999px; }
 .btn-ghost {
   background: rgba(255, 255, 255, 0.10);
@@ -210,7 +192,6 @@
 
 /* ── Mobile: lighter blur, tighter cards ───────────────────────────── */
 @media (max-width: 940px) {
-  .hero-in::before { left: 12px; width: calc(100% - 24px); bottom: 16px; height: calc(100% - 8px); border-radius: 20px; }
   .biz-card, .contact-panel, .person, .notify { border-radius: 18px; }
   .contact { background-attachment: scroll, scroll; }
 }
@@ -221,12 +202,12 @@
 
 /* ── Fallbacks ─────────────────────────────────────────────────────── */
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-  .site-head.is-solid, .contact-panel, .hero-in::before { background: var(--navy); }
+  .site-head.is-solid, .contact-panel { background: var(--navy); }
   .fact, .cell, .mk, .person, .notify { background: var(--white); }
   .biz-card, .pull { background: rgba(255, 255, 255, 0.06); }
 }
 @media (prefers-reduced-transparency: reduce) {
-  .site-head.is-solid, .contact-panel, .hero-in::before { background: var(--navy); backdrop-filter: none; -webkit-backdrop-filter: none; }
+  .site-head.is-solid, .contact-panel { background: var(--navy); backdrop-filter: none; -webkit-backdrop-filter: none; }
   .fact, .cell, .mk, .person, .notify { background: var(--white); backdrop-filter: none; -webkit-backdrop-filter: none; }
 }
 @media (prefers-reduced-motion: reduce) {
