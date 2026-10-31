@@ -61,14 +61,8 @@
 .btn-ghost:hover { background: rgba(255, 255, 255, 0.20); }
 .btn-primary { box-shadow: 0 8px 24px rgba(201, 162, 39, 0.28); }
 
-/* ── Light sections: warm orbs behind ivory glass ──────────────────── */
+/* ── Light sections: plain white, like 03 Portfolio (warm orbs removed 2026-10-31) ── */
 .intro, #focus, #market, #who { position: relative; overflow: hidden; isolation: isolate; }
-.intro::before, #focus::before, #market::before, #who::before {
-  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
-  background:
-    radial-gradient(520px 380px at 8% 18%, rgba(201, 162, 39, 0.16), transparent 70%),
-    radial-gradient(640px 420px at 92% 82%, rgba(14, 35, 64, 0.10), transparent 70%);
-}
 
 /* Ivory glass card used by facts, mandate cells, marketplace, leadership */
 .fact, .cell, .mk, .person, .notify {
