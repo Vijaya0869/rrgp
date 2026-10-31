@@ -277,7 +277,7 @@ html[data-impact="compact"] .hero { height: 76svh; min-height: 560px; }
 @media (max-width: 940px) { .mkts { grid-template-columns: 1fr; } .ohio { max-width: 360px; } }
 @media (max-width: 420px) { .mkt-list { grid-template-columns: 1fr; } }
 
-/* ── Case studies (navy) ─────────────────────────────────────────── */
+/* ── Case studies (white) ─────────────────────────────────────────── */
 /* With script, one case shows at a time behind the tabs; without it, all
    cases stack. Photos are portrait phone shots, cropped to 4:5. */
 .case-tabs { display: flex; gap: 10px; margin-bottom: 32px; overflow-x: auto; scrollbar-width: none; }
@@ -285,7 +285,7 @@ html[data-impact="compact"] .hero { height: 76svh; min-height: 560px; }
 .case-tabs[hidden] { display: none; }
 .case-tab { flex: none; display: inline-flex; align-items: baseline; gap: 10px; padding: 11px 18px; border: 1px solid var(--rule); border-radius: 999px;
   background: transparent; color: var(--muted); font: 500 14px/1.2 var(--sans); cursor: pointer; transition: color 240ms ease, border-color 240ms ease, background 240ms ease; }
-.case-tab:hover { color: #fff; border-color: rgba(255,255,255,0.4); }
+.case-tab:hover { color: var(--fg); border-color: var(--fg); }
 .case-tab[aria-selected="true"] { color: var(--navy); background: var(--gold); border-color: var(--gold); }
 .case-tab-n { font-family: var(--serif); font-weight: 600; font-size: 17px; }
 .case-tab:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
@@ -338,7 +338,7 @@ html[data-impact="compact"] .hero { height: 76svh; min-height: 560px; }
 .team { display: flex; gap: 12px 24px; flex-wrap: wrap; align-items: baseline; margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--rule); }
 @media (max-width: 940px) { .people { grid-template-columns: 1fr; gap: 40px; } }
 
-/* ── Contact (navy) ───────────────────────────────────────────────── */
+/* ── Contact (white) ───────────────────────────────────────────────── */
 .contact-panel { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); gap: clamp(48px, 6vw, 96px); align-items: start; }
 .contact .sechead { margin-bottom: 28px; }
 .contact .lede { margin-bottom: 40px; }
