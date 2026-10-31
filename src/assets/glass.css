@@ -61,8 +61,14 @@
 .btn-ghost:hover { background: rgba(255, 255, 255, 0.20); }
 .btn-primary { box-shadow: 0 8px 24px rgba(201, 162, 39, 0.28); }
 
-/* ── Light sections: plain white, like 03 Portfolio (warm orbs removed 2026-10-31) ── */
+/* ── Light sections: warm orbs behind ivory glass ──────────────────── */
 .intro, #focus, #market, #who { position: relative; overflow: hidden; isolation: isolate; }
+.intro::before, #focus::before, #market::before, #who::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(520px 380px at 8% 18%, rgba(201, 162, 39, 0.16), transparent 70%),
+    radial-gradient(640px 420px at 92% 82%, rgba(14, 35, 64, 0.10), transparent 70%);
+}
 
 /* Ivory glass card used by facts, mandate cells, marketplace, leadership */
 .fact, .cell, .mk, .person, .notify {
@@ -91,8 +97,8 @@
 .mk-img { position: relative; }
 
 /* ── Navy sections: gold + blue glow behind navy glass ─────────────── */
-#what, #partners { position: relative; overflow: hidden; isolation: isolate; }
-#what::before, #partners::before {
+#what, #cases, #partners { position: relative; overflow: hidden; isolation: isolate; }
+#what::before, #cases::before, #partners::before {
   content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
   background:
     radial-gradient(700px 480px at 12% 8%, rgba(201, 162, 39, 0.20), transparent 70%),
@@ -115,14 +121,21 @@
 .biz-img { border-radius: 14px; }
 
 /* Case studies: tabs as glass pills, each before/after pair on a glass card */
-.case-tab { background: var(--white); }
+.case-tab {
+  background: rgba(255, 255, 255, 0.05);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-color: var(--glass-edge-white);
+}
 .case-tab[aria-selected="true"] { background: var(--gold); box-shadow: 0 8px 24px rgba(201, 162, 39, 0.28); }
 .ba {
   padding: 10px 10px 14px;
-  background: var(--white);
-  border: 1px solid var(--rule);
+  background: rgba(255, 255, 255, 0.05);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-edge-white);
   border-radius: var(--glass-radius);
-  box-shadow: var(--glass-shadow-light);
+  box-shadow: var(--glass-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.10);
 }
 .ba-imgs { border-radius: 10px; }
 .ba figcaption { padding: 0 4px; }
@@ -151,11 +164,34 @@
 .proj-img { border-radius: var(--glass-radius); }
 #record .arow:hover { background: rgba(14, 35, 64, 0.03); }
 
-/* ── Contact: plain white like 03 Portfolio (navy photo + glass panel removed 2026-10-31) ── */
+/* ── Contact: dark photo ground, navy glass panel ──────────────────── */
+.contact {
+  --bg: var(--navy-deep); --fg: #FFFFFF; --body: rgba(255,255,255,0.84);
+  --muted: rgba(255,255,255,0.72); --rule: var(--navy-line); --mark: var(--gold);
+  position: relative; isolation: isolate;
+  background:
+    linear-gradient(180deg, rgba(10, 26, 49, 0.88), rgba(10, 26, 49, 0.72)),
+    var(--contact-photo, url("/images/hero.jpg")) center / cover no-repeat;
+  background-attachment: scroll, fixed;
+}
+.contact-panel {
+  padding: clamp(28px, 4vw, 56px);
+  background: var(--glass-navy);
+  -webkit-backdrop-filter: blur(22px) saturate(150%);
+  backdrop-filter: blur(22px) saturate(150%);
+  border: 1px solid var(--glass-edge-white);
+  border-top-color: var(--glass-edge-gold);
+  border-radius: 28px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+}
+.contact .dsubmit, .contact.tone-white .dsubmit { background: var(--gold); color: var(--navy); border-radius: 999px; }
+.contact .dsubmit:hover, .contact.tone-white .dsubmit:hover { background: var(--gold-press); }
+.contact .dfield select option { color: var(--ink); }
 
 /* ── Mobile: lighter blur, tighter cards ───────────────────────────── */
 @media (max-width: 940px) {
-  .biz-card, .person, .notify { border-radius: 18px; }
+  .biz-card, .contact-panel, .person, .notify { border-radius: 18px; }
+  .contact { background-attachment: scroll, scroll; }
 }
 @media (max-width: 560px) {
   :root { --glass-blur: blur(12px) saturate(140%); }
@@ -164,15 +200,16 @@
 
 /* ── Fallbacks ─────────────────────────────────────────────────────── */
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-  .site-head.is-solid { background: var(--navy); }
+  .site-head.is-solid, .contact-panel { background: var(--navy); }
   .fact, .cell, .mk, .person, .notify { background: var(--white); }
   .biz-card, .pull { background: rgba(255, 255, 255, 0.06); }
 }
 @media (prefers-reduced-transparency: reduce) {
-  .site-head.is-solid { background: var(--navy); backdrop-filter: none; -webkit-backdrop-filter: none; }
+  .site-head.is-solid, .contact-panel { background: var(--navy); backdrop-filter: none; -webkit-backdrop-filter: none; }
   .fact, .cell, .mk, .person, .notify { background: var(--white); backdrop-filter: none; -webkit-backdrop-filter: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   .fact, .cell, .mk, .person, .biz-card { transition: none; }
   .fact:hover, .cell:hover, .mk:hover, .person:hover, .biz-card:hover { transform: none; }
+  .contact { background-attachment: scroll, scroll; }
 }
