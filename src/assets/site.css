@@ -321,18 +321,24 @@ html[data-impact="compact"] .hero { height: 76svh; min-height: 560px; }
 .ba-cat:hover { color: #fff; border-color: rgba(255,255,255,0.4); }
 .ba-cat[aria-selected="true"] { color: var(--navy); background: #fff; border-color: #fff; }
 .ba-cat:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
-.ba { margin: 0; width: min(100%, calc(min(100vh - 130px, 978px) * 636 / 978)); min-width: min(100%, 300px); }
+.ba { margin: 0; }
 .ba + .ba { margin-top: 32px; }
 .ba[hidden] { display: none; }
 [data-ba-ready] .ba + .ba { margin-top: 0; }
 [data-ba-ready] .ba:not([hidden]) { animation: case-in 420ms var(--ease); }
-/* The frame takes the photos' own shape (636 × 978), so nothing is cut.
-   Height is capped at the photos' real height (978px, never enlarged) or
-   the screen height less the header. */
-.ba-cmp { --pos: 50%; position: relative; aspect-ratio: 636 / 978; width: 100%; overflow: hidden; border-radius: 14px; background: #16325A;
+/* The window spans the full column; its height is the screen less the
+   header, capped at the photos' real 978px so they are never enlarged.
+   Photos sit whole in the middle (contain); on phones the window takes the
+   photos' own shape. */
+.ba-cmp { --pos: 50%; position: relative; height: min(100vh - 130px, 978px); min-height: 420px; width: 100%; overflow: hidden; border-radius: 14px; background: #16325A;
   cursor: ew-resize; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
 .ba-img { position: absolute; inset: 0; }
-.ba-img img { pointer-events: none; -webkit-user-drag: none; object-fit: contain; }
+.ba-img img { pointer-events: none; -webkit-user-drag: none; object-fit: contain; position: relative; }
+/* The space either side of the photo is filled with a blurred, dimmed copy
+   of the same photo; the photo itself is shown whole and unaltered. */
+.ba-bg { position: absolute; inset: 0; overflow: hidden; }
+.ba-bg img { object-fit: cover; filter: blur(28px) brightness(0.55) saturate(1.1); transform: scale(1.15); }
+@media (max-width: 640px) { .ba-cmp { height: auto; min-height: 0; aspect-ratio: 636 / 978; } }
 .ba-before { clip-path: inset(0 calc(100% - var(--pos)) 0 0); }
 /* Thin white line with an outlined circle and two small arrows. */
 .ba-handle { position: absolute; top: 0; bottom: 0; left: var(--pos); width: 2px; margin-left: -1px; background: #fff;
