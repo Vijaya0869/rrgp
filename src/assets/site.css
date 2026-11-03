@@ -304,7 +304,8 @@ html[data-impact="compact"] .hero { height: 76svh; min-height: 560px; }
 .case-scope { list-style: none; margin: 8px 0 0; padding: 0; }
 .case-scope li { position: relative; padding: 9px 0 9px 20px; border-top: 1px solid var(--rule); font-size: 15px; color: var(--body); }
 .case-scope li::before { content: ''; position: absolute; left: 0; top: 18px; width: 8px; height: 1px; background: var(--gold); }
-/* Before ⇄ after: one wide photo per case (the first pair in the CMS).
+/* Before ⇄ after: one wide photo at a time; each case plays all its pairs
+   in CMS order, then the next case opens.
    Drag the handle (or use the arrow keys) to compare; left of the handle is
    "before". Each case stays up for 5 seconds — the gold line under the
    photo fills as it counts down — then the next case shows (timer in
@@ -348,6 +349,8 @@ html[data-impact="compact"] .hero { height: 76svh; min-height: 560px; }
   letter-spacing: 0.14em; text-transform: uppercase; color: #fff; background: rgba(10, 26, 49, 0.72); }
 .ba-chip-after { left: auto; right: 12px; color: var(--navy); background: var(--gold); }
 .ba figcaption { margin-top: 12px; }
+.ba-cap { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 0 4px; }
+.ba-count { font-family: var(--serif); font-weight: 600; font-size: 17px; color: var(--mark); font-variant-numeric: lining-nums tabular-nums; }
 @media (max-width: 1100px) { .case { grid-template-columns: 1fr; gap: 28px; } }
 @media (max-width: 640px) { .ba-cmp { aspect-ratio: 4 / 3; } }
 

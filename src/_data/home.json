@@ -230,11 +230,6 @@
         "show": true,
         "pairs": [
           {
-            "label": "Bathroom",
-            "before": "/images/cases/case-3-bathroom-before.jpg",
-            "after": "/images/cases/case-3-bathroom-after.jpg"
-          },
-          {
             "label": "Exterior",
             "before": "/images/cases/case-3-exterior-before.jpg",
             "after": "/images/cases/case-3-exterior-after.jpg"
@@ -243,6 +238,11 @@
             "label": "Kitchen",
             "before": "/images/cases/case-3-kitchen-before.jpg",
             "after": "/images/cases/case-3-kitchen-after.jpg"
+          },
+          {
+            "label": "Bathroom",
+            "before": "/images/cases/case-3-bathroom-before.jpg",
+            "after": "/images/cases/case-3-bathroom-after.jpg"
           },
           {
             "label": "Basement",

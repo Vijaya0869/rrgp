@@ -218,8 +218,8 @@ layout: base.njk
             {%- endif %}
           </div>
           <div class="case-pairs" data-ba-set>
-            {%- set p = c.pairs[0] %}
-            {%- if p %}
+            {%- set total = c.pairs.length %}
+            {%- asyncEach p in c.pairs %}
             <figure class="ba">
               <div class="ba-cmp" data-ba>
                 <div class="ba-img ba-after">{% picture p.after, p.label + ", after renovation", "(max-width: 1100px) 100vw, 880px" %}<span class="ba-chip ba-chip-after">After</span></div>
@@ -227,8 +227,9 @@ layout: base.njk
                 <div class="ba-handle" aria-hidden="true"><span class="ba-knob"></span></div>
                 <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="{{ p.label }}: drag left to see after, right to see before" data-ba-range>
               </div>
+              <figcaption class="ba-cap"><span class="k">{{ p.label }}</span>{% if total > 1 %}<span class="ba-count">{{ loop.index }} / {{ total }}</span>{% endif %}</figcaption>
             </figure>
-            {%- endif %}
+            {%- endeach %}
           </div>
         </article>
         {%- endeach %}
