@@ -190,38 +190,42 @@
       s.resets[ri]();
       s.pick(ri, focus === 'room');
       s.at = ri;
-      if (user) userPaused = true; // a visitor chose; let them look until they leave
-      sync();
+      elapsed = 0; // each example gets a full 5 seconds
     }
-    // Next example when the visible countdown finishes.
-    root.addEventListener('animationend', (e) => {
-      if (e.animationName !== 'ba-count') return;
-      const s = sets[current];
-      if (s.at + 1 < s.figs.length) go(current, s.at + 1);
-      else go((current + 1) % sets.length, 0);
-    });
 
-    // Pause while hovered, focused, dragged, off-screen or in a hidden tab.
-    let hover = false, focusIn = false, visible = false, userPaused = false;
-    const sync = () => {
-      const paused = hover || focusIn || userPaused || !visible || document.hidden;
-      root.toggleAttribute('data-ba-paused', paused);
-    };
+    // Timer: advances every 5 s on its own clock (not a CSS animation, so
+    // "reduce motion" and hover don't stop it). It holds only while the
+    // handle is being dragged (then restarts, so there's a full 5 s to look),
+    // while a control has keyboard focus, or while the section is off-screen
+    // or the browser tab is hidden. The gold line shows the countdown.
+    const STEP = 5000;
+    let elapsed = 0, last = performance.now(), visible = !canObserve, kbFocus = false;
     root.setAttribute('data-ba-auto', '');
-    const stage = root.querySelector('.sec');
-    stage.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') { hover = true; sync(); } });
-    stage.addEventListener('pointerleave', (e) => { if (e.pointerType === 'mouse') { hover = false; userPaused = false; sync(); } });
-    stage.addEventListener('pointerdown', (e) => { if (e.pointerType !== 'mouse') { userPaused = true; sync(); } });
-    root.addEventListener('focusin', () => { focusIn = true; sync(); });
-    root.addEventListener('focusout', (e) => { if (!root.contains(e.relatedTarget)) { focusIn = false; userPaused = false; sync(); } });
-    document.addEventListener('visibilitychange', sync);
+    function tick(now) {
+      const dt = Math.min(now - last, 250);
+      last = now;
+      const dragging = !!root.querySelector('[data-dragging]');
+      if (dragging) elapsed = 0;
+      else if (visible && !kbFocus && !document.hidden) elapsed += dt;
+      if (elapsed >= STEP) {
+        const s = sets[current];
+        if (s.at + 1 < s.figs.length) go(current, s.at + 1);
+        else go((current + 1) % sets.length, 0);
+      }
+      root.style.setProperty('--ba-t', String(Math.min(elapsed / STEP, 1)));
+      requestAnimationFrame(tick);
+    }
+    root.addEventListener('focusin', (e) => {
+      kbFocus = e.target.matches(':focus-visible') || e.target.matches('[data-ba-range]');
+    });
+    root.addEventListener('focusout', (e) => { if (!root.contains(e.relatedTarget)) kbFocus = false; });
     if (canObserve) {
-      new IntersectionObserver(([en]) => { visible = en.isIntersecting; if (!visible) userPaused = false; sync(); }, { threshold: 0.35 }).observe(stage);
-    } else visible = true;
+      new IntersectionObserver(([en]) => { visible = en.isIntersecting; }, { threshold: 0.2 }).observe(root);
+    }
 
     sets.forEach((s) => s.pick(0));
     showCase(0, false);
-    sync();
+    requestAnimationFrame(tick);
   }
 
   function notifyForm() {

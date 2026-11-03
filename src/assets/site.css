@@ -307,9 +307,8 @@ html[data-impact="compact"] .hero { height: 76svh; min-height: 560px; }
 /* Before ⇄ after: one wide photo per case (the first pair in the CMS).
    Drag the handle (or use the arrow keys) to compare; left of the handle is
    "before". Each case stays up for 5 seconds — the gold line under the
-   photo fills as it counts down — then the next case shows. Hover, focus,
-   a tap or being off-screen pauses it. With reduced motion there is no
-   auto-advance. (.ba-cat room tabs only appear if a case is ever rendered
+   photo fills as it counts down — then the next case shows (timer in
+   site.js; it holds only while dragging, on keyboard focus, or off-screen). (.ba-cat room tabs only appear if a case is ever rendered
    with more than one pair.) */
 .case-pairs { min-width: 0; }
 .ba-cats { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
@@ -344,9 +343,7 @@ html[data-impact="compact"] .hero { height: 76svh; min-height: 560px; }
 .ba-cmp:has(.ba-range:focus-visible) .ba-knob { outline: 2px solid var(--gold); outline-offset: 3px; }
 .ba-cmp::after { content: ''; position: absolute; left: 0; bottom: 0; height: 3px; width: 100%; background: var(--gold);
   transform: scaleX(0); transform-origin: left; pointer-events: none; z-index: 2; }
-[data-ba-auto] .ba:not([hidden]) .ba-cmp::after { animation: ba-count 5s linear forwards; }
-[data-ba-auto][data-ba-paused] .ba:not([hidden]) .ba-cmp::after { animation-play-state: paused; }
-@keyframes ba-count { to { transform: scaleX(1); } }
+[data-ba-auto] .ba-cmp::after { transform: scaleX(var(--ba-t, 0)); }
 .ba-chip { position: absolute; left: 12px; bottom: 14px; padding: 5px 10px; border-radius: 999px; font-size: 10.5px; font-weight: 700;
   letter-spacing: 0.14em; text-transform: uppercase; color: #fff; background: rgba(10, 26, 49, 0.72); }
 .ba-chip-after { left: auto; right: 12px; color: var(--navy); background: var(--gold); }
