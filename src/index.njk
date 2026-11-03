@@ -229,8 +229,8 @@ layout: base.njk
             {%- asyncEach p in c.pairs %}
             <figure class="ba" id="ba-{{ n }}-{{ loop.index }}">
               <div class="ba-cmp" data-ba>
-                <div class="ba-img ba-after"><div class="ba-bg" aria-hidden="true">{% picture p.after, "", "(max-width: 640px) 100vw, 640px" %}</div>{% picture p.after, p.label + ", after renovation", "(max-width: 640px) 100vw, 640px" %}<span class="ba-chip ba-chip-after">After</span></div>
-                <div class="ba-img ba-before"><div class="ba-bg" aria-hidden="true">{% picture p.before, "", "(max-width: 640px) 100vw, 640px" %}</div>{% picture p.before, p.label + ", before renovation", "(max-width: 640px) 100vw, 640px" %}<span class="ba-chip">Before</span></div>
+                <div class="ba-img ba-after">{% picture p.after, p.label + ", after renovation", "(max-width: 640px) 100vw, 640px" %}<span class="ba-chip ba-chip-after">After</span></div>
+                <div class="ba-img ba-before">{% picture p.before, p.label + ", before renovation", "(max-width: 640px) 100vw, 640px" %}<span class="ba-chip">Before</span></div>
                 <div class="ba-handle" aria-hidden="true"><span class="ba-knob"></span></div>
                 <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="{{ p.label }}: drag left to see after, right to see before" data-ba-range>
               </div>
