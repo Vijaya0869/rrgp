@@ -221,8 +221,11 @@ layout: base.njk
             {%- asyncEach p in c.pairs %}
             <figure class="ba">
               <div class="ba-imgs">
-                <div class="ba-img">{% picture p.before, p.label + ", before renovation", "(max-width: 640px) 50vw, (max-width: 1100px) 25vw, 260px" %}<span class="ba-chip">Before</span></div>
-                <div class="ba-img">{% picture p.after, p.label + ", after renovation", "(max-width: 640px) 50vw, (max-width: 1100px) 25vw, 260px" %}<span class="ba-chip ba-chip-after">After</span></div>
+                <div class="ba-track">
+                  <div class="ba-img">{% picture p.before, p.label + ", before renovation", "(max-width: 640px) 100vw, (max-width: 1100px) 50vw, 480px" %}<span class="ba-chip">Before</span></div>
+                  <div class="ba-img">{% picture p.after, p.label + ", after renovation", "(max-width: 640px) 100vw, (max-width: 1100px) 50vw, 480px" %}<span class="ba-chip ba-chip-after">After</span></div>
+                  <div class="ba-img ba-clone" aria-hidden="true">{% picture p.before, "", "(max-width: 640px) 100vw, (max-width: 1100px) 50vw, 480px" %}<span class="ba-chip">Before</span></div>
+                </div>
               </div>
               <figcaption class="k">{{ p.label }}</figcaption>
             </figure>

@@ -95,7 +95,7 @@ picture { display: contents; }
 .sechead { display: flex; flex-direction: column; align-items: flex-start; gap: 18px; }
 .secnum { font-family: var(--serif); font-weight: 600; font-size: clamp(54px, 5.4vw, 84px); line-height: 0.8;
   font-variant-numeric: lining-nums tabular-nums; color: var(--mark); }
-.seclabel { font-size: 12px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: var(--muted); }
+.seclabel { font-size: 12px; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--fg); }
 html[data-sections="quiet"] .secnum { display: none; }
 html[data-sections="rules"] .sec { border-top: 1px solid var(--rule); }
 @media (max-width: 940px) {
@@ -130,7 +130,8 @@ html[data-sections="rules"] .sec { border-top: 1px solid var(--rule); }
 .logo-sub { font-family: 'Barlow Condensed', 'Arial Narrow', var(--sans); font-weight: 500; font-size: 11.5px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); white-space: nowrap; }
 .navlinks { display: flex; align-items: center; gap: 26px; }
 .navlink { position: relative; font-size: 12.5px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
-  color: rgba(255,255,255,0.86); text-decoration: none; padding: 6px 0; white-space: nowrap; transition: color 240ms ease; }
+  color: #fff; text-decoration: none; padding: 6px 0; white-space: nowrap; transition: color 240ms ease;
+  font-weight: 600; text-shadow: 0 1px 8px rgba(6, 14, 28, 0.55); }
 .navlink::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--gold);
   transform: scaleX(0); transform-origin: left; transition: transform 320ms var(--ease); }
 .navlink:hover, .navlink.is-here { color: #fff; }
@@ -165,7 +166,7 @@ html[data-impact="compact"] .hero { height: 76svh; min-height: 560px; }
 .hero-in { position: absolute; left: 0; right: 0; bottom: 0; max-width: 1440px; margin: 0 auto;
   padding: 0 var(--gutter) clamp(48px, 8vh, 96px); }
 .hero-k { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;
-  color: rgba(255,255,255,0.9); padding-bottom: 18px; margin-bottom: 26px; border-bottom: 1px solid rgba(201,162,39,0.7); }
+  font-weight: 700; color: #fff; text-shadow: 0 1px 10px rgba(6, 14, 28, 0.7); padding-bottom: 18px; margin-bottom: 26px; border-bottom: 1px solid rgba(201,162,39,0.9); }
 .hero-title { font-family: var(--serif); font-weight: 600; font-size: clamp(44px, 5.6vw, 80px); line-height: 1.0;
   letter-spacing: -0.01em; max-width: 17ch; text-wrap: balance; color: #fff; text-shadow: 0 2px 24px rgba(0,0,0,0.3); }
 .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 36px; }
@@ -305,8 +306,26 @@ html[data-impact="compact"] .hero { height: 76svh; min-height: 560px; }
 .case-scope li::before { content: ''; position: absolute; left: 0; top: 18px; width: 8px; height: 1px; background: var(--gold); }
 .case-pairs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 28px; }
 .ba { margin: 0; }
-.ba-imgs { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; border-radius: 14px; overflow: hidden; }
+/* Before ⇄ after: one frame per pair that rolls from the before photo to the
+   after photo every 5 seconds, always sliding the same way (a copy of the
+   before photo closes the loop). Hover pauses it. With reduced motion, the
+   two photos sit side by side instead. */
+.ba-imgs { border-radius: 14px; overflow: hidden; }
+.ba-track { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
 .ba-img { position: relative; aspect-ratio: 4 / 5; overflow: hidden; background: #16325A; }
+.ba-clone { display: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .ba-imgs { position: relative; aspect-ratio: 4 / 5; }
+  .ba-track { display: flex; gap: 0; width: 300%; height: 100%; animation: ba-roll 10s var(--ease) infinite; }
+  .ba-img { flex: 0 0 33.3334%; aspect-ratio: auto; height: 100%; }
+  .ba-clone { display: block; }
+  .ba:hover .ba-track { animation-play-state: paused; }
+}
+@keyframes ba-roll {
+  0%, 42% { transform: translateX(0); }
+  50%, 92% { transform: translateX(-33.3333%); }
+  100% { transform: translateX(-66.6667%); }
+}
 .ba-chip { position: absolute; left: 10px; bottom: 10px; padding: 5px 10px; border-radius: 999px; font-size: 10.5px; font-weight: 700;
   letter-spacing: 0.14em; text-transform: uppercase; color: #fff; background: rgba(10, 26, 49, 0.72); }
 .ba-chip-after { color: var(--navy); background: var(--gold); }
