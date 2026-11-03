@@ -304,13 +304,13 @@ html[data-impact="compact"] .hero { height: 76svh; min-height: 560px; }
 .case-scope { list-style: none; margin: 8px 0 0; padding: 0; }
 .case-scope li { position: relative; padding: 9px 0 9px 20px; border-top: 1px solid var(--rule); font-size: 15px; color: var(--body); }
 .case-scope li::before { content: ''; position: absolute; left: 0; top: 18px; width: 8px; height: 1px; background: var(--gold); }
-/* Before ⇄ after: one example at a time. Drag the handle (or use the arrow
-   keys) to compare; the photo on the left of the handle is "before". Room
-   tabs work like the case tabs. Each example stays up for 5 seconds — the
-   gold line under the photo fills as it counts down — then the next one
-   shows, and after the last room the next case opens. Hover, focus or a
-   drag pauses it. With reduced motion there is no auto-advance. Without
-   script, every example stacks at a 50/50 split. */
+/* Before ⇄ after: one wide photo per case (the first pair in the CMS).
+   Drag the handle (or use the arrow keys) to compare; left of the handle is
+   "before". Each case stays up for 5 seconds — the gold line under the
+   photo fills as it counts down — then the next case shows. Hover, focus,
+   a tap or being off-screen pauses it. With reduced motion there is no
+   auto-advance. (.ba-cat room tabs only appear if a case is ever rendered
+   with more than one pair.) */
 .case-pairs { min-width: 0; }
 .ba-cats { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
 .ba-cats[hidden] { display: none; }
@@ -320,24 +320,26 @@ html[data-impact="compact"] .hero { height: 76svh; min-height: 560px; }
 .ba-cat:hover { color: #fff; border-color: rgba(255,255,255,0.4); }
 .ba-cat[aria-selected="true"] { color: var(--navy); background: #fff; border-color: #fff; }
 .ba-cat:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
-.ba { margin: 0; max-width: 560px; }
+.ba { margin: 0; }
 .ba + .ba { margin-top: 32px; }
 .ba[hidden] { display: none; }
 [data-ba-ready] .ba + .ba { margin-top: 0; }
 [data-ba-ready] .ba:not([hidden]) { animation: case-in 420ms var(--ease); }
-.ba-cmp { --pos: 50%; position: relative; aspect-ratio: 4 / 5; max-height: 76vh; overflow: hidden; border-radius: 14px; background: #16325A;
+.ba-cmp { --pos: 50%; position: relative; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 14px; background: #16325A;
   cursor: ew-resize; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
 .ba-img { position: absolute; inset: 0; }
 .ba-img img { pointer-events: none; -webkit-user-drag: none; }
 .ba-before { clip-path: inset(0 calc(100% - var(--pos)) 0 0); }
+/* Thin white line with an outlined circle and two small arrows. */
 .ba-handle { position: absolute; top: 0; bottom: 0; left: var(--pos); width: 2px; margin-left: -1px; background: #fff;
-  box-shadow: 0 0 12px rgba(6, 14, 28, 0.45); pointer-events: none; }
-.ba-knob { position: absolute; top: 50%; left: 50%; width: 46px; height: 46px; margin: -23px 0 0 -23px; border-radius: 50%;
-  background: #fff; box-shadow: 0 6px 20px rgba(6, 14, 28, 0.35); }
-.ba-knob::before, .ba-knob::after { content: ''; position: absolute; top: 50%; width: 0; height: 0; margin-top: -6px;
-  border-top: 6px solid transparent; border-bottom: 6px solid transparent; }
-.ba-knob::before { left: 11px; border-right: 7px solid var(--navy); }
-.ba-knob::after { right: 11px; border-left: 7px solid var(--navy); }
+  box-shadow: 0 0 8px rgba(6, 14, 28, 0.35); pointer-events: none; }
+.ba-knob { position: absolute; top: 50%; left: 50%; width: 44px; height: 44px; margin: -22px 0 0 -22px; border-radius: 50%;
+  border: 2px solid #fff; background: rgba(6, 14, 28, 0.25); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+  box-shadow: 0 2px 12px rgba(6, 14, 28, 0.35); }
+.ba-knob::before, .ba-knob::after { content: ''; position: absolute; top: 50%; width: 0; height: 0; margin-top: -5px;
+  border-top: 5px solid transparent; border-bottom: 5px solid transparent; }
+.ba-knob::before { left: 10px; border-right: 6px solid #fff; }
+.ba-knob::after { right: 10px; border-left: 6px solid #fff; }
 .ba-range { position: absolute; width: 1px; height: 1px; opacity: 0; overflow: hidden; clip: rect(0 0 0 0); }
 .ba-cmp:has(.ba-range:focus-visible) .ba-knob { outline: 2px solid var(--gold); outline-offset: 3px; }
 .ba-cmp::after { content: ''; position: absolute; left: 0; bottom: 0; height: 3px; width: 100%; background: var(--gold);
@@ -350,6 +352,7 @@ html[data-impact="compact"] .hero { height: 76svh; min-height: 560px; }
 .ba-chip-after { left: auto; right: 12px; color: var(--navy); background: var(--gold); }
 .ba figcaption { margin-top: 12px; }
 @media (max-width: 1100px) { .case { grid-template-columns: 1fr; gap: 28px; } }
+@media (max-width: 640px) { .ba-cmp { aspect-ratio: 4 / 3; } }
 
 /* ── Marketplace ──────────────────────────────────────────────────── */
 .mk-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }

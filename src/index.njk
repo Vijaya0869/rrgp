@@ -218,24 +218,17 @@ layout: base.njk
             {%- endif %}
           </div>
           <div class="case-pairs" data-ba-set>
-            {%- if c.pairs.length > 1 %}
-            <div class="ba-cats" aria-label="{{ c.title }}, rooms" data-ba-cats hidden>
-              {%- for p in c.pairs %}
-              <button class="ba-cat" type="button" id="ba-cat-{{ n }}-{{ loop.index }}" aria-controls="ba-{{ n }}-{{ loop.index }}" data-ba-cat><span>{{ p.label }}</span></button>
-              {%- endfor %}
-            </div>
-            {%- endif %}
-            {%- asyncEach p in c.pairs %}
-            <figure class="ba" id="ba-{{ n }}-{{ loop.index }}">
+            {%- set p = c.pairs[0] %}
+            {%- if p %}
+            <figure class="ba">
               <div class="ba-cmp" data-ba>
-                <div class="ba-img ba-after">{% picture p.after, p.label + ", after renovation", "(max-width: 640px) 100vw, 560px" %}<span class="ba-chip ba-chip-after">After</span></div>
-                <div class="ba-img ba-before">{% picture p.before, p.label + ", before renovation", "(max-width: 640px) 100vw, 560px" %}<span class="ba-chip">Before</span></div>
+                <div class="ba-img ba-after">{% picture p.after, p.label + ", after renovation", "(max-width: 1100px) 100vw, 880px" %}<span class="ba-chip ba-chip-after">After</span></div>
+                <div class="ba-img ba-before">{% picture p.before, p.label + ", before renovation", "(max-width: 1100px) 100vw, 880px" %}<span class="ba-chip">Before</span></div>
                 <div class="ba-handle" aria-hidden="true"><span class="ba-knob"></span></div>
                 <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="{{ p.label }}: drag left to see after, right to see before" data-ba-range>
               </div>
-              <figcaption class="k">{{ p.label }}</figcaption>
             </figure>
-            {%- endeach %}
+            {%- endif %}
           </div>
         </article>
         {%- endeach %}
