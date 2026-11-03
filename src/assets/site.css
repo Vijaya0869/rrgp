@@ -304,8 +304,9 @@ html[data-impact="compact"] .hero { height: 76svh; min-height: 560px; }
 .case-scope { list-style: none; margin: 8px 0 0; padding: 0; }
 .case-scope li { position: relative; padding: 9px 0 9px 20px; border-top: 1px solid var(--rule); font-size: 15px; color: var(--body); }
 .case-scope li::before { content: ''; position: absolute; left: 0; top: 18px; width: 8px; height: 1px; background: var(--gold); }
-/* Before ⇄ after: one wide photo at a time; each case plays all its pairs
-   in CMS order, then the next case opens.
+/* Before ⇄ after: one photo at a time, shown whole; each case plays all
+   its pairs in CMS order, then the next case opens. Room tabs jump to any
+   photo.
    Drag the handle (or use the arrow keys) to compare; left of the handle is
    "before". Each case stays up for 5 seconds — the gold line under the
    photo fills as it counts down — then the next case shows (timer in
@@ -320,15 +321,17 @@ html[data-impact="compact"] .hero { height: 76svh; min-height: 560px; }
 .ba-cat:hover { color: #fff; border-color: rgba(255,255,255,0.4); }
 .ba-cat[aria-selected="true"] { color: var(--navy); background: #fff; border-color: #fff; }
 .ba-cat:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
-.ba { margin: 0; }
+.ba { margin: 0; width: min(100%, calc(min(100vh - 280px, 978px) * 636 / 978)); min-width: min(100%, 300px); }
 .ba + .ba { margin-top: 32px; }
 .ba[hidden] { display: none; }
 [data-ba-ready] .ba + .ba { margin-top: 0; }
 [data-ba-ready] .ba:not([hidden]) { animation: case-in 420ms var(--ease); }
-.ba-cmp { --pos: 50%; position: relative; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 14px; background: #16325A;
+/* The frame takes the photos' own shape (636 × 978), so nothing is cut.
+   Height is capped at the photos' real height, or so tabs + photo fit on screen. */
+.ba-cmp { --pos: 50%; position: relative; aspect-ratio: 636 / 978; width: 100%; overflow: hidden; border-radius: 14px; background: #16325A;
   cursor: ew-resize; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
 .ba-img { position: absolute; inset: 0; }
-.ba-img img { pointer-events: none; -webkit-user-drag: none; }
+.ba-img img { pointer-events: none; -webkit-user-drag: none; object-fit: contain; }
 .ba-before { clip-path: inset(0 calc(100% - var(--pos)) 0 0); }
 /* Thin white line with an outlined circle and two small arrows. */
 .ba-handle { position: absolute; top: 0; bottom: 0; left: var(--pos); width: 2px; margin-left: -1px; background: #fff;
@@ -352,7 +355,6 @@ html[data-impact="compact"] .hero { height: 76svh; min-height: 560px; }
 .ba-cap { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 0 4px; }
 .ba-count { font-family: var(--serif); font-weight: 600; font-size: 17px; color: var(--mark); font-variant-numeric: lining-nums tabular-nums; }
 @media (max-width: 1100px) { .case { grid-template-columns: 1fr; gap: 28px; } }
-@media (max-width: 640px) { .ba-cmp { aspect-ratio: 4 / 3; } }
 
 /* ── Marketplace ──────────────────────────────────────────────────── */
 .mk-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
