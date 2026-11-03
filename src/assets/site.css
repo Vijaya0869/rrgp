@@ -290,14 +290,14 @@ html[data-impact="compact"] .hero { height: 76svh; min-height: 560px; }
 .case-tab[aria-selected="true"] { color: var(--navy); background: var(--gold); border-color: var(--gold); }
 .case-tab-n { font-family: var(--serif); font-weight: 600; font-size: 17px; }
 .case-tab:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
-.case { display: grid; grid-template-columns: 280px minmax(0, 1fr); gap: 48px; }
+.case { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; }
 .case + .case { margin-top: 64px; }
 .case[hidden] { display: none; }
 [data-cases-ready] .case + .case { margin-top: 0; }
 [data-cases-ready] .case:not([hidden]) { animation: case-in 420ms var(--ease); }
 @keyframes case-in { from { opacity: 0; transform: translateY(10px); } }
 .case:focus-visible { outline: 2px solid var(--gold); outline-offset: 8px; }
-.case-meta { display: flex; flex-direction: column; gap: 12px; align-self: start; }
+.case-meta { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 20px; align-self: start; }
 .case-t { font-family: var(--serif); font-weight: 600; font-size: clamp(28px, 2.6vw, 36px); line-height: 1.08; color: var(--fg); }
 .case-stat { display: flex; align-items: baseline; gap: 12px; margin-top: 12px; padding-top: 18px; border-top: 1px solid var(--rule); }
 .case-num { font-family: var(--serif); font-weight: 600; font-size: 56px; line-height: 0.9; color: var(--mark); }
@@ -321,16 +321,24 @@ html[data-impact="compact"] .hero { height: 76svh; min-height: 560px; }
 .ba-cat:hover { color: #fff; border-color: rgba(255,255,255,0.4); }
 .ba-cat[aria-selected="true"] { color: var(--navy); background: #fff; border-color: #fff; }
 .ba-cat:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
-.ba { margin: 0; width: min(100%, calc(min(100vh - 280px, 978px) * 636 / 978)); min-width: min(100%, 300px); }
+.ba { margin: 0; width: min(100%, 1143px); }
 .ba + .ba { margin-top: 32px; }
 .ba[hidden] { display: none; }
 [data-ba-ready] .ba + .ba { margin-top: 0; }
 [data-ba-ready] .ba:not([hidden]) { animation: case-in 420ms var(--ease); }
-/* The frame takes the photos' own shape (636 × 978), so nothing is cut.
-   Height is capped at the photos' real height, or so tabs + photo fit on screen. */
-.ba-cmp { --pos: 50%; position: relative; aspect-ratio: 636 / 978; width: 100%; overflow: hidden; border-radius: 14px; background: #16325A;
+/* The window is about three times the photo's width; its height is the
+   screen less ~220px (capped at the photos' real 978px). */
+.ba-cmp { --pos: 50%; position: relative; display: flex; justify-content: center; height: min(100vh - 220px, 978px); min-height: 380px;
+  width: 100%; overflow: hidden; border-radius: 14px; background: #16325A;
   cursor: ew-resize; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+/* The photo sits in a stage of its own exact shape, full window height,
+   centred; the window's sides stay plain navy. */
+.ba-stage { position: relative; height: 100%; aspect-ratio: 636 / 978; flex: none; }
 .ba-img { position: absolute; inset: 0; }
+@media (max-width: 640px) {
+  .ba-cmp { height: auto; min-height: 0; }
+  .ba-stage { width: 100%; height: auto; }
+}
 .ba-img img { pointer-events: none; -webkit-user-drag: none; object-fit: contain; }
 .ba-before { clip-path: inset(0 calc(100% - var(--pos)) 0 0); }
 /* Thin white line with an outlined circle and two small arrows. */

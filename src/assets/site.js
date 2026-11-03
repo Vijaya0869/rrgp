@@ -132,8 +132,10 @@
       cmp.style.setProperty('--pos', v + '%');
       range.value = String(Math.round(v));
     };
+    // Position is measured across the photo itself, not the wider window.
+    const stage = cmp.querySelector('[data-ba-stage]') || cmp;
     const fromX = (x) => {
-      const r = cmp.getBoundingClientRect();
+      const r = stage.getBoundingClientRect();
       set(((x - r.left) / r.width) * 100);
     };
     cmp.addEventListener('pointerdown', (e) => {
