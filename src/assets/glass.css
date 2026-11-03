@@ -121,7 +121,7 @@
 .biz-img { border-radius: 14px; }
 
 /* Case studies: tabs as glass pills, each before/after pair on a glass card */
-.case-tab {
+.case-tab, .ba-cat {
   background: rgba(255, 255, 255, 0.05);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
@@ -137,7 +137,7 @@
   border-radius: var(--glass-radius);
   box-shadow: var(--glass-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.10);
 }
-.ba-imgs { border-radius: 10px; }
+.ba-cmp { border-radius: 10px; }
 .ba figcaption { padding: 0 4px; }
 .ba-chip { -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
 

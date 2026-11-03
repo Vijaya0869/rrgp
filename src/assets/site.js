@@ -95,43 +95,133 @@
     el.classList.toggle('is-bad', !ok);
   };
 
-  /* Case studies: tabs show one case at a time. Without script every case
-     stays visible, stacked. */
-  function cases() {
-    const tabs = Array.from(document.querySelectorAll('[data-case-tab]'));
-    if (tabs.length < 2) return;
-    const panels = tabs.map((t) => document.getElementById(t.getAttribute('aria-controls')));
-    const list = tabs[0].parentElement;
+  /* Tab list helper: arrow keys, Home/End, roving tabindex. */
+  function tablist(list, tabs, panels, onPick) {
     list.setAttribute('role', 'tablist');
     list.hidden = false;
-    const show = (i, focus) => {
+    tabs.forEach((t, i) => {
+      t.setAttribute('role', 'tab');
+      panels[i].setAttribute('role', 'tabpanel');
+      panels[i].setAttribute('aria-labelledby', t.id);
+      t.addEventListener('click', () => onPick(i, false));
+      t.addEventListener('keydown', (e) => {
+        const n = tabs.length;
+        const to = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: n - 1 }[e.key];
+        if (to === undefined) return;
+        e.preventDefault();
+        onPick((to + n) % n, true);
+      });
+    });
+    return (i, focus) => {
       tabs.forEach((t, j) => {
         const on = i === j;
         t.setAttribute('aria-selected', String(on));
         t.tabIndex = on ? 0 : -1;
         panels[j].hidden = !on;
       });
-      if (focus) {
-        tabs[i].focus();
-        tabs[i].scrollIntoView({ block: 'nearest', inline: 'nearest' });
-      }
+      if (focus) tabs[i].focus();
     };
-    tabs.forEach((t, i) => {
-      t.setAttribute('role', 'tab');
-      panels[i].setAttribute('role', 'tabpanel');
-      panels[i].setAttribute('aria-labelledby', t.id);
-      panels[i].tabIndex = 0;
-      t.addEventListener('click', () => show(i));
-      t.addEventListener('keydown', (e) => {
-        const n = tabs.length;
-        const to = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: n - 1 }[e.key];
-        if (to === undefined) return;
-        e.preventDefault();
-        show((to + n) % n, true);
-      });
+  }
+
+  /* Before ⇄ after compare: drag anywhere on the photo, or arrow keys on
+     the hidden range input. */
+  function compare(cmp) {
+    const range = cmp.querySelector('[data-ba-range]');
+    const set = (v) => {
+      v = Math.max(0, Math.min(100, v));
+      cmp.style.setProperty('--pos', v + '%');
+      range.value = String(Math.round(v));
+    };
+    const fromX = (x) => {
+      const r = cmp.getBoundingClientRect();
+      set(((x - r.left) / r.width) * 100);
+    };
+    cmp.addEventListener('pointerdown', (e) => {
+      if (e.button !== 0) return;
+      cmp.setPointerCapture(e.pointerId);
+      cmp.dataset.dragging = '';
+      fromX(e.clientX);
     });
-    show(0);
-    list.parentElement.setAttribute('data-cases-ready', '');
+    cmp.addEventListener('pointermove', (e) => { if ('dragging' in cmp.dataset) fromX(e.clientX); });
+    const end = () => { delete cmp.dataset.dragging; };
+    cmp.addEventListener('pointerup', end);
+    cmp.addEventListener('pointercancel', end);
+    range.addEventListener('input', () => set(Number(range.value)));
+    return () => set(50);
+  }
+
+  /* Case studies: case tabs, then room tabs inside each case. One example
+     shows at a time and advances every 5 s (the countdown is the CSS
+     animation on .ba-cmp::after, so pausing it pauses the timer). After a
+     case's last room, the next case opens. Without script everything stacks. */
+  function cases() {
+    const root = document.getElementById('cases');
+    if (!root) return;
+    const caseTabs = Array.from(root.querySelectorAll('[data-case-tab]'));
+    const caseEls = Array.from(root.querySelectorAll('.case'));
+    let current = 0;
+    let showCase = () => {};
+    if (caseTabs.length > 1) {
+      const panels = caseTabs.map((t) => document.getElementById(t.getAttribute('aria-controls')));
+      const sel = tablist(caseTabs[0].parentElement, caseTabs, panels, (i, focus) => go(i, 0, { focus: focus && 'case', user: true }));
+      panels.forEach((p) => { p.tabIndex = -1; });
+      showCase = sel;
+      caseTabs[0].parentElement.parentElement.setAttribute('data-cases-ready', '');
+    }
+
+    const sets = caseEls.map((el, ci) => {
+      const figs = Array.from(el.querySelectorAll('.ba'));
+      const resets = figs.map((f) => compare(f.querySelector('[data-ba]')));
+      const cats = Array.from(el.querySelectorAll('[data-ba-cat]'));
+      let pick = (i) => figs.forEach((f, j) => { f.hidden = i !== j; });
+      if (cats.length > 1) {
+        const sel = tablist(cats[0].parentElement, cats, figs, (i, focus) => go(ci, i, { focus: focus && 'room', user: true }));
+        pick = sel;
+      }
+      el.querySelector('[data-ba-set]').setAttribute('data-ba-ready', '');
+      return { figs, resets, pick, at: 0 };
+    });
+    if (!sets.length) return;
+
+    function go(ci, ri, { focus = null, user = false } = {}) {
+      const s = sets[ci];
+      showCase(ci, focus === 'case');
+      current = ci;
+      s.resets[ri]();
+      s.pick(ri, focus === 'room');
+      s.at = ri;
+      if (user) userPaused = true; // a visitor chose; let them look until they leave
+      sync();
+    }
+    // Next example when the visible countdown finishes.
+    root.addEventListener('animationend', (e) => {
+      if (e.animationName !== 'ba-count') return;
+      const s = sets[current];
+      if (s.at + 1 < s.figs.length) go(current, s.at + 1);
+      else go((current + 1) % sets.length, 0);
+    });
+
+    // Pause while hovered, focused, dragged, off-screen or in a hidden tab.
+    let hover = false, focusIn = false, visible = false, userPaused = false;
+    const sync = () => {
+      const paused = hover || focusIn || userPaused || !visible || document.hidden;
+      root.toggleAttribute('data-ba-paused', paused);
+    };
+    root.setAttribute('data-ba-auto', '');
+    const stage = root.querySelector('.sec');
+    stage.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') { hover = true; sync(); } });
+    stage.addEventListener('pointerleave', (e) => { if (e.pointerType === 'mouse') { hover = false; userPaused = false; sync(); } });
+    stage.addEventListener('pointerdown', (e) => { if (e.pointerType !== 'mouse') { userPaused = true; sync(); } });
+    root.addEventListener('focusin', () => { focusIn = true; sync(); });
+    root.addEventListener('focusout', (e) => { if (!root.contains(e.relatedTarget)) { focusIn = false; userPaused = false; sync(); } });
+    document.addEventListener('visibilitychange', sync);
+    if (canObserve) {
+      new IntersectionObserver(([en]) => { visible = en.isIntersecting; if (!visible) userPaused = false; sync(); }, { threshold: 0.35 }).observe(stage);
+    } else visible = true;
+
+    sets.forEach((s) => s.pick(0));
+    showCase(0, false);
+    sync();
   }
 
   function notifyForm() {
