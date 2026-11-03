@@ -260,14 +260,14 @@
         "show": true,
         "pairs": [
           {
-            "label": "Upper floor",
-            "before": "/images/cases/case-4-upper-floor-before.jpg",
-            "after": "/images/cases/case-4-upper-floor-after.jpg"
-          },
-          {
             "label": "Stairs",
             "before": "/images/cases/case-4-stairs-before.jpg",
             "after": "/images/cases/case-4-stairs-after.jpg"
+          },
+          {
+            "label": "Upper floor",
+            "before": "/images/cases/case-4-upper-floor-before.jpg",
+            "after": "/images/cases/case-4-upper-floor-after.jpg"
           }
         ]
       }

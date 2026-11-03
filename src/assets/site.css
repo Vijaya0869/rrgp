@@ -304,58 +304,16 @@ html[data-impact="compact"] .hero { height: 76svh; min-height: 560px; }
 .case-scope { list-style: none; margin: 8px 0 0; padding: 0; }
 .case-scope li { position: relative; padding: 9px 0 9px 20px; border-top: 1px solid var(--rule); font-size: 15px; color: var(--body); }
 .case-scope li::before { content: ''; position: absolute; left: 0; top: 18px; width: 8px; height: 1px; background: var(--gold); }
-/* Before ⇄ after: one photo at a time, shown whole; each case plays all
-   its pairs in CMS order, then the next case opens. Room tabs jump to any
-   photo.
-   Drag the handle (or use the arrow keys) to compare; left of the handle is
-   "before". Each case stays up for 5 seconds — the gold line under the
-   photo fills as it counts down — then the next case shows (timer in
-   site.js; it holds only while dragging, on keyboard focus, or off-screen). (.ba-cat room tabs only appear if a case is ever rendered
-   with more than one pair.) */
-.case-pairs { min-width: 0; }
-.ba-cats { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
-.ba-cats[hidden] { display: none; }
-.ba-cat { position: relative; overflow: hidden; padding: 8px 15px; border: 1px solid var(--rule); border-radius: 999px; background: transparent;
-  font-family: var(--sans); font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--body); cursor: pointer;
-  transition: color 240ms ease, border-color 240ms ease, background 240ms ease; }
-.ba-cat:hover { color: #fff; border-color: rgba(255,255,255,0.4); }
-.ba-cat[aria-selected="true"] { color: var(--navy); background: #fff; border-color: #fff; }
-.ba-cat:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
-.ba { margin: 0; width: min(100%, 658px); }
-.ba + .ba { margin-top: 32px; }
-.ba[hidden] { display: none; }
-[data-ba-ready] .ba + .ba { margin-top: 0; }
-[data-ba-ready] .ba:not([hidden]) { animation: case-in 420ms var(--ease); }
-/* The frame takes the photos' own shape (636 × 978), so nothing is cut,
-   and shows them at their full original size (636px wide plus the glass
-   card's padding), never larger, so they are not enlarged. */
-.ba-cmp { --pos: 50%; position: relative; aspect-ratio: 636 / 978; width: 100%; overflow: hidden; border-radius: 14px; background: #16325A;
-  cursor: ew-resize; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
-.ba-img { position: absolute; inset: 0; }
-.ba-img img { pointer-events: none; -webkit-user-drag: none; object-fit: contain; }
-.ba-before { clip-path: inset(0 calc(100% - var(--pos)) 0 0); }
-/* Thin white line with an outlined circle and two small arrows. */
-.ba-handle { position: absolute; top: 0; bottom: 0; left: var(--pos); width: 2px; margin-left: -1px; background: #fff;
-  box-shadow: 0 0 8px rgba(6, 14, 28, 0.35); pointer-events: none; }
-.ba-knob { position: absolute; top: 50%; left: 50%; width: 44px; height: 44px; margin: -22px 0 0 -22px; border-radius: 50%;
-  border: 2px solid #fff; background: rgba(6, 14, 28, 0.25); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
-  box-shadow: 0 2px 12px rgba(6, 14, 28, 0.35); }
-.ba-knob::before, .ba-knob::after { content: ''; position: absolute; top: 50%; width: 0; height: 0; margin-top: -5px;
-  border-top: 5px solid transparent; border-bottom: 5px solid transparent; }
-.ba-knob::before { left: 10px; border-right: 6px solid #fff; }
-.ba-knob::after { right: 10px; border-left: 6px solid #fff; }
-.ba-range { position: absolute; width: 1px; height: 1px; opacity: 0; overflow: hidden; clip: rect(0 0 0 0); }
-.ba-cmp:has(.ba-range:focus-visible) .ba-knob { outline: 2px solid var(--gold); outline-offset: 3px; }
-.ba-cmp::after { content: ''; position: absolute; left: 0; bottom: 0; height: 3px; width: 100%; background: var(--gold);
-  transform: scaleX(0); transform-origin: left; pointer-events: none; z-index: 2; }
-[data-ba-auto] .ba-cmp::after { transform: scaleX(var(--ba-t, 0)); }
-.ba-chip { position: absolute; left: 12px; bottom: 14px; padding: 5px 10px; border-radius: 999px; font-size: 10.5px; font-weight: 700;
+.case-pairs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 28px; }
+.ba { margin: 0; }
+.ba-imgs { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; border-radius: 14px; overflow: hidden; }
+.ba-img { position: relative; aspect-ratio: 4 / 5; overflow: hidden; background: #16325A; }
+.ba-chip { position: absolute; left: 10px; bottom: 10px; padding: 5px 10px; border-radius: 999px; font-size: 10.5px; font-weight: 700;
   letter-spacing: 0.14em; text-transform: uppercase; color: #fff; background: rgba(10, 26, 49, 0.72); }
-.ba-chip-after { left: auto; right: 12px; color: var(--navy); background: var(--gold); }
+.ba-chip-after { color: var(--navy); background: var(--gold); }
 .ba figcaption { margin-top: 12px; }
-.ba-cap { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 0 4px; }
-.ba-count { font-family: var(--serif); font-weight: 600; font-size: 17px; color: var(--mark); font-variant-numeric: lining-nums tabular-nums; }
 @media (max-width: 1100px) { .case { grid-template-columns: 1fr; gap: 28px; } }
+@media (max-width: 640px) { .case-pairs { grid-template-columns: 1fr; } }
 
 /* ── Marketplace ──────────────────────────────────────────────────── */
 .mk-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
