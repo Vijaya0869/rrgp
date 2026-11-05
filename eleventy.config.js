@@ -32,7 +32,29 @@ async function picture(src, alt, { widths = [480, 800, 1280], sizes = "100vw", c
   }
 }
 
+// ── Offline switch ──────────────────────────────────────────────────
+// true  → the live site (main branch: rrgp.io, rrgp.pages.dev) builds only a
+//         blank "not found" page; every address returns 404 and nothing is
+//         indexed. Other branches (e.g. `preview`) and local builds still
+//         build the full site for review.
+// false → the full site is live again. Commit and push to main.
+const SITE_OFFLINE = true;
+const OFFLINE_NOW = SITE_OFFLINE && process.env.CF_PAGES_BRANCH === "main";
+
 export default function (eleventyConfig) {
+  if (OFFLINE_NOW) {
+    eleventyConfig.ignores.add("src/**");
+    eleventyConfig.addTemplate("offline-404.html",
+      `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex, nofollow"><title>Not found</title><style>body{margin:0;min-height:100vh;display:grid;place-items:center;font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#888;background:#fff}</style></head><body><p>404 · Not found</p></body></html>`,
+      { permalink: "/404.html" });
+    eleventyConfig.on("eleventy.after", async ({ directories, dir }) => {
+      const out = (directories && directories.output) || dir.output;
+      const fs = await import("node:fs/promises");
+      await fs.writeFile(`${out}/robots.txt`, "User-agent: *\nDisallow: /\n");
+      await fs.writeFile(`${out}/_headers`, "/*\n  X-Robots-Tag: noindex, nofollow\n  Cache-Control: no-store\n");
+    });
+    return { dir: { input: "src", output: "_site" } };
+  }
   eleventyConfig.addPassthroughCopy({
     "src/assets": "assets",
     "src/images": "images",
