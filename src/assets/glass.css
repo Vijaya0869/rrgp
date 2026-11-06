@@ -57,15 +57,10 @@
 .head-cta { border-radius: 999px; }
 
 /* ── Hero: headline straight on the photo, glass ghost button ──────── */
-/* Tagline on a navy glass chip so it reads over any part of the photo. */
+/* Tagline: white text with a tight dark halo, so it reads over any part of the photo. */
 .hero-k {
-  padding: 11px 18px; font-size: 13px;
-  background: var(--glass-navy-strong);
-  -webkit-backdrop-filter: var(--glass-blur);
-  backdrop-filter: var(--glass-blur);
-  border: 1px solid var(--glass-edge-gold);
-  border-bottom: 2px solid var(--gold);
-  border-radius: 10px;
+  font-size: 14px; font-weight: 700; color: #fff;
+  text-shadow: 0 1px 2px rgba(6, 14, 28, 0.95), 0 0 6px rgba(6, 14, 28, 0.9), 0 0 14px rgba(6, 14, 28, 0.8), 0 0 28px rgba(6, 14, 28, 0.6);
 }
 .btn { border-radius: 999px; }
 .btn-ghost {

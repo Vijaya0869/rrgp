@@ -202,31 +202,6 @@
         ]
       },
       {
-        "title": "Basement rebuild and full renovation",
-        "city": "",
-        "type": "Single-family",
-        "weeks": "",
-        "scope": [],
-        "show": true,
-        "pairs": [
-          {
-            "label": "Basement wall",
-            "before": "/images/cases/case-1-basement-wall-before.jpg",
-            "after": "/images/cases/case-1-basement-wall-after.jpg"
-          },
-          {
-            "label": "Basement",
-            "before": "/images/cases/case-1-basement-before.jpg",
-            "after": "/images/cases/case-1-basement-after.jpg"
-          },
-          {
-            "label": "Block wall",
-            "before": "/images/cases/case-1-basement-wall-before.jpg",
-            "after": "/images/cases/case-1-block-wall-after.png"
-          }
-        ]
-      },
-      {
         "title": "Whole-house renovation",
         "city": "",
         "type": "Single-family",
@@ -234,11 +209,6 @@
         "scope": [],
         "show": true,
         "pairs": [
-          {
-            "label": "Bathroom",
-            "before": "/images/cases/case-2-bathroom-before.jpg",
-            "after": "/images/cases/case-2-bathroom-after.jpg"
-          },
           {
             "label": "Basement",
             "before": "/images/cases/case-2-basement-before.jpg",
@@ -258,11 +228,6 @@
             "label": "Bathroom",
             "before": "/images/cases/case-3-bathroom-before.jpg",
             "after": "/images/cases/case-3-bathroom-after.jpg"
-          },
-          {
-            "label": "Basement",
-            "before": "/images/cases/case-3-basement-before.jpg",
-            "after": "/images/cases/case-3-basement-after.jpg"
           }
         ]
       },
@@ -294,11 +259,6 @@
         "scope": [],
         "show": true,
         "pairs": [
-          {
-            "label": "Bathroom",
-            "before": "/images/cases/interior-bathroom-before.png",
-            "after": "/images/cases/interior-bathroom-after.png"
-          },
           {
             "label": "Kitchen",
             "before": "/images/cases/interior-kitchen-before.png",

@@ -228,7 +228,7 @@ layout: base.njk
             {%- endif %}
             {%- asyncEach p in c.pairs %}
             <figure class="ba" id="ba-{{ n }}-{{ loop.index }}">
-              <div class="ba-cmp" data-ba>
+              <div class="ba-cmp {% baKind p.before, p.after %}" data-ba>
                 <div class="ba-stage" data-ba-stage style="{% baShape p.before, p.after %}">
                   <div class="ba-img ba-after">{% baPhoto p.after, p.label + ", after renovation" %}<span class="ba-chip ba-chip-after">After</span></div>
                   <div class="ba-img ba-before">{% baPhoto p.before, p.label + ", before renovation" %}<span class="ba-chip">Before</span></div>

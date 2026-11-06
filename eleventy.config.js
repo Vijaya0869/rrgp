@@ -86,7 +86,14 @@ export default function (eleventyConfig) {
     const w = Math.round(h * Math.max(a.width / a.height, b.width / b.height));
     // How far each photo sits in from the stage edge, for its Before/After chip.
     const inset = (m) => (100 * (1 - (h * m.width) / m.height / w)) / 2;
-    return `--bw:${w};--bh:${h};--bi:${inset(b).toFixed(2)}%;--ai:${inset(a).toFixed(2)}%`;
+    // Tall pairs sit side by side on wide screens: --sw is the two together.
+    const sw = Math.round((h * b.width) / b.height + (h * a.width) / a.height);
+    return `--bw:${w};--bh:${h};--sw:${sw};--bi:${inset(b).toFixed(2)}%;--ai:${inset(a).toFixed(2)}%`;
+  });
+  // "ba-side" for a tall pair, which can't fill the wide window on its own.
+  eleventyConfig.addAsyncShortcode("baKind", async (before, after) => {
+    const [b, a] = await Promise.all([before, after].map((f) => sharp("src" + f).metadata()));
+    return b.width < b.height && a.width < a.height ? "ba-side" : "";
   });
 
   // 1 → "01": section and step numerals.
