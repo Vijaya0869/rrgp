@@ -40,7 +40,7 @@ layout: base.njk
     </div>
   </section>
 
-  <section id="what" class="tone-navy">
+  <section id="what" class="tone-white">
     <div class="sec">
       <div class="head-row">
         {{ sechead("01", h.platform.label) }}
@@ -182,7 +182,7 @@ layout: base.njk
 
   {%- set cs = h.cases.items | visible if h.cases.show else [] %}
   {%- if cs.length %}
-  <section id="cases" class="tone-navy">
+  <section id="cases" class="tone-white">
     <div class="sec">
       <div class="head-row">
         {{ sechead("", h.cases.label) }}
@@ -289,7 +289,7 @@ layout: base.njk
   {%- endif %}
 
   {%- if h.partners.show %}
-  <section id="partners" class="tone-navy">
+  <section id="partners" class="tone-white">
     <div class="sec">
       <div class="head-row">
         <div class="sechead" data-reveal><span class="seclabel">{{ h.partners.label }}</span></div>

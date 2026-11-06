@@ -51,7 +51,7 @@ html[data-accent="restrained"] { --gold-ink: #3C3C3E; }
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 body { margin: 0; font-family: var(--sans); font-size: 16px; line-height: 1.6; font-weight: 400;
-  color: var(--ink); background: var(--ivory); -webkit-font-smoothing: antialiased; }
+  color: var(--ink); background: var(--white); -webkit-font-smoothing: antialiased; }
 body, button, input, select, textarea { font-synthesis-weight: none; }
 h1, h2, h3, h4 { margin: 0; font-weight: 600; line-height: 1.12; }
 p { margin: 0; }
@@ -225,7 +225,7 @@ html[data-impact="compact"] .hero { height: 76svh; min-height: 560px; }
 }
 .pull { margin: clamp(72px, 8vw, 112px) 0 0; padding: 6px 0 6px clamp(20px, 3vw, 40px); border-left: 2px solid var(--gold); }
 .pull p { font-family: var(--serif); font-style: italic; font-weight: 500; font-size: clamp(28px, 3.3vw, 46px); line-height: 1.15;
-  color: #fff; max-width: 30ch; }
+  color: var(--fg); max-width: 30ch; }
 
 /* ── Mandate ──────────────────────────────────────────────────────── */
 .four { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 36px; margin-top: 22px; }
@@ -278,7 +278,7 @@ html[data-impact="compact"] .hero { height: 76svh; min-height: 560px; }
 @media (max-width: 940px) { .mkts { grid-template-columns: 1fr; } .ohio { max-width: 360px; } }
 @media (max-width: 420px) { .mkt-list { grid-template-columns: 1fr; } }
 
-/* ── Case studies (navy) ─────────────────────────────────────────── */
+/* ── Case studies ─────────────────────────────────────────── */
 /* With script, one case shows at a time behind the tabs; without it, all
    cases stack. Photos are portrait phone shots, cropped to 4:5. */
 .case-tabs { display: flex; gap: 10px; margin-bottom: 32px; overflow-x: auto; scrollbar-width: none; }
@@ -286,7 +286,7 @@ html[data-impact="compact"] .hero { height: 76svh; min-height: 560px; }
 .case-tabs[hidden] { display: none; }
 .case-tab { flex: none; display: inline-flex; align-items: baseline; gap: 10px; padding: 11px 18px; border: 1px solid var(--rule); border-radius: 999px;
   background: transparent; color: var(--muted); font: 500 14px/1.2 var(--sans); cursor: pointer; transition: color 240ms ease, border-color 240ms ease, background 240ms ease; }
-.case-tab:hover { color: #fff; border-color: rgba(255,255,255,0.4); }
+.case-tab:hover { color: var(--fg); border-color: var(--fg); }
 .case-tab[aria-selected="true"] { color: var(--navy); background: var(--gold); border-color: var(--gold); }
 .case-tab-n { font-family: var(--serif); font-weight: 600; font-size: 17px; }
 .case-tab:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
@@ -318,8 +318,8 @@ html[data-impact="compact"] .hero { height: 76svh; min-height: 560px; }
 .ba-cat { position: relative; overflow: hidden; padding: 8px 15px; border: 1px solid var(--rule); border-radius: 999px; background: transparent;
   font-family: var(--sans); font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--body); cursor: pointer;
   transition: color 240ms ease, border-color 240ms ease, background 240ms ease; }
-.ba-cat:hover { color: #fff; border-color: rgba(255,255,255,0.4); }
-.ba-cat[aria-selected="true"] { color: var(--navy); background: #fff; border-color: #fff; }
+.ba-cat:hover { color: var(--fg); border-color: var(--fg); }
+.ba-cat[aria-selected="true"] { color: #fff; background: var(--navy); border-color: var(--navy); }
 .ba-cat:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
 .ba { margin: 0; width: min(100%, 1143px); }
 .ba + .ba { margin-top: 32px; }
