@@ -41,7 +41,13 @@
   .brand { width: 112px; height: 40px; }
 }
 
-/* ── Header: frosted navy once scrolled ────────────────────────────── */
+/* ── Header: frosted navy over the hero, stronger once scrolled ───── */
+.site-head {
+  background: var(--glass-navy);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+}
+.navlink { font-size: 13px; text-shadow: 0 1px 6px rgba(6, 14, 28, 0.7); }
 .site-head.is-solid {
   background: var(--glass-navy-strong);
   -webkit-backdrop-filter: var(--glass-blur);
@@ -51,6 +57,16 @@
 .head-cta { border-radius: 999px; }
 
 /* ── Hero: headline straight on the photo, glass ghost button ──────── */
+/* Tagline on a navy glass chip so it reads over any part of the photo. */
+.hero-k {
+  padding: 11px 18px; font-size: 13px;
+  background: var(--glass-navy-strong);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-edge-gold);
+  border-bottom: 2px solid var(--gold);
+  border-radius: 10px;
+}
 .btn { border-radius: 999px; }
 .btn-ghost {
   background: rgba(255, 255, 255, 0.10);

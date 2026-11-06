@@ -162,7 +162,7 @@
     "lede": "Homes our in-house construction team has taken from distressed to move-in ready, from the foundation to the finishes.",
     "items": [
       {
-        "title": "Basement rebuild and full renovation",
+        "title": "Brick home, inside and out",
         "city": "",
         "type": "Single-family",
         "weeks": "",
@@ -170,15 +170,45 @@
         "show": true,
         "pairs": [
           {
-            "label": "Exterior",
-            "before": "/images/cases/case-1-exterior-before.jpg",
-            "after": "/images/cases/case-1-exterior-after.jpg"
+            "label": "Front",
+            "before": "/images/cases/home-front-before.jpg",
+            "after": "/images/cases/home-front-after.jpg"
+          },
+          {
+            "label": "Backyard",
+            "before": "/images/cases/home-backyard-before.jpg",
+            "after": "/images/cases/home-backyard-after.jpg"
+          },
+          {
+            "label": "Deck",
+            "before": "/images/cases/home-deck-before.jpg",
+            "after": "/images/cases/home-deck-after.jpg"
           },
           {
             "label": "Kitchen",
-            "before": "/images/cases/case-1-kitchen-before.jpg",
-            "after": "/images/cases/case-1-kitchen-after.jpg"
+            "before": "/images/cases/home-kitchen-before.jpg",
+            "after": "/images/cases/home-kitchen-after.jpg"
           },
+          {
+            "label": "Living room",
+            "before": "/images/cases/home-living-before.jpg",
+            "after": "/images/cases/home-living-after.jpg"
+          },
+          {
+            "label": "Master bedroom",
+            "before": "/images/cases/home-bedroom-before.jpg",
+            "after": "/images/cases/home-bedroom-after.jpg"
+          }
+        ]
+      },
+      {
+        "title": "Basement rebuild and full renovation",
+        "city": "",
+        "type": "Single-family",
+        "weeks": "",
+        "scope": [],
+        "show": true,
+        "pairs": [
           {
             "label": "Basement wall",
             "before": "/images/cases/case-1-basement-wall-before.jpg",
@@ -188,6 +218,11 @@
             "label": "Basement",
             "before": "/images/cases/case-1-basement-before.jpg",
             "after": "/images/cases/case-1-basement-after.jpg"
+          },
+          {
+            "label": "Block wall",
+            "before": "/images/cases/case-1-basement-wall-before.jpg",
+            "after": "/images/cases/case-1-block-wall-after.png"
           }
         ]
       },
@@ -199,16 +234,6 @@
         "scope": [],
         "show": true,
         "pairs": [
-          {
-            "label": "Exterior",
-            "before": "/images/cases/case-2-exterior-before.jpg",
-            "after": "/images/cases/case-2-exterior-after.jpg"
-          },
-          {
-            "label": "Kitchen",
-            "before": "/images/cases/case-2-kitchen-before.jpg",
-            "after": "/images/cases/case-2-kitchen-after.jpg"
-          },
           {
             "label": "Bathroom",
             "before": "/images/cases/case-2-bathroom-before.jpg",
@@ -229,16 +254,6 @@
         "scope": [],
         "show": true,
         "pairs": [
-          {
-            "label": "Exterior",
-            "before": "/images/cases/case-3-exterior-before.jpg",
-            "after": "/images/cases/case-3-exterior-after.jpg"
-          },
-          {
-            "label": "Kitchen",
-            "before": "/images/cases/case-3-kitchen-before.jpg",
-            "after": "/images/cases/case-3-kitchen-after.jpg"
-          },
           {
             "label": "Bathroom",
             "before": "/images/cases/case-3-bathroom-before.jpg",
@@ -265,9 +280,29 @@
             "after": "/images/cases/case-4-upper-floor-after.jpg"
           },
           {
-            "label": "Stairs",
-            "before": "/images/cases/case-4-stairs-before.jpg",
-            "after": "/images/cases/case-4-stairs-after.jpg"
+            "label": "Upper floor, second view",
+            "before": "/images/cases/case-4-upper-floor-2-before.png",
+            "after": "/images/cases/case-4-upper-floor-after.jpg"
+          }
+        ]
+      },
+      {
+        "title": "Interior renovation",
+        "city": "",
+        "type": "Single-family",
+        "weeks": "",
+        "scope": [],
+        "show": true,
+        "pairs": [
+          {
+            "label": "Bathroom",
+            "before": "/images/cases/interior-bathroom-before.png",
+            "after": "/images/cases/interior-bathroom-after.png"
+          },
+          {
+            "label": "Kitchen",
+            "before": "/images/cases/interior-kitchen-before.png",
+            "after": "/images/cases/interior-kitchen-after.png"
           }
         ]
       }

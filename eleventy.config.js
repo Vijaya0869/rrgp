@@ -1,4 +1,5 @@
 import Image from "@11ty/eleventy-img";
+import sharp from "sharp";
 
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
 
@@ -74,6 +75,19 @@ export default function (eleventyConfig) {
     picture(src, alt, { widths: [800, 1280, 1920, 2560, 3344], cls: "fill hero-img", eager: true, crisp: true }));
   eleventyConfig.addAsyncShortcode("picture", (src, alt, sizes) =>
     picture(src, alt, { sizes: sizes || "(max-width: 720px) 50vw, 25vw" }));
+  // Before/after photos: up to full size, for the wide slider window.
+  eleventyConfig.addAsyncShortcode("baPhoto", (src, alt) =>
+    picture(src, alt, { widths: [480, 800, 1121, 1536], sizes: "(max-width: 640px) 100vw, 1121px" }));
+  // The slider stage for a pair: the shape that holds both photos whole, at
+  // a size neither has to be enlarged for.
+  eleventyConfig.addAsyncShortcode("baShape", async (before, after) => {
+    const [b, a] = await Promise.all([before, after].map((f) => sharp("src" + f).metadata()));
+    const h = Math.min(a.height, b.height);
+    const w = Math.round(h * Math.max(a.width / a.height, b.width / b.height));
+    // How far each photo sits in from the stage edge, for its Before/After chip.
+    const inset = (m) => (100 * (1 - (h * m.width) / m.height / w)) / 2;
+    return `--bw:${w};--bh:${h};--bi:${inset(b).toFixed(2)}%;--ai:${inset(a).toFixed(2)}%`;
+  });
 
   // 1 → "01": section and step numerals.
   eleventyConfig.addFilter("pad", (n) => String(n).padStart(2, "0"));

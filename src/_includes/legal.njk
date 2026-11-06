@@ -2,8 +2,10 @@
 layout: base.njk
 ---
 <article class="legal">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span class="crumbs-sep" aria-hidden="true">→</span><span aria-current="page">{{ title }}</span></nav>
   <h1>{{ title }}</h1>
-  {%- if updated %}<div class="legal-date">Last updated {{ updated }}</div>{% endif %}
+  {%- if updated %}<div class="legal-date">Last updated: {{ updated }}</div>{% endif %}
+  {%- if note %}<p class="legal-note"><strong>{{ note_label }}</strong> {{ note }}</p>{% endif %}
   <div class="legal-body">
 {{ content | safe }}
   </div>

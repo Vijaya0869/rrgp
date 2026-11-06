@@ -127,8 +127,8 @@ content:
                 list: true
                 fields:
                   - { name: label, label: Room or area, type: string, description: "e.g. Kitchen" }
-                  - { name: before, label: Before photo (portrait), type: image }
-                  - { name: after, label: After photo (portrait), type: image }
+                  - { name: before, label: Before photo, type: image }
+                  - { name: after, label: After photo, type: image }
 
       - name: marketplace
         label: Marketplace (coming soon)
