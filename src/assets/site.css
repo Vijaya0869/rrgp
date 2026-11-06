@@ -495,17 +495,22 @@ html[data-impact="compact"] .hero { height: 76svh; min-height: 560px; }
 .legal h1, .legal-body h2 { font-variant-numeric: lining-nums; }
 .legal h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(42px, 5vw, 64px); line-height: 1.04; color: var(--navy); margin-bottom: 14px; }
 .legal-date { font-size: 12.5px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; color: var(--grey); padding-bottom: 32px; margin-bottom: 40px; border-bottom: 1px solid var(--line); }
-.legal-note { margin: 0 0 32px; padding: 22px 26px; font-size: 16.5px; line-height: 1.65; color: var(--ink-2); text-align: justify; hyphens: auto; background: rgba(201, 162, 39, 0.08); border-left: 3px solid var(--gold); }
+.legal-note { margin: 0 0 32px; padding: 22px 26px; font-size: 16.5px; line-height: 1.65; color: var(--ink-2); text-align: justify; background: rgba(201, 162, 39, 0.08); border-left: 3px solid var(--gold); }
 .legal-note strong { color: var(--navy); }
 .legal-body h2 { font-family: var(--serif); font-weight: 600; font-size: clamp(26px, 2.4vw, 32px); line-height: 1.15; color: var(--navy); margin: 48px 0 14px; }
 .legal-body h3 { font-family: var(--sans); font-weight: 600; font-size: 17px; line-height: 1.3; color: var(--navy); margin: 26px 0 10px; }
-.legal-body p, .legal-body li { font-size: 16.5px; line-height: 1.72; color: var(--ink-2); text-align: justify; hyphens: auto; }
+.legal-body p, .legal-body li { font-size: 16.5px; line-height: 1.72; color: var(--ink-2); text-align: justify; }
 .legal-body p { margin: 0 0 16px; }
 .legal-body ul { padding-left: 22px; margin: 0 0 18px; }
 .legal-body li { margin-bottom: 8px; }
 .legal-body li::marker { color: var(--gold-ink); }
 .legal-body strong { color: var(--navy); font-weight: 600; }
 .legal-body a { color: var(--gold-ink); }
+/* Narrow columns: hyphenate paragraphs, and keep short bullets from stretching. */
+@media (max-width: 640px) {
+  .legal-note, .legal-body p { hyphens: auto; }
+  .legal-body li { text-align: left; }
+}
 
 /* ── Motion ───────────────────────────────────────────────────────── */
 /* Hero entrance and a slow Ken Burns drift on the photo. */
