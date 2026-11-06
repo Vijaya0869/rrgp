@@ -344,18 +344,6 @@ html[data-impact="compact"] .hero { height: 76svh; min-height: 560px; }
   .ba-cmp { aspect-ratio: auto; container-type: normal; }
   .ba-stage { width: min(100%, calc(var(--bw) * 1px)); }
 }
-/* Tall pairs: a tall photo alone fills under half the wide window, so on wide
-   screens before and after sit whole, side by side. Phones keep the slider. */
-@media (min-width: 641px) {
-  .ba-side { cursor: default; }
-  .ba-side .ba-stage { display: flex; gap: 10px; aspect-ratio: var(--sw) / var(--bh);
-    width: min(100cqw, calc(var(--sw) * 1px), calc(100cqh * var(--sw) / var(--bh))); }
-  .ba-side .ba-img { position: relative; inset: auto; flex: 1 1 0; min-width: 0; }
-  .ba-side .ba-before { order: -1; clip-path: none; }
-  .ba-side .ba-handle, .ba-side .ba-range { display: none; }
-  .ba-side .ba-chip { left: 12px; }
-  .ba-side .ba-chip-after { left: 12px; right: auto; }
-}
 .ba-img img { pointer-events: none; -webkit-user-drag: none; object-fit: contain; }
 .ba-before { clip-path: inset(0 calc(100% - var(--pos)) 0 0); }
 /* Thin white line with an outlined circle and two small arrows. */
