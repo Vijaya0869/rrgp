@@ -265,19 +265,9 @@
             "after": "/images/cases/case-1-basement-wall-after.png"
           },
           {
-            "label": "Basement 3",
-            "before": "/images/cases/case-1-basement-wall-before.jpg",
-            "after": "/images/cases/case-1-block-wall-after.png"
-          },
-          {
-            "label": "Bathroom 1",
+            "label": "Bathroom",
             "before": "/images/cases/case-3-bathroom-before.jpg",
             "after": "/images/cases/case-3-bathroom-after.jpg"
-          },
-          {
-            "label": "Bathroom 2",
-            "before": "/images/cases/interior-bathroom-before.png",
-            "after": "/images/cases/interior-bathroom-after.png"
           }
         ]
       }
