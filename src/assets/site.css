@@ -89,9 +89,11 @@ picture { display: contents; }
 .soon-lg { font-size: 10.5px; margin: 14px 0 0; color: var(--mark); }
 
 /* ── Layout ───────────────────────────────────────────────────────── */
-.sec { max-width: 1440px; margin: 0 auto; padding: clamp(48px, 5.5vw, 72px) var(--gutter); }
-.head-row { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 56px; margin-bottom: 56px; }
-.head-row-tight { margin-bottom: 40px; }
+.sec { max-width: 1440px; margin: 0 auto; padding: clamp(28px, 3vw, 40px) var(--gutter); }
+/* Nothing at the end of a section adds to its padding. */
+.sec > :last-child { margin-bottom: 0; }
+.head-row { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 56px; margin-bottom: 40px; }
+.head-row-tight { margin-bottom: 32px; }
 .sechead { display: flex; flex-direction: column; align-items: flex-start; gap: 18px; }
 .secnum { font-family: var(--serif); font-weight: 600; font-size: clamp(54px, 5.4vw, 84px); line-height: 0.8;
   font-variant-numeric: lining-nums tabular-nums; color: var(--mark); }
@@ -180,7 +182,7 @@ html[data-impact="compact"] .hero { height: 76svh; min-height: 560px; }
 
 /* ── Intro strip ──────────────────────────────────────────────────── */
 .intro-in { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: clamp(40px, 6vw, 96px); align-items: start;
-  padding-top: clamp(48px, 5.5vw, 72px); padding-bottom: clamp(48px, 5.5vw, 72px); }
+  padding-top: clamp(28px, 3vw, 40px); padding-bottom: clamp(28px, 3vw, 40px); }
 .intro-lede { font-size: clamp(18px, 1.55vw, 21px); line-height: 1.62; color: var(--body); max-width: 52ch; }
 .facts { display: grid; grid-template-columns: 1fr 1fr; gap: 30px 36px; }
 .fact { border-top: 1px solid var(--rule); padding-top: 16px; }
@@ -201,7 +203,7 @@ html[data-impact="compact"] .hero { height: 76svh; min-height: 560px; }
 
 /* Approach, folded into Platform: one horizontal five-step rule. The rail
    draws in once when it enters view; steps are always legible. */
-.process { margin-top: clamp(48px, 5vw, 72px); padding-top: clamp(40px, 4vw, 56px); border-top: 1px solid var(--rule); }
+.process { margin-top: clamp(32px, 3.5vw, 48px); padding-top: clamp(28px, 3vw, 40px); border-top: 1px solid var(--rule); }
 .tl { list-style: none; margin: 0; padding: 0; position: relative; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 28px; }
 .tl::before, .tl::after { content: ''; position: absolute; top: 21px; left: 0; right: calc((100% - 112px) / 5 - 43px); height: 1px; background: var(--rule); }
 .tl::after { background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform 1600ms var(--ease); }
@@ -223,7 +225,7 @@ html[data-impact="compact"] .hero { height: 76svh; min-height: 560px; }
   .tl-node { grid-row: 1 / span 2; margin: 0; }
   .tl-t { margin-top: 6px; }
 }
-.pull { margin: clamp(48px, 5vw, 72px) 0 0; padding: 6px 0 6px clamp(20px, 3vw, 40px); border-left: 2px solid var(--gold); }
+.pull { margin: clamp(32px, 3.5vw, 48px) 0 0; padding: 6px 0 6px clamp(20px, 3vw, 40px); border-left: 2px solid var(--gold); }
 .pull p { font-family: var(--serif); font-style: italic; font-weight: 500; font-size: clamp(28px, 3.3vw, 46px); line-height: 1.15;
   color: var(--fg); max-width: 30ch; }
 
@@ -233,7 +235,7 @@ html[data-impact="compact"] .hero { height: 76svh; min-height: 560px; }
 .cell-n { font-size: 12px; font-weight: 600; letter-spacing: 0.14em; color: var(--mark); margin-bottom: 12px; }
 .cell-t { font-family: var(--sans); font-weight: 600; font-size: 19px; line-height: 1.25; letter-spacing: -0.01em; color: var(--fg); margin-bottom: 10px; }
 .cell-b { font-size: 15px; line-height: 1.62; color: var(--body); }
-.split { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 56px; margin-top: 64px; }
+.split { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 56px; margin-top: 40px; }
 .two-cells { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; margin-top: 22px; }
 .pass { list-style: none; margin: 22px 0 0; padding: 0; }
 .pass li { font-size: 15px; line-height: 1.5; color: var(--body); padding: 13px 0; border-top: 1px solid var(--rule); }
@@ -245,7 +247,7 @@ html[data-impact="compact"] .hero { height: 76svh; min-height: 560px; }
 @media (max-width: 560px) { .four { grid-template-columns: 1fr; } }
 
 /* ── Portfolio ────────────────────────────────────────────────────── */
-.proj { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; margin-bottom: 72px; }
+.proj { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; margin-bottom: 40px; }
 .proj-img { aspect-ratio: 3 / 2; overflow: hidden; margin-bottom: 18px; background: var(--ivory-deep); }
 .proj-img .fill { transition: transform 900ms var(--ease); }
 .proj-card:hover .proj-img .fill { transform: scale(1.05); }
@@ -267,7 +269,7 @@ html[data-impact="compact"] .hero { height: 76svh; min-height: 560px; }
   .arow > span:nth-child(4)::before { content: 'Status'; }
   .arow-head { display: none; }
 }
-.mkts { display: grid; grid-template-columns: minmax(0, 420px) minmax(0, 1fr); gap: clamp(40px, 6vw, 96px); align-items: center; margin-top: 80px; }
+.mkts { display: grid; grid-template-columns: minmax(0, 420px) minmax(0, 1fr); gap: clamp(40px, 6vw, 96px); align-items: center; margin-top: 40px; }
 .ohio { width: 100%; height: auto; display: block; }
 .ohio-land { fill: var(--navy); stroke: var(--navy); stroke-width: 2; stroke-linejoin: round; }
 .ohio-dot { fill: var(--gold); stroke: var(--navy); stroke-width: 1.5; }
@@ -373,7 +375,7 @@ html[data-impact="compact"] .hero { height: 76svh; min-height: 560px; }
 .mk-body { padding: 26px 26px 28px; display: flex; flex-direction: column; flex: 1; }
 .mk-t { font-family: var(--serif); font-weight: 600; font-size: 28px; line-height: 1.1; color: var(--fg); margin: 12px 0 10px; }
 .mk-b { font-size: 15px; line-height: 1.6; color: var(--body); margin-bottom: 22px; flex: 1; }
-.notify { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 56px; align-items: end; }
+.notify { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 32px; align-items: end; }
 .notify-row { display: flex; gap: 16px; align-items: flex-end; flex-wrap: wrap; }
 .notify-row .dfield { flex: 1 1 220px; }
 @media (max-width: 940px) { .mk-grid, .notify { grid-template-columns: 1fr; } }
