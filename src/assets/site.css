@@ -330,21 +330,15 @@ html[data-impact="compact"] .hero { height: 76svh; min-height: 560px; }
 .ba[hidden] { display: none; }
 [data-ba-ready] .ba + .ba { margin-top: 0; }
 [data-ba-ready] .ba:not([hidden]) { animation: case-in 420ms var(--ease); }
-/* One window size for every photo: 3:2, the shape of the landscape photos,
-   so they fill it exactly. Other shapes sit whole and centred on white.
-   Nothing is cropped, stretched or enlarged past its real size. */
-.ba-cmp { --pos: 50%; position: relative; display: flex; justify-content: center; align-items: center; aspect-ratio: 3 / 2; container-type: size;
+/* One window size for every photo: 3:2, the shape of the landscape photos.
+   Every photo is resized to exactly fill it, whole: nothing is cropped, so
+   photos of another shape are stretched to fit. */
+.ba-cmp { --pos: 50%; position: relative; aspect-ratio: 3 / 2;
   width: 100%; overflow: hidden; border-radius: 14px; background: var(--white);
   cursor: ew-resize; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
-/* --bw and --bh (from baShape) are the pair's real size. */
-.ba-stage { position: relative; flex: none; aspect-ratio: var(--bw) / var(--bh);
-  width: min(100cqw, calc(var(--bw) * 1px), calc(100cqh * var(--bw) / var(--bh))); }
-.ba-img { position: absolute; inset: 0; background: var(--white); }
-@media (max-width: 640px) {
-  .ba-cmp { aspect-ratio: auto; container-type: normal; }
-  .ba-stage { width: min(100%, calc(var(--bw) * 1px)); }
-}
-.ba-img img { pointer-events: none; -webkit-user-drag: none; object-fit: contain; }
+.ba-stage { position: absolute; inset: 0; }
+.ba-img { position: absolute; inset: 0; }
+.ba-img img { pointer-events: none; -webkit-user-drag: none; object-fit: fill; }
 .ba-before { clip-path: inset(0 calc(100% - var(--pos)) 0 0); }
 /* Thin white line with an outlined circle and two small arrows. */
 .ba-handle { position: absolute; top: 0; bottom: 0; left: var(--pos); width: 2px; margin-left: -1px; background: #fff;
@@ -361,9 +355,9 @@ html[data-impact="compact"] .hero { height: 76svh; min-height: 560px; }
 .ba-cmp::after { content: ''; position: absolute; left: 0; bottom: 0; height: 3px; width: 100%; background: var(--gold);
   transform: scaleX(0); transform-origin: left; pointer-events: none; z-index: 2; }
 [data-ba-auto] .ba-cmp::after { transform: scaleX(var(--ba-t, 0)); }
-.ba-chip { position: absolute; left: calc(var(--bi, 0%) + 12px); bottom: 14px; padding: 5px 10px; border-radius: 999px; font-size: 10.5px; font-weight: 700;
+.ba-chip { position: absolute; left: 12px; bottom: 14px; padding: 5px 10px; border-radius: 999px; font-size: 10.5px; font-weight: 700;
   letter-spacing: 0.14em; text-transform: uppercase; color: #fff; background: rgba(10, 26, 49, 0.72); }
-.ba-chip-after { left: auto; right: calc(var(--ai, 0%) + 12px); color: var(--navy); background: var(--gold); }
+.ba-chip-after { left: auto; right: 12px; color: var(--navy); background: var(--gold); }
 .ba figcaption { margin-top: 12px; }
 .ba-cap { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 0 4px; }
 .ba-count { font-family: var(--serif); font-weight: 600; font-size: 17px; color: var(--mark); font-variant-numeric: lining-nums tabular-nums; }

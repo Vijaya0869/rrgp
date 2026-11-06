@@ -190,6 +190,16 @@
             "after": "/images/cases/home-kitchen-after.jpg"
           },
           {
+            "label": "Kitchen, second view",
+            "before": "/images/cases/home-kitchen-before.jpg",
+            "after": "/images/cases/home-kitchen-2-after.jpg"
+          },
+          {
+            "label": "Kitchen and dining",
+            "before": "/images/cases/home-kitchen-before.jpg",
+            "after": "/images/cases/home-kitchen-3-after.jpg"
+          },
+          {
             "label": "Living room",
             "before": "/images/cases/home-living-before.jpg",
             "after": "/images/cases/home-living-after.jpg"
@@ -198,6 +208,26 @@
             "label": "Master bedroom",
             "before": "/images/cases/home-bedroom-before.jpg",
             "after": "/images/cases/home-bedroom-after.jpg"
+          }
+        ]
+      },
+      {
+        "title": "Basement rebuild and full renovation",
+        "city": "",
+        "type": "Single-family",
+        "weeks": "",
+        "scope": [],
+        "show": true,
+        "pairs": [
+          {
+            "label": "Basement wall",
+            "before": "/images/cases/case-1-basement-wall-before.jpg",
+            "after": "/images/cases/case-1-basement-wall-after.png"
+          },
+          {
+            "label": "Block wall",
+            "before": "/images/cases/case-1-basement-wall-before.jpg",
+            "after": "/images/cases/case-1-block-wall-after.png"
           }
         ]
       },
@@ -259,6 +289,11 @@
         "scope": [],
         "show": true,
         "pairs": [
+          {
+            "label": "Bathroom",
+            "before": "/images/cases/interior-bathroom-before.png",
+            "after": "/images/cases/interior-bathroom-after.png"
+          },
           {
             "label": "Kitchen",
             "before": "/images/cases/interior-kitchen-before.png",
