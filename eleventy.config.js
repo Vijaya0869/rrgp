@@ -38,7 +38,7 @@ async function picture(src, alt, { widths = [480, 800, 1280], sizes = "100vw", c
 //         indexed. Other branches (e.g. `preview`) and local builds still
 //         build the full site for review.
 // false → the full site is live again. Commit and push to main.
-const SITE_OFFLINE = true;
+const SITE_OFFLINE = false;
 const OFFLINE_NOW = SITE_OFFLINE && process.env.CF_PAGES_BRANCH === "main";
 
 export default function (eleventyConfig) {
