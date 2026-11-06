@@ -201,16 +201,6 @@
           },
           {
             "label": "Kitchen 2",
-            "before": "/images/cases/home-kitchen-before.jpg",
-            "after": "/images/cases/home-kitchen-2-after.jpg"
-          },
-          {
-            "label": "Kitchen 3",
-            "before": "/images/cases/home-kitchen-before.jpg",
-            "after": "/images/cases/home-kitchen-3-after.jpg"
-          },
-          {
-            "label": "Kitchen 4",
             "before": "/images/cases/interior-kitchen-before.png",
             "after": "/images/cases/interior-kitchen-after.png"
           }
