@@ -225,13 +225,8 @@
             "after": "/images/cases/home-bedroom-after.jpg"
           },
           {
-            "label": "Upper floor 1",
+            "label": "Upper floor",
             "before": "/images/cases/case-4-upper-floor-before.jpg",
-            "after": "/images/cases/case-4-upper-floor-after.jpg"
-          },
-          {
-            "label": "Upper floor 2",
-            "before": "/images/cases/case-4-upper-floor-2-before.png",
             "after": "/images/cases/case-4-upper-floor-after.jpg"
           }
         ]
