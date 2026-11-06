@@ -89,7 +89,7 @@ picture { display: contents; }
 .soon-lg { font-size: 10.5px; margin: 14px 0 0; color: var(--mark); }
 
 /* ── Layout ───────────────────────────────────────────────────────── */
-.sec { max-width: 1440px; margin: 0 auto; padding: clamp(72px, 9vw, 120px) var(--gutter); }
+.sec { max-width: 1440px; margin: 0 auto; padding: clamp(48px, 5.5vw, 72px) var(--gutter); }
 .head-row { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 56px; margin-bottom: 56px; }
 .head-row-tight { margin-bottom: 40px; }
 .sechead { display: flex; flex-direction: column; align-items: flex-start; gap: 18px; }
@@ -180,7 +180,7 @@ html[data-impact="compact"] .hero { height: 76svh; min-height: 560px; }
 
 /* ── Intro strip ──────────────────────────────────────────────────── */
 .intro-in { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: clamp(40px, 6vw, 96px); align-items: start;
-  padding-top: clamp(56px, 7vw, 96px); padding-bottom: clamp(56px, 7vw, 96px); }
+  padding-top: clamp(48px, 5.5vw, 72px); padding-bottom: clamp(48px, 5.5vw, 72px); }
 .intro-lede { font-size: clamp(18px, 1.55vw, 21px); line-height: 1.62; color: var(--body); max-width: 52ch; }
 .facts { display: grid; grid-template-columns: 1fr 1fr; gap: 30px 36px; }
 .fact { border-top: 1px solid var(--rule); padding-top: 16px; }
@@ -201,7 +201,7 @@ html[data-impact="compact"] .hero { height: 76svh; min-height: 560px; }
 
 /* Approach, folded into Platform: one horizontal five-step rule. The rail
    draws in once when it enters view; steps are always legible. */
-.process { margin-top: clamp(72px, 8vw, 112px); padding-top: clamp(56px, 6vw, 80px); border-top: 1px solid var(--rule); }
+.process { margin-top: clamp(48px, 5vw, 72px); padding-top: clamp(40px, 4vw, 56px); border-top: 1px solid var(--rule); }
 .tl { list-style: none; margin: 0; padding: 0; position: relative; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 28px; }
 .tl::before, .tl::after { content: ''; position: absolute; top: 21px; left: 0; right: calc((100% - 112px) / 5 - 43px); height: 1px; background: var(--rule); }
 .tl::after { background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform 1600ms var(--ease); }
@@ -223,7 +223,7 @@ html[data-impact="compact"] .hero { height: 76svh; min-height: 560px; }
   .tl-node { grid-row: 1 / span 2; margin: 0; }
   .tl-t { margin-top: 6px; }
 }
-.pull { margin: clamp(72px, 8vw, 112px) 0 0; padding: 6px 0 6px clamp(20px, 3vw, 40px); border-left: 2px solid var(--gold); }
+.pull { margin: clamp(48px, 5vw, 72px) 0 0; padding: 6px 0 6px clamp(20px, 3vw, 40px); border-left: 2px solid var(--gold); }
 .pull p { font-family: var(--serif); font-style: italic; font-weight: 500; font-size: clamp(28px, 3.3vw, 46px); line-height: 1.15;
   color: var(--fg); max-width: 30ch; }
 

@@ -72,6 +72,12 @@
     radial-gradient(640px 420px at 92% 82%, rgba(14, 35, 64, 0.10), transparent 70%);
 }
 
+/* Glows fade out at each section's edge, so white sections run together. */
+.intro::before, #what::before, #focus::before, #record::before, #cases::before, #market::before, #partners::before, #who::before, .contact::before {
+  -webkit-mask-image: linear-gradient(180deg, transparent, #000 120px, #000 calc(100% - 120px), transparent);
+  mask-image: linear-gradient(180deg, transparent, #000 120px, #000 calc(100% - 120px), transparent);
+}
+
 /* Ivory glass card used by facts, mandate cells, marketplace, leadership */
 .fact, .cell, .mk, .person, .notify {
   background: var(--glass-light);
@@ -174,7 +180,7 @@
 .contact {
   position: relative; isolation: isolate;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(255, 255, 255, 0.86)),
+    linear-gradient(180deg, #FFFFFF, rgba(255, 255, 255, 0.94) 160px, rgba(255, 255, 255, 0.86)),
     var(--contact-photo, url("/images/hero.jpg")) center / cover no-repeat;
   background-attachment: scroll, fixed;
 }
