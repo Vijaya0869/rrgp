@@ -50,13 +50,17 @@
       Array.from(g.children).forEach((c, i) => items.push([c, Math.min(i, 5) * 120])));
     if (!items.length) return;
 
+    // Items appear once they are a fifth of the way up the screen, where the
+    // eye is, and hide again only when fully below it, so they replay each
+    // time the visitor scrolls back down.
     const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) e.target.classList.remove('pre'); });
+    }, { rootMargin: '0px 0px -20% 0px' });
+    const gone = new IntersectionObserver((entries) => {
       entries.forEach((e) => {
-        if (!e.isIntersecting) return;
-        e.target.classList.remove('pre');
-        io.unobserve(e.target);
+        if (!e.isIntersecting && e.boundingClientRect.top > 0) e.target.classList.add('pre');
       });
-    }, { rootMargin: '0px 0px -8% 0px' });
+    });
 
     const arm = () => {
       window.removeEventListener('scroll', arm);
@@ -66,6 +70,7 @@
         el.style.setProperty('--d', d + 'ms');
         el.classList.add('rev', 'pre');
         io.observe(el);
+        gone.observe(el);
       });
     };
     window.addEventListener('scroll', arm, { passive: true });
