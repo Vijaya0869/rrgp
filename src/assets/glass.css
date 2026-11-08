@@ -72,12 +72,11 @@
 #partners .btn-ghost { background: rgba(14, 35, 64, 0.04); color: var(--fg); border-color: var(--fg); }
 #partners .btn-ghost:hover { background: rgba(14, 35, 64, 0.10); }
 
-/* ── Light sections: warm orbs behind ivory glass ──────────────────── */
+/* ── Light sections: a soft navy glow behind ivory glass (no gold) ─── */
 .intro, #focus, #record, #market, #who { position: relative; overflow: hidden; isolation: isolate; }
 .intro::before, #focus::before, #record::before, #market::before, #who::before, .contact::before {
   content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
   background:
-    radial-gradient(520px 380px at 8% 18%, rgba(201, 162, 39, 0.16), transparent 70%),
     radial-gradient(640px 420px at 92% 82%, rgba(14, 35, 64, 0.10), transparent 70%);
 }
 
@@ -113,14 +112,12 @@
 /* Marketplace "For sale / Rent / Rent-to-own" label as a glass chip on the photo */
 .mk-img { position: relative; }
 
-/* ── Former navy sections: three-part glow, now in the light colours ─ */
+/* ── Former navy sections: the same soft navy glow (no gold) ──────── */
 #what, #cases, #partners { position: relative; overflow: hidden; isolation: isolate; }
 #what::before, #cases::before, #partners::before {
   content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
   background:
-    radial-gradient(700px 480px at 12% 8%, rgba(201, 162, 39, 0.16), transparent 70%),
-    radial-gradient(800px 560px at 90% 60%, rgba(14, 35, 64, 0.10), transparent 70%),
-    radial-gradient(600px 400px at 40% 100%, rgba(201, 162, 39, 0.08), transparent 70%);
+    radial-gradient(800px 560px at 90% 60%, rgba(14, 35, 64, 0.10), transparent 70%);
 }
 
 .biz-card {
