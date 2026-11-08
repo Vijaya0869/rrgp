@@ -47,7 +47,7 @@
     const items = [];
     document.querySelectorAll('[data-reveal]').forEach((el) => items.push([el, 0]));
     document.querySelectorAll('[data-reveal-group]').forEach((g) =>
-      Array.from(g.children).forEach((c, i) => items.push([c, Math.min(i, 5) * 80])));
+      Array.from(g.children).forEach((c, i) => items.push([c, Math.min(i, 5) * 120])));
     if (!items.length) return;
 
     const io = new IntersectionObserver((entries) => {

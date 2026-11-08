@@ -508,8 +508,8 @@ html[data-impact="compact"] .hero { height: 76svh; min-height: 560px; }
    that are still below the fold once the visitor starts scrolling, and
    unmarks them as they arrive. With no script, no observer, or reduced
    motion, nothing is ever hidden. */
-.pre { opacity: 0; transform: translateY(22px); }
-.rev { transition: opacity 700ms var(--ease), transform 700ms var(--ease); transition-delay: var(--d, 0ms); }
+.pre { opacity: 0; transform: translateY(48px); }
+.rev { transition: opacity 900ms var(--ease), transform 900ms var(--ease); transition-delay: var(--d, 0ms); }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
