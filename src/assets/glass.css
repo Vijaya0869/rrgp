@@ -228,3 +228,15 @@
   .fact:hover, .cell:hover, .mk:hover, .person:hover, .biz-card:hover { transform: none; }
   .contact { background-attachment: scroll, scroll; }
 }
+
+/* Carousel arrows: glass, like the photo chips. */
+.ba-arrow { -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+
+/* ── Colours: Version 1 (gold buttons, navy accent text), chosen 13 Nov ── */
+.tone-white,.tone-light{--mark:var(--navy)}
+.tone-white .dsubmit,.tone-light .dsubmit{background:var(--gold);color:var(--navy)}
+.ba-cat[aria-selected="true"]{background:var(--gold);color:var(--navy);border-color:var(--gold)}
+.cell{border-top-color:var(--navy)}
+.tl-node{color:var(--navy)}
+.foot-k{color:var(--navy)}
+.legal-body a{color:var(--navy)}

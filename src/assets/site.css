@@ -100,6 +100,17 @@ picture { display: contents; }
 .seclabel { font-size: 12px; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--fg); }
 /* Side headings with no section number carry the heading on their own. */
 .seclabel:not(.secnum + .seclabel) { font-size: clamp(16px, 1.45vw, 20px); letter-spacing: 0.16em; line-height: 1.35; }
+/* The label under a section number (PLATFORM, MANDATE…). */
+.secnum + .seclabel { font-size: clamp(17px, 1.6vw, 24px); letter-spacing: 0.18em; line-height: 1.3; }
+/* Section numbers roll up from the previous number as the section arrives
+   (01 → 02). The real number stays in the flow, invisible, so layout and
+   baseline never move; the rolling copy sits over it (site.js). */
+.secnum.has-roll { position: relative; color: transparent; }
+.secnum-roll { position: absolute; left: 0; right: 0; top: -0.12em; bottom: -0.12em; overflow: hidden; color: var(--mark); }
+.secnum-track { display: block; padding-top: 0.12em; transform: translateY(0); transition: transform 1100ms cubic-bezier(0.16, 1, 0.3, 1) 150ms; }
+.secnum-track > span { display: block; height: 0.8em; margin-bottom: 0.3em; }
+.secnum.is-rolled .secnum-track { transform: translateY(-1.1em); }
+.secnum.is-reset .secnum-track { transition: none; }
 html[data-sections="quiet"] .secnum { display: none; }
 html[data-sections="rules"] .sec { border-top: 1px solid var(--rule); }
 @media (max-width: 940px) {
@@ -298,7 +309,8 @@ html[data-impact="compact"] .hero { height: 76svh; min-height: 560px; }
 .case + .case { margin-top: 64px; }
 .case[hidden] { display: none; }
 [data-cases-ready] .case + .case { margin-top: 0; }
-[data-cases-ready] .case:not([hidden]) { animation: case-in 420ms var(--ease); }
+[data-cases-ready] .case:not([hidden]) { animation: case-fade 420ms var(--ease); }
+@keyframes case-fade { from { opacity: 0; } }
 @keyframes case-in { from { opacity: 0; transform: translateY(10px); } }
 .case:focus-visible { outline: 2px solid var(--gold); outline-offset: 8px; }
 .case-meta { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 20px; align-self: start; }
@@ -329,7 +341,21 @@ html[data-impact="compact"] .hero { height: 76svh; min-height: 560px; }
 .ba + .ba { margin-top: 32px; }
 .ba[hidden] { display: none; }
 [data-ba-ready] .ba + .ba { margin-top: 0; }
-[data-ba-ready] .ba:not([hidden]) { animation: case-in 420ms var(--ease); }
+[data-ba-ready] .ba:not([hidden]) { animation: ba-next 560ms var(--ease); }
+[data-ba-dir="prev"] [data-ba-ready] .ba:not([hidden]) { animation-name: ba-prev; }
+@keyframes ba-next { from { opacity: 0; transform: translateX(64px); } }
+@keyframes ba-prev { from { opacity: 0; transform: translateX(-64px); } }
+/* Carousel arrows on the photo's left and right edges. */
+.ba-arrow { position: absolute; top: 50%; z-index: 3; width: 44px; height: 44px; margin-top: -22px; padding: 0;
+  display: grid; place-items: center; border: 0; border-radius: 50%; cursor: pointer;
+  color: var(--navy); background: rgba(255, 255, 255, 0.82); box-shadow: 0 6px 18px rgba(6, 14, 28, 0.22);
+  transition: background 240ms ease, color 240ms ease, transform 240ms var(--ease); }
+.ba-arrow svg { width: 18px; height: 18px; }
+.ba-prev { left: 14px; }
+.ba-next { right: 14px; }
+.ba-arrow:hover { background: var(--gold); color: var(--navy); transform: scale(1.06); }
+.ba-arrow:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+@media (max-width: 560px) { .ba-arrow { width: 36px; height: 36px; margin-top: -18px; } .ba-prev { left: 8px; } .ba-next { right: 8px; } }
 /* One window size for every photo: 3:2, the shape of the landscape photos.
    Every photo is resized to exactly fill it, whole: nothing is cropped, so
    photos of another shape are stretched to fit. */

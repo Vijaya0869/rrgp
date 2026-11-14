@@ -76,6 +76,47 @@
     window.addEventListener('scroll', arm, { passive: true });
   }
 
+  /* Section numbers roll from the previous number to their own (01 → 02)
+     as the section comes up the screen, and reset once fully below it so
+     the roll replays. Numbers already on screen at load stay put. */
+  function numbers() {
+    if (reduced || !canObserve) return;
+    const nums = Array.from(document.querySelectorAll('.secnum'));
+    if (!nums.length) return;
+    const pad = (n, w) => String(Math.max(n, 0)).padStart(w, '0');
+    nums.forEach((el) => {
+      const txt = el.textContent.trim();
+      const n = parseInt(txt, 10);
+      if (Number.isNaN(n)) return;
+      const roll = document.createElement('span');
+      roll.className = 'secnum-roll';
+      roll.setAttribute('aria-hidden', 'true');
+      roll.innerHTML = '<span class="secnum-track"><span>' + pad(n - 1, txt.length) + '</span><span>' + txt + '</span></span>';
+      el.appendChild(roll);
+      el.classList.add('has-roll', 'is-rolled');
+    });
+
+    const arm = () => {
+      window.removeEventListener('scroll', arm);
+      const fold = window.innerHeight;
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.remove('is-reset'); e.target.classList.add('is-rolled'); } });
+      }, { rootMargin: '0px 0px -20% 0px' });
+      const gone = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (!e.isIntersecting && e.boundingClientRect.top > 0) e.target.classList.add('is-reset'), e.target.classList.remove('is-rolled');
+        });
+      });
+      nums.forEach((el) => {
+        if (!el.classList.contains('has-roll')) return;
+        if (el.getBoundingClientRect().top >= fold) el.classList.add('is-reset'), el.classList.remove('is-rolled');
+        io.observe(el);
+        gone.observe(el);
+      });
+    };
+    window.addEventListener('scroll', arm, { passive: true });
+  }
+
   /* Process timeline: the gold rail draws in once, when the steps arrive. */
   function timeline() {
     const tl = document.querySelector('[data-tl]');
@@ -144,7 +185,7 @@
       set(((x - r.left) / r.width) * 100);
     };
     cmp.addEventListener('pointerdown', (e) => {
-      if (e.button !== 0) return;
+      if (e.button !== 0 || e.target.closest('.ba-arrow')) return;
       cmp.setPointerCapture(e.pointerId);
       cmp.dataset.dragging = '';
       fromX(e.clientX);
@@ -190,7 +231,37 @@
     });
     if (!sets.length) return;
 
-    function go(ci, ri, { focus = null, user = false } = {}) {
+    // Position across all cases, so the slide direction follows the order.
+    const flat = (ci, ri) => sets.slice(0, ci).reduce((a, s) => a + s.figs.length, 0) + ri;
+    function step(d) {
+      const s = sets[current];
+      let ci = current, ri = s.at + d;
+      if (ri >= s.figs.length) { ci = (current + 1) % sets.length; ri = 0; }
+      else if (ri < 0) { ci = (current - 1 + sets.length) % sets.length; ri = sets[ci].figs.length - 1; }
+      root.setAttribute('data-ba-dir', d < 0 ? 'prev' : 'next');
+      go(ci, ri, { dirSet: true });
+    }
+
+    // Previous / next arrows on every photo.
+    const arrow = (cls, label, path, d) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'ba-arrow ' + cls;
+      b.setAttribute('aria-label', label);
+      b.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="' + path + '"/></svg>';
+      b.addEventListener('click', (e) => { e.stopPropagation(); step(d); });
+      return b;
+    };
+    if (sets.reduce((a, s) => a + s.figs.length, 0) > 1) {
+      sets.forEach((s) => s.figs.forEach((f) => {
+        const cmp = f.querySelector('[data-ba]');
+        cmp.appendChild(arrow('ba-prev', 'Previous example', 'M15 5l-7 7 7 7', -1));
+        cmp.appendChild(arrow('ba-next', 'Next example', 'M9 5l7 7-7 7', 1));
+      }));
+    }
+
+    function go(ci, ri, { focus = null, user = false, dirSet = false } = {}) {
+      if (!dirSet) root.setAttribute('data-ba-dir', flat(ci, ri) < flat(current, sets[current] ? sets[current].at : 0) ? 'prev' : 'next');
       const s = sets[ci];
       showCase(ci, focus === 'case');
       current = ci;
@@ -214,11 +285,7 @@
       const dragging = !!root.querySelector('[data-dragging]');
       if (dragging) elapsed = 0;
       else if (visible && !kbFocus && !document.hidden) elapsed += dt;
-      if (elapsed >= STEP) {
-        const s = sets[current];
-        if (s.at + 1 < s.figs.length) go(current, s.at + 1);
-        else go((current + 1) % sets.length, 0);
-      }
+      if (elapsed >= STEP) step(1);
       root.style.setProperty('--ba-t', String(Math.min(elapsed / STEP, 1)));
       requestAnimationFrame(tick);
     }
@@ -317,6 +384,7 @@
   header();
   navHighlight();
   reveals();
+  numbers();
   timeline();
   cases();
   notifyForm();
