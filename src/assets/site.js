@@ -260,6 +260,27 @@
       }));
     }
 
+    // Dots under each photo in place of the "2 / 3" count; click to jump.
+    sets.forEach((s, ci) => {
+      if (s.figs.length < 2) return;
+      s.figs.forEach((f, ri) => {
+        const count = f.querySelector('.ba-count');
+        if (!count) return;
+        const dots = document.createElement('span');
+        dots.className = 'ba-dots';
+        s.figs.forEach((_, j) => {
+          const d = document.createElement('button');
+          d.type = 'button';
+          d.className = 'ba-dot';
+          d.setAttribute('aria-label', 'Example ' + (j + 1) + ' of ' + s.figs.length);
+          if (j === ri) d.setAttribute('aria-current', 'true');
+          d.addEventListener('click', () => { if (j !== ri) go(ci, j, { user: true }); });
+          dots.appendChild(d);
+        });
+        count.replaceWith(dots);
+      });
+    });
+
     function go(ci, ri, { focus = null, user = false, dirSet = false } = {}) {
       if (!dirSet) root.setAttribute('data-ba-dir', flat(ci, ri) < flat(current, sets[current] ? sets[current].at : 0) ? 'prev' : 'next');
       const s = sets[ci];
