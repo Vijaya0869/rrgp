@@ -90,5 +90,5 @@ If any part of these Terms is found unenforceable, the rest will remain in effec
 Questions about these Terms can be sent to:
 
 **R&R Grandeur Properties**<br>
-2945 Donnylane Blvd, Columbus, OH 43235<br>
-[deals@rrgp.io](mailto:deals@rrgp.io) · (614) 626-1216
+6500 Emerald Pkwy, Ste 100, Dublin, OH 42016<br>
+[Jrdeals@rrgp.io](mailto:Jrdeals@rrgp.io) · (620) 419-5819

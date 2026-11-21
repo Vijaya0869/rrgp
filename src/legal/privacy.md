@@ -75,7 +75,7 @@ You may ask us to:
 - delete your information; or
 - stop sending you marketplace updates.
 
-Each email update includes a way to unsubscribe. To make any other request, email [deals@rrgp.io](mailto:deals@rrgp.io). We may need to confirm your identity before acting on a request, and we will respond within the time required by applicable law. Depending on where you live, you may have additional rights under your state's privacy laws, and you will not be treated differently for exercising them.
+Each email update includes a way to unsubscribe. To make any other request, email [Jrdeals@rrgp.io](mailto:Jrdeals@rrgp.io). We may need to confirm your identity before acting on a request, and we will respond within the time required by applicable law. Depending on where you live, you may have additional rights under your state's privacy laws, and you will not be treated differently for exercising them.
 
 ## 9. Children's privacy
 
@@ -96,5 +96,5 @@ We may update this Privacy Policy from time to time. When we do, we will post th
 If you have questions about this Privacy Policy or how we handle your information, please contact us:
 
 **R&R Grandeur Properties**<br>
-2945 Donnylane Blvd, Columbus, OH 43235<br>
-[deals@rrgp.io](mailto:deals@rrgp.io) · (614) 626-1216
+6500 Emerald Pkwy, Ste 100, Dublin, OH 42016<br>
+[Jrdeals@rrgp.io](mailto:Jrdeals@rrgp.io) · (620) 419-5819
